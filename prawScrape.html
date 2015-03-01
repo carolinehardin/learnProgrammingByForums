@@ -1,685 +1,1032 @@
-&lt;div class="md"&gt;&lt;p&gt;Depends on the meetup, but no, as a general rule, if anyone gets up it will be a regular or special guest with a prepared topic. Usually people will be too busy talking about their projects to make you present yours :) &lt;/p&gt;
+<div class="md"><p>If anyone cares-  </p>
 
-&lt;p&gt;They&amp;#39;re usually pretty relaxed and friendly.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;pre&gt;&lt;code&gt;for (int i=0; i&amp;lt;10; i++) {}
-&lt;/code&gt;&lt;/pre&gt;
+<p>What I&#39;m doing is hosting a development build of a web-browser game so I could test on other machines.  Eventually I may share with my CS class (who I wouldn&#39;t trust) if I can&#39;t find a free server to host on.    </p>
+</div><div class="md"><p>Don&#39;t know, but did you check the logs? Also, just to double check where the delay is happening, close before exit. I&#39;m guessing that it&#39;s the close. Another thing I&#39;d be interested in seeing is what happens when you write a bunch of data, like 100K or something.</p>
 
-&lt;p&gt;This will make a for loop that runs from 0 to 9, and add 1 to i every iteration. You make an integer that starts at 0. It runs while i is less than 10. Every time it completes a cycle, it adds 1 to i.&lt;/p&gt;
+<p>Finally, as a last resort, you can always instrument the driver with prints, and recompile it yourself.</p>
+</div><div class="md"><blockquote>
+<p>This is what I&#39;ve gotten down,</p>
+</blockquote>
 
-&lt;pre&gt;&lt;code&gt;for (int i=6; i&amp;lt;=90; i+=4) {}
-&lt;/code&gt;&lt;/pre&gt;
+<p>So, you basically have nothing. Because all you did was take the declarations provided by your professor and retype them in your code. Actually, you screwed that up too; where is the sort function??</p>
 
-&lt;p&gt;This will make a for loop that runs from 6 to 90 in increments of 4, so 6, 10, 14, 18, etc. It makes an integer that atarts at 6. It runs while i is less than or equal to 90. It adds 4 after every cycle.&lt;/p&gt;
+<p>No, you screwed it up even further. Did you even try compiling your code as is right now? It won&#39;t compile. Perhaps you should fix the compilation errors first?</p>
+</div><div class="md"><p>Well, start at the beginning:</p>
 
-&lt;p&gt;Now analyze this and try to apply it to your situation.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Most non-trivial problems can be represented in some object oriented way.&lt;/p&gt;
+<blockquote>
+<p>The program will ask the user for either a single 4-digit number, or a range of two numbers.</p>
+</blockquote>
+</div><div class="md"><p><a href="https://staticsitegenerators.net/">https://staticsitegenerators.net/</a></p>
+</div><div class="md"><p>There are <a href="http://en.wikipedia.org/wiki/Server_Side_Includes">server side includes</a> if you&#39;re not generating the pages.      </p>
 
-&lt;p&gt;For example, why not create a simple, text based combat system of the likes that you&amp;#39;d usually find in an old school RPG (eg, the original Final Fantasy)? So you&amp;#39;ve got a party that contains characters and characters have weapons which have stats. You fight an opponent that is also a character and has their own stats.&lt;/p&gt;
+<p>Disclaimer -- I know very little of web development, so this may be considered a horrible thing to do.</p>
+</div><div class="md"><blockquote>
+<p>Could someone in ELI5 terms help me to understand scope dealing with output to data files across functions?</p>
+</blockquote>
 
-&lt;p&gt;So you might start out by creating appropriate objects for the characters and their stats. Let&amp;#39;s keep things simple and have just two stats: health and attack. When a character attacks an opponent, they deal damage equal to their attack stat, which is subtracted from the target&amp;#39;s health. A simplification that can be used early on is having only one-on-one combat where each character alternates turns and can only attack.&lt;/p&gt;
+<p>Why do you think is anything specific writing to files? Here&#39;s a bit of code that has nothing to do with writing to files, but illustrates your mistake:</p>
 
-&lt;p&gt;Once you have that implemented, implement weapons. Weapons add to existing stats. So a weapon has stats. Further, there can be multiple classes of weapons that provide different damage algorithms. So we might have a superclass &lt;code&gt;Weapon&lt;/code&gt; that has a method &lt;code&gt;getDamage(characterStats)&lt;/code&gt; and depending on the class of weapon, different stats might be used to determine damage. So a &lt;code&gt;Bow&lt;/code&gt; might use a character&amp;#39;s speed stat while a &lt;code&gt;Sword&lt;/code&gt; uses the strength stat (etc).&lt;/p&gt;
+<pre><code>void foo();
 
-&lt;p&gt;Using your imagination, you could also implement abilities (eg, magical attacks).&lt;/p&gt;
-
-&lt;p&gt;There&amp;#39;s no single way to write the code for this, but it&amp;#39;ll provide practice for writing OO code for a problem in which objects are the natural way to represent things (eg, a character, a weapon, and stats can be objects).&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;You need to fix your syntax. If you have more than one line in your if or else if you need to put it in { }&lt;/p&gt;
-
-&lt;p&gt;example:&lt;/p&gt;
-
-&lt;p&gt;If (a==b)&lt;/p&gt;
-
-&lt;p&gt;{&lt;/p&gt;
-
-&lt;p&gt;do this;&lt;/p&gt;
-
-&lt;p&gt;do this;&lt;/p&gt;
-
-&lt;p&gt;}&lt;/p&gt;
-
-&lt;p&gt;else&lt;/p&gt;
-
-&lt;p&gt;{&lt;/p&gt;
-
-&lt;p&gt;Do this:&lt;/p&gt;
-
-&lt;p&gt;Do this;&lt;/p&gt;
-
-&lt;p&gt;}&lt;/p&gt;
-
-&lt;p&gt;if you only have 1 line you dont HAVE to put it around {} but I always do.&lt;/p&gt;
-
-&lt;p&gt;Your also missing a ; in the lower middle of your code.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="https://www.google.com/search?q=pacman&amp;amp;hs=ETp&amp;amp;source=lnms&amp;amp;tbm=isch"&gt;https://www.google.com/search?q=pacman&amp;amp;hs=ETp&amp;amp;source=lnms&amp;amp;tbm=isch&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Have you considered just rolling your own? Pacman needs very simple graphics:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A dot&lt;/li&gt;
-&lt;li&gt;A bigger, badder dot&lt;/li&gt;
-&lt;li&gt;Something that vaguely looks like fruit (optional)&lt;/li&gt;
-&lt;li&gt;A circle with a pie piece missing&lt;/li&gt;
-&lt;li&gt;A circle with a smaller pie piece missing (to create a sprite animation of an opening and closing mouth; optional)&lt;/li&gt;
-&lt;li&gt;A ghost, which is a semicircle with Bart&amp;#39;s hair upside down, then white and black dots for eyes.
-
-&lt;ul&gt;
-&lt;li&gt;Ghosts are in a couple of colors, with dark blue used for when Pacman is in hungry-ghost-muncher mode.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The walls would presumably be traced and thus not an image, but should be straightforward to create if your level design requires an image.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Surely you must know by now that reading code is easier if the code is indented and has syntax highlighting? Half the reason to use Gists is for the syntax highlighting.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;An animated game, or just something like blackjack? I took a similar class, and common projects were Tic-Tac-Toe, Hangman, War, and one kid did Simon (that game where you press the button that flashes, and try to remember the order).&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;That&amp;#39;s what templates are for.  The type becomes a template parameter, not a function parameter, i.e. &lt;code&gt;shufflePrompt&amp;lt;int&amp;gt;(&amp;quot;integer&amp;quot;)&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;The project euler problems, especially when you get to the higher level ones, can never be solved with brute force, which is what you are doing here. You are creating an algorithm that runs in n&lt;sup&gt;4&lt;/sup&gt; time, meaning that given input m, it takes m&lt;sup&gt;4&lt;/sup&gt; iterations to complete, which is not feasible at higher values of m. &lt;/p&gt;
-
-&lt;p&gt;I don&amp;#39;t have the answer, but this is something you either have to think very hard about or research a solution for. It&amp;#39;s not going to be as straight-forward as checking every possible solution.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Try printing out what your intermediate values are inside the loop.  In particular, what value you are adding to the running total on every loop iteration.  That should give you a clue on what your bug is.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Here&amp;#39;s a few hints:&lt;/p&gt;
-
-&lt;p&gt;Your loop needs to start with nstart and run till nstop. What&amp;#39;s the difference between your test inputs (1,4) and (3,10)?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;It&amp;#39;s because you&amp;#39;re setting the x and y of the text to 0, 0 but that represents the baseline.  Try setting the y to something like 22.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="http://www.reddit.com/r/gamedev"&gt;http://www.reddit.com/r/gamedev&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://www.reddit.com/r/unity"&gt;http://www.reddit.com/r/unity&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://www.reddit.com/r/csharp"&gt;http://www.reddit.com/r/csharp&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://www.reddit.com/r/learncsharp"&gt;http://www.reddit.com/r/learncsharp&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Check the FAQ ---&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;And also check &lt;a href="/r/webdev"&gt;/r/webdev&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;&lt;a href="http://www.codeacademy.com"&gt;www.codeacademy.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://www.teamtreehouse.com"&gt;www.teamtreehouse.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://www.laracasts.com"&gt;www.laracasts.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Try all of these, and see which you like. There are also a ton of guides on Youtube. Watch some videos, learn the very basics, and write some simple code. Buy some books and start reading them. And above all else, practice practice practice. &lt;/p&gt;
-
-&lt;p&gt;Also, not to discourage you, but I think you should pick front or back end and stick with it, at least for now. You can certainly become a full stack dev down the road, but IMO it&amp;#39;s best to be somewhat focused while you&amp;#39;re learning. This is a huge undertaking, and there is an enormous amount of information you&amp;#39;re going to be absorbing in the coming months.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;XCode is an IDE, not a programming language.  What language are you using?  What do you mean by add a vector?  We need way more information to help you out.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Python is considered easier than those languages (bar maybe JS), so people recommend it to beginners. The skills are largely transferable anyway.&lt;/p&gt;
-
-&lt;p&gt;Try a different language if you want, but being a good programmer is about programming, not the language.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;ol&gt;
-&lt;li&gt;Python is easy for beginners to learn.&lt;/li&gt;
-&lt;li&gt;At work you&amp;#39;re probably going to have to learn a bunch of new things anyway, including languages.&lt;/li&gt;
-&lt;li&gt;Learning additional programming languages is easy once you know how to program.&lt;/li&gt;
-&lt;li&gt;Python is a language that is extremely handy for all of the other little bits of programming that you end up doing that aren&amp;#39;t exactly parts of whatever software the company makes, but which you need in order to get your job done, or which you need to automate whatever you need automating at home.&lt;/li&gt;
-&lt;li&gt;Different kinds of jobs use different kinds of languages, so it&amp;#39;s also a matter of what kind of job you want, not just how to qualify yourself for the largest number of jobs.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;The skills you&amp;#39;re learning through Python are very easily translatable to other languages. I started coding with Python and transitioned to Java, C/C++, and C# .NET from there. &lt;/p&gt;
-
-&lt;p&gt;Classes, objects, methods/functions, loops, variables, data structures, everything you&amp;#39;re learning in Python can be used elsewhere.&lt;/p&gt;
-
-&lt;p&gt;Python is also very easy to learn, and as a result, core concepts of programming are quickly picked up, without getting bogged down with complicated syntax, etc.&lt;/p&gt;
-
-&lt;p&gt;Python actually has a LOT of jobs going too, and it&amp;#39;s very useful even if it&amp;#39;s not the main language you&amp;#39;re programming in. If you want to hack together a quick script that pulls data from an SQL database for example, you can do this &lt;em&gt;very&lt;/em&gt; quickly!&lt;/p&gt;
-
-&lt;p&gt;However, there&amp;#39;s nothing stopping you from having a whack at other languages too. Java and C# are pretty easy to pick up, and have extensive support online to help you learn.&lt;/p&gt;
-
-&lt;p&gt;Good luck!&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;As a hiring manager I mostly care that you have knowledge and experience with at least one (preferably object oriented) language.  The concepts are mostly transferrable except with C and C++ where memory management takes a lot more experience.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Not all the jobs are in those languages. I recently applied for a bunch of positions for an internship and here&amp;#39;s the dominant languages they used:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;4 C#&lt;/li&gt;
-&lt;li&gt;4 Java&lt;/li&gt;
-&lt;li&gt;1 Python (plus another that used Python for internal programs)&lt;/li&gt;
-&lt;li&gt;2 C++&lt;/li&gt;
-&lt;li&gt;1 JavaScript&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Not exactly a strong sample size and languages used depends a bit on the area, but the point being that Python jobs exist and aren&amp;#39;t all that uncommon.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;you&amp;#39;re almost like me I want to get a job ASAP, but also I&amp;#39;m learning my basics: algorithms, DS, and yes I know python is great for learning, but not many jobs out there, so I haven&amp;#39;t even touched it.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;It&amp;#39;s the current sexy language to use in academia. Understanding procedural concepts and then Object Oriented Programming principles using as few semicolons as possible is probably why you are learning it. It will also translate to other languages. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I think u should make your own business and employ your self&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;A programming language is merely a tool used in the job, not the job itself. What you should be focusing on rather than the language is your fundamentals. If I am hiring someone for a position that mainly uses Java, I would still hire someone that can show they know the fundamentals in Python over someone that knows Java, but can&amp;#39;t apply it.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Python is good for learning general, transferable programming concepts without forcing the user to learn a bunch of extra stuff that certain languages add/enforce, e.g. object-oriented programming (Java), strict functional programming (Haskell), memory management (C, C++, Rust) etc. All of these concepts are useful and exist for a reason, and most of them can be done in Python, but aren&amp;#39;t necessary to learn just to be able to use the language. That&amp;#39;s my take, anyways. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I&amp;#39;m pretty sure they want you to get so fed up with indentation errors that you&amp;#39;ll beg for languages with syntactically explicit code blocks no matter how difficult they are to comprehend.&lt;/p&gt;
-
-&lt;p&gt;Python had that effect on me.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Write code that you will understand 6 months from now. Write code that your replacement will understand even if the comments were stripped away in some freak accident.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Comment. I read a very interesting blog post on it recently; you can catch it &lt;a href="http://blog.codinghorror.com/code-tells-you-how-comments-tell-you-why/"&gt;here&lt;/a&gt;. Basically, you can have the most elegant and concise code in the world, but that doesn&amp;#39;t explain &lt;em&gt;why&lt;/em&gt; it&amp;#39;s there. Commenting also makes you explain yourself. I often catch silly mistakes on my part while commenting code. &lt;/p&gt;
-
-&lt;p&gt;You don&amp;#39;t have to comment everything, but concise commenting can really improve you as a programmer! &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I&amp;#39;m paraphrasing but don&amp;#39;t get frustrated by your mistakes, see them as an opportunity to learn something.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I&amp;#39;ve said this a bunch of times on this sub; just because your code works don&amp;#39;t think it&amp;#39;s done.  Go back and make it better.  Rafactor it.  Comment it.  Whatever, just don&amp;#39;t move on until it&amp;#39;s the best you can make it.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I have absolutely no idea about anything involving programming, but i&amp;#39;m interested in learning.&lt;/p&gt;
-
-&lt;p&gt;It is a good idea buying this, or i&amp;#39;d need to have some previous knowledge?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;The question is pretty much impossible to understand. Are you missing information about the format of the input file?&lt;/p&gt;
-
-&lt;p&gt;Otherwise I&amp;#39;m afraid your prof, TAs, and peers are probably the only ones who will be able to help.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;The question is whether it is required to fill in the blank spaces with actual whitespace?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;blockquote&gt;
-&lt;p&gt;I cannot figure out how to properly insert the equations into my code without running into an error or two.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The code you posted doesn&amp;#39;t show you trying this, so we can&amp;#39;t tell what might have been wrong with what you were trying to do.&lt;/p&gt;
-
-&lt;p&gt;The general form to assign values to variables with arithmetic after reading them from the user is:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;assignedVariable = val1 + val2;  // for addition
-assignedVariable = val1 / val2;   // for division
-assignedVariable = val1 - val2;   // for subtraction
-assignedVariable = val1 * val2;   // for multiplication
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Also, I just want to thank the community of this subreddit for their help. I work near full-time and it is difficult to line up my work schedule with the open hours of the computer programming tutor center.
-I realize my last line of code does not match up with the example, I was trying to figure out how to calculate the total before figuring out how to find the miles.&lt;/p&gt;
-
-&lt;p&gt;Link to example of final output: &lt;a href="http://imgur.com/4MR4Pei"&gt;http://imgur.com/4MR4Pei&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Ignore the numbers presented from this photo, they are simply there as an example of input.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;without other data structures i believe you could do two things, &lt;/p&gt;
-
-&lt;p&gt;a) loop over the whole array and check if it contains the value&lt;/p&gt;
-
-&lt;p&gt;or&lt;/p&gt;
-
-&lt;p&gt;b) create a new array whose indices represent the possible numbers + 1 (so 0-9), and contains boolean values, if you set a value you set the corresponding value in the array at index &amp;quot;value&amp;quot; to true and check it later when assigning other values&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;It sounds like what you actually want to do is &lt;a href="http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle"&gt;shuffle&lt;/a&gt; a list, for which Java provides a &lt;a href="https://docs.oracle.com/javase/6/docs/api/java/util/Collections.html#shuffle%28java.util.List%29"&gt;library function&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I haven&amp;#39;t thought this out a ton, so bear with me. &lt;/p&gt;
-
-&lt;p&gt;But what about having an array list that keeps track of used numbers. If the number is used, then try again. If not, then keep it. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Sounds like what you&amp;#39;re describing is a problem space for which a structure called a &amp;quot;prefix tree&amp;quot; was originally developed. Also known as a &amp;quot;trie.&amp;quot;&lt;/p&gt;
-
-&lt;p&gt;I imagine the prefix tree would be more efficient, depending on what you&amp;#39;re actually trying to get out of this thing. For instance, it&amp;#39;s practically purpose-built for completion. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Sounds like you want a proper index, why don&amp;#39;t you use some existing application with index support (a database!), and don&amp;#39;t push your full database to the client for searching (I understand it depends on your use case, but sending everything to the client seems like a waste).&lt;/p&gt;
-
-&lt;p&gt;As for actually doing it yourself, is there any reason you need to stick with json? My gut instinct would be to make a quick index, for example, remove the first three letters of every word, and just sequentially place those in a file with some separator. Then prepend that with an index containing the location of each block of words, now you application takes the first three letters, looks up the location by reading the bytes referencing that location, and sequentially searches the words starting with those letters. You&amp;#39;d drastically reduce the amount of data your application would need to read (JSON requires the whole file is parsed).&lt;/p&gt;
-
-&lt;p&gt;A proper index that a database would give you is way better than what I outlined though, it will not only reduce the work and bandwidth required by the clients, but perform a better job at searching as well.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Why not shove this in a database and let the database handle it? It&amp;#39;s what they were made to do.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;You basically want an algorithms book. The kinds of algorithms discussed in such a book willde is not being specific.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;blockquote&gt;
-&lt;p&gt;would I be okay in saying that I can easily learn Python given what I already have done with F#?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Sure, but not really meaningful. It&amp;#39;s assumed that competent programmers can learn new languages (with familiar programming paradigms).&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;When you are calling Float.ToString, use&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;String.format(Locale.US, &amp;quot;%f&amp;quot;, myFloat)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;instead. hope this helps!&lt;/p&gt;
-
-&lt;p&gt;More info on the problem: Float.ToString() is locale-sensitive, and as some countries format decimal places with &amp;#39;,&amp;#39; instead of &amp;#39;.&amp;#39; we can run into problems! Float.Parse however is not locale-sensitive, and always expects a &amp;#39;.&amp;#39; which is where your problem was arising.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;blockquote&gt;
-&lt;p&gt;but since the &amp;quot;Float.toString&amp;quot; method apparently makes &amp;quot;.&amp;quot; into &amp;quot;,&amp;quot;, I cannot convert the string I am storing in my saving file to a float, since the &amp;quot;Float.parseFloat&amp;quot; method apparently can&amp;#39;t handle commas. &lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The &lt;a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html#toString-float-"&gt;Float.toString()&lt;/a&gt; documentation states that it will always use &lt;code&gt;.&lt;/code&gt; as a decimal separator, not a comma. Are you sure that this is your issue? Maybe you&amp;#39;re using a localized NumberFormat instead? &lt;/p&gt;
-
-&lt;p&gt;Regardless, you could use a &lt;a href="https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html"&gt;DecimalFormat&lt;/a&gt; object to customize your number format. For example: &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DecimalFormat formatter = new DecimalFormat(&amp;quot;0.00&amp;quot;);
-System.out.println(formatter.format(1234.5678)); // prints something like: &amp;quot;1234.56&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Or you could use String.format(): &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;System.out.println(String.format(&amp;quot;%.2f&amp;quot;, 1234.5678)); // prints something like: &amp;quot;1234.56&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;You should learn about floating-point types:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://floating-point-gui.de/"&gt;http://floating-point-gui.de/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The &lt;code&gt;double&lt;/code&gt; type cannot represent the value 2&lt;sup&gt;63&lt;/sup&gt;&amp;nbsp;−&amp;nbsp;1 exactly. The nearest representable value is&amp;nbsp;2&lt;sup&gt;63&lt;/sup&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you want the range of values for the &lt;code&gt;long&lt;/code&gt; type, you should &lt;code&gt;#include &amp;lt;limits.h&amp;gt;&lt;/code&gt; and use the macros &lt;code&gt;LONG_MIN&lt;/code&gt; and &lt;code&gt;LONG_MAX&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;a &lt;code&gt;double&lt;/code&gt; does not have enough precision to represent all the integer values a &lt;code&gt;long&lt;/code&gt; can. Since they are both 8 bytes, why would you expect this to work? See: &lt;a href="http://en.wikipedia.org/wiki/Pigeonhole_principle"&gt;Pigeonhole principle&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;What have you got so far?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;You need a counter variable that tracks the # of mistakes and have to modify the while loop&amp;#39;s running condition.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I can help you along a little bit - You need to keep track of how many times an invalid grade has been entered, and check at the end of the loop if it&amp;#39;s happened five times. if so, quit! Have a go with that, and if you get stuck we can help!&lt;/p&gt;
-
-&lt;p&gt;Have a go yourself!&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Maybe you can use a for loop instead of that last if statement. Have a variable assigned to the amount of invalid entries they enter.
-Ex - for (x = 0; x &amp;lt;= 5; x++) // this runs the loop til it reaches 5.&lt;/p&gt;
-
-&lt;p&gt;Then you can create an if statement like if (x==5) to terminate the program.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Just make a bog-standard html page with a &amp;lt;script&amp;gt; tag, and JS away inside that! You can have a lot of fun with this. You don&amp;#39;t even need to host it any where. Because javascript and html are client-side, you can just run the .html file in your browser when you want to test it!&lt;/p&gt;
-
-&lt;p&gt;You don&amp;#39;t need amazon aws, that&amp;#39;s for heavy-lifting and hosting. You don&amp;#39;t really need JQuery either, but you can get it if you want. You can get the latest version by calling &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;script src=&amp;quot;https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;and boom! It&amp;#39;ll download Jquery fresh from google when you load up the html.&lt;/p&gt;
-
-&lt;p&gt;Any more questions, feel free to ask!&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I use Gunnar&amp;#39;s and they really help with eyestrain but you can find cheaper computer glasses on Amazon that do the same thing. Problem with those is that most if them are fugly but they work just as well. Occasionally Woot sells Gunnar&amp;#39;s at discounted prices but they tend to sell out fast.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I love my crizal lenses. I have been using crizal for about 15 years (wow), and I have tried two others (Kodak and something else), and think crizal is the best out there.&lt;/p&gt;
-
-&lt;p&gt;I code (or write documentation, etc) all day at work, and then come home and work on personal projects, and I could not do without.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;blockquote&gt;
-&lt;p&gt;as if the return is not working&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;But you never use the returned value?&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;The start variable is outside the while loop in this instance so it shouldn&amp;#39;t reset to 0.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;It&amp;#39;s not resetting, you never change it. You pass the value to your function, the function calculates the new value, prints it, and returns it, and you ignore the returned value and call the function again with the same value as before.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;You never use the return value of &lt;code&gt;corrupt&lt;/code&gt; so the return statement is useless as the function ends there anyway.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;start&lt;/code&gt; never get changed but stays &lt;code&gt;0&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;I guess you want to use&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;start = corrupt(start)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;to assign the return value of &lt;code&gt;corrupt()&lt;/code&gt; to &lt;code&gt;start&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Yes, static variables are allocated at program startup.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;The terms &amp;quot;allocated&amp;quot; and &amp;quot;freed&amp;quot; mean something different for stack/static variables than they do for heap ones. Conceptually, static variables are allocated at compile time, all they do is move the initial position of your stack pointer. Static variables initialized at run time whether you do it explicitly or not (implicit starting value is 0). &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Idea: model effect and skew with something like Bézier curves. This should give you a smooth interpolation of the average effects as a function of time that you can sample wherever you want. Then run those samples through a noise generator.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;A &lt;code&gt;std::string&lt;/code&gt; can be treated like an array of characters.  You can even use the &lt;code&gt;[]&lt;/code&gt; operator:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;std::string str = &amp;quot;Hello, world&amp;quot;;
-str[2] = &amp;#39;#&amp;#39;;
-std::cout &amp;lt;&amp;lt; str &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;;  // Should output &amp;quot;He#lo, world&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So, all you have to do is iterate through each character of the string and use &lt;code&gt;toupper&lt;/code&gt;, &lt;code&gt;isupper&lt;/code&gt;, etc.  You can certainly use a ternary operator if you want, but it&amp;#39;s by no means required.&lt;/p&gt;
-
-&lt;p&gt;As an aside, this function should really have the signature &lt;code&gt;string swapCase(string s)&lt;/code&gt; ... you have to make a copy anyway, so you might as well ask the compiler to do it for you.  And then if you&amp;#39;re working with a temporary value, that copy operation will never actually happen, which is nice.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;You don&amp;#39;t want to make a program &amp;quot;click a button&amp;quot;, you want to do it the same as clicking a button would do in your browser, which, in this case, is sending an HTTP request, by POST, with some form-data. See Wikipedia for a description and example.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;What is the link to the course?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Link please? &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I&amp;#39;m not sure if printing will actually help at all. One problem is that any non-trivial code is simply too large and complex to print out. The amount of code that can easily be printed is usually easier to understand (and thus is less likely to &lt;em&gt;need&lt;/em&gt; to be printed).&lt;/p&gt;
-
-&lt;p&gt;At any rate, plain text can be printed as simply as &lt;code&gt;lpr file.txt&lt;/code&gt;. This won&amp;#39;t have syntax highlighting, but presumably you&amp;#39;d be printing in BW to save on printing costs, anyway. For Sublime Text, the default HTML export has line numbers, but no color, but the Export HTML plugin lets you export with syntax highlighting (&lt;a href="http://i.imgur.com/QgafbwO.png"&gt;looks like this&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Once you have an HTML file, you can print that in any web browser.&lt;/p&gt;
-
-&lt;p&gt;Notepad++ has a print option, but it prints with whatever theme you&amp;#39;re currently using, and that &lt;a href="http://i.imgur.com/EySlkWU.png"&gt;looks terrible with a dark theme&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Any editor should let you print the files...&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;These requirements are extremely stupid.&lt;/p&gt;
-
-&lt;p&gt;I wouldn&amp;#39;t try to mine coal with bare hands either.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I&amp;#39;d find out if you can just read-protect the file.  This is the much easier solution.  Otherwise you&amp;#39;re going to need to pass around encryption keys (I think).&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;What&amp;#39;s wrong with encrypting the password before you save it to disk? Hard-code the key in the software. I recommend:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;String notAnEncryptionKey = &amp;quot;Bruce Schneier W0uld K!ll Us 4 Doing This&amp;quot;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Note the clever name. No-one will realize that it&amp;#39;s an encryption key.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Well, let&amp;#39;s start from the beginning. Why don&amp;#39;t you think it&amp;#39;s working?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;A BufferedImage is an Image, there&amp;#39;s no need to create a second object.  This is all you should need to do:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;URL url = new URL(urlString);
-Image image = ImageIO.read(url); 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Do you think telling us what happened when you ran the program would be helpful?  Is &amp;#39;url&amp;#39; correct?  Do you see any exception?  Is &amp;#39;image&amp;#39; null?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;If you know and understand the algorithm and the steps it takes to solve this problem, it probably wouldn&amp;#39;t need more than 6 hours.&lt;/p&gt;
-
-&lt;p&gt;Since Sudoku is actually a constraint problem the most natural language to solve it is Prolog. A Prolog implementation can be done in &amp;lt;1 hour - given you know Prolog.&lt;/p&gt;
-
-&lt;p&gt;If you don&amp;#39;t know the language (any language) &lt;em&gt;and&lt;/em&gt; need a long time to understand the algorithm, it&amp;#39;s hard to tell. 30 hours or more are possible. Don&amp;#39;t question yourself too much. You are doing fine.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;If I had to figure out the solution algorithm it might take a few days, not sure, I haven&amp;#39;t thought about it much.  I&amp;#39;d probably estimate it at a week though to be safe.  &lt;/p&gt;
-
-&lt;p&gt;If I had the solution algorithm I couldn&amp;#39;t imagine it would take more than a day.  So, that&amp;#39;d probably be my estimate, maybe 2 days to handle the I/O.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;blockquote&gt;
-&lt;p&gt;I&amp;#39;m interested in getting an estimate of how long on average this would take an employable programmer, someone who&amp;#39;s worked in the industry for at least a few years.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;It&amp;#39;s different enough from what the average programmer does most of the time that I don&amp;#39;t think working in industry would really help or would be correlated strongly with the ability to write this quickly.  Plus, lot of people in college would be able to do this fairly easily.&lt;/p&gt;
-
-&lt;p&gt;I&amp;#39;d just figure out where you&amp;#39;re getting stuck and learn from this.  Can you break the problem down into smaller steps?  Can you model the problem with decent data types?  Where are you getting stuck exactly?&lt;/p&gt;
-
-&lt;p&gt;Did you realize you should use a 9 x 9 2d array, or an 81 element array that you can index correctly?&lt;/p&gt;
-
-&lt;p&gt;Did you make a few functions to check if the squares, the lines, and the whole puzzle are solved correctly?&lt;/p&gt;
-
-&lt;p&gt;Did you make functions to find the next spot that&amp;#39;s not solved and has only 1 correct possible value?&lt;/p&gt;
-
-&lt;p&gt;Did you make a functions that find the next spot with the fewest possible guesses when there&amp;#39;s no spot with only 1 possible guess?
-Did you make a function that duplicates the board, giving each copy one of those guesses?&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;I&amp;#39;m very committed to building my fundamentals, and I&amp;#39;m doing my best to very carefully avoid bad habits&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&amp;quot;Avoiding bad habits&amp;quot; always sounded like nonsense to me.  You become a good programmer by learning good habits, not by needing to ask everyone if every single thing is a bad habit before being willing to try it.  If you realize something is bad, you just stop doing it.  This isn&amp;#39;t a heroin addiction.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;but I just wanted to get an idea of how far I have to go and whether this kind of thing still takes me an abnormally long time&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;This one thing is so small that it won&amp;#39;t tell you how far you have to go.  How long it &lt;em&gt;should&lt;/em&gt; take you depends on what you&amp;#39;ve learned and done so far, and I mean specific programming assignments, not your major, med school plans, astrological sign, etc.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Mr. Wesner is that you?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Scratch? Perhaps Python? Who&amp;#39;s made the decision that it is &amp;quot;too childish&amp;quot;  &lt;/p&gt;
-
-&lt;p&gt;Daily reminder that &amp;quot;computer programmers write, test, debug, and maintain the detailed instructions, called computer programs, that computers must follow to perform their functions. Programmers also conceive, design, and test logical structures for solving problems by computer. &amp;quot;  &lt;/p&gt;
-
-&lt;p&gt;I am also stating, and which you probably already know, that at the deep root of every language is the ability to write and reason a way a program or algorithm should work, regardless of the language implementation.&lt;br/&gt;
-Scratch or beginner Python would probably suit well.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;This is probably bad advice but my high school teacher started with Turing machines and I turned out fine.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Programming a simple 2D game over the whole time of the course together would be fun. Students could group up to think about individual parts and they are &lt;em&gt;seeing&lt;/em&gt; progress every lesson. But it should be voluntary, in addition to the standard stuff, which should be as concise and compact as possible.&lt;/p&gt;
-
-&lt;p&gt;I don&amp;#39;t know whether the US have any enforced requirements to high scool students (a fixed curriculum), but in Germany we have - and it sucks. To me and 10 mates, the tasks were too easy and boring. To 90 other people the tasks were too hard and boring; they got rid of informatics as soon as possible.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Definitely &lt;a href="http://scratch.mit.edu"&gt;Scratch&lt;/a&gt;. For a beginner the language is not the key, learning about program flow and algorithms is important.&lt;/p&gt;
-
-&lt;p&gt;Scratch is a great tool to visualize program flow and structure while avoiding the difficulties of learning a programming language.&lt;/p&gt;
-
-&lt;p&gt;Anybody who rates Scratch as childish is wrong. It&amp;#39;s really a great starting point.&lt;/p&gt;
-
-&lt;p&gt;BTW: check out &lt;a href="/r/programmingforkids"&gt;/r/programmingforkids&lt;/a&gt; for many more resources.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Python is a decent starting language. I recommend codingbat.com to teach them it, it is a great practice resource.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Some people have mentioned scratch, but for the sake of your students please don&amp;#39;t use it. I am currently in a high school AP Computer science class, and I&amp;#39;ve taken other computer science classes. In both AP Computer Science and Computer science 1 our teacher started us off in scratch. I cannot stress enough how much I hate scratch, for the very reason that it seems too childish. I have no doubt that it could effectively teach introductory concepts, but it simply isn&amp;#39;t fun. Many of my classmates are of the same mind as me.&lt;/p&gt;
-
-&lt;p&gt;On another note, through my classes I have had experience with Visual Basic and java - both of which I enjoyed immensely. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I think you need to assign it to the object:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function someObj(){
-    this.someMethod=function(){
-        alert(&amp;#39;boo&amp;#39;);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Yeah, it&amp;#39;s not right, and the tutorial is probably pretty lousy if it says it is. &lt;code&gt;someMethod&lt;/code&gt; is a local variable inside of the &lt;code&gt;someObj&lt;/code&gt; function. You cannot access it from outside the function (without passing it outside). It&amp;#39;s a local variable.&lt;/p&gt;
-
-&lt;p&gt;What actually happens is when you create an object with &lt;code&gt;new&lt;/code&gt;, it has a particular prototype object which it gets methods form. The prototype object is described by modifying the function&amp;#39;s prototype field. So, here&amp;#39;s a correct example of the behavior you want:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function someObj(){}
-someObj.prototype.someMethod = function () {
-    alert(&amp;#39;boo&amp;#39;);
+int main() {
+    a = 7;
+    foo();
 }
 
-o_obj = new someObj();
-o_obj.someMethod();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Read more about JavaScript prototypes and what &lt;code&gt;new&lt;/code&gt; and &lt;code&gt;this&lt;/code&gt; are. It is a confusing thing for people coming to JavaScript from other OO languages because JavaScript does not have classes in the way other more typical OO languages do. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Can you give a link to the example?  That inner method creates a closure that isn&amp;#39;t visible outside of the object so this code wouldn&amp;#39;t work.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;A function that will be used as a constructor function (i.e. with &lt;code&gt;new&lt;/code&gt;) must either return an object or assign properties to the &amp;quot;this&amp;quot; object.  &lt;code&gt;someObj()&lt;/code&gt; doesn&amp;#39;t do either of those, so the instances created with it as a constructor function have no properties.  If this is really an example in a tutorial, throw it out, as this is total nonsense.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I think being a good programmer requires being able to debug code (especially your own code). Outsourcing that to someone else would probably actually lose time (and money).&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;It would be impossible for anyone outside my field or technical knowledge tied to it to debug the shit I&amp;#39;ve dealt with in the pass 2 weeks.&lt;br/&gt;
-So No.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;if there&amp;#39;s a bug in your code that a stranger can solve in 20 minutes for $15/hr, you should be able to figure it out immediately.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;The usual way of downloading videos from Youtube is the &lt;code&gt;youtube-dl&lt;/code&gt; script, so you can read that if you want to know how it works. The biggest problem with Youtube is that they have an extremely unstable API and the script needs to be updated quite often. For that reason, I would suggest that you actually just use the existing script instead of writing your own, just because you would have to keep fixing your program every few weeks forever if you wrote your own. With &lt;code&gt;youtube-dl&lt;/code&gt;, someone else fixes it as soon as it breaks.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Whatever solution you end up using or learning from, you probably want to put some rate limit on bulk downloading (and/or simultaneous downloading).&lt;/p&gt;
-
-&lt;p&gt;If you work out some agreement with a server, you can increase the limit / add more threads, etc., but downloading [as much as you can, as fast as you can] is generally a quick way to get your network or script blocked from a service, either by a grumpy admin, a manager with an enlarged sense of bandwidth fees, or yet another quota enforcing daemon.&lt;/p&gt;
-
-&lt;p&gt;This may be more true on some hosts than others, but for example reddit bots are only permitted to make 1 HTTP request every 2 seconds, and the request must contain your reddit username, unless you contact reddit and work out a different deal, or negotiate a more economical way of getting [the datas] than yet another http crawling.&lt;/p&gt;
-
-&lt;p&gt;Other servers may be more vague about their actual limits, or &amp;quot;forbid&amp;quot; such things in their end user &amp;quot;license&amp;quot; &amp;quot;agreements&amp;quot; / Terms of Service.&lt;/p&gt;
-
-&lt;p&gt;Edit: or another example: if you make a script to google a bunch of things, Google may flag your network as being abusive / bot-ish, and then for a time anyone on your network trying to google anything will have to fill in captchas to prove that you aren&amp;#39;t a virus or a robot.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;You need to talk to the school you plan to attend.   They will be able to tell you exactly how many courses you need to take at a time, if there are night courses etc. Do you already have a college degree? That would speed up the process. &lt;/p&gt;
-
-&lt;p&gt;They will also have a financial aid department which will tell you exactly how and where you can get the loans you need. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;It&amp;#39;s possible but you&amp;#39;d have to find the right school and know how much school work you can reasonably handle with your job &amp;amp; family responsibilities. Do you absolutely have to take classes full-time? CS homework/projects can take up a lot of time. You will also need to take Math courses which also require significant study time (or you can be a math wiz, I don&amp;#39;t know!). Being a part-time student might be better for your GPA and sanity. &lt;/p&gt;
-
-&lt;p&gt;You also need to find a school that offers the classes you need at times that fit in your schedule, or be able to change your work hours around your class schedule. Some schools have programs geared towards working people (with night/weekend/online classes), but many don&amp;#39;t. You will have to talk to specific schools about financial aid options.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;If you already have a degree, consider getting just a MS. You can make up missing undergrad courses at a community college.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Computer science&amp;#39;s projects/assignments are really time consuming and you are working 12hrs a day. Would you think you will have enough time for a full time students which takes 4 years?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Online school is always an option (if you can learn that way), with that you can usually be more flexible with your time.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;As for understanding how to use the library, if they don&amp;#39;t provide source, they might have provided sample code? See if they shipped samples along with the library. Otherwise, inspect the headers, and make your best guesses from that. Maybe they have sufficient documentation within the headers to make use of the library?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;You typically would read the documentation for the library. However, the link you gave doesn&amp;#39;t seem to have clear documentation. That&amp;#39;s a failure on the part of the library developers.&lt;/p&gt;
-
-&lt;p&gt;Without documentation, you could pour over the source code, but it seems that the developer of the library don&amp;#39;t make that easy to get, either (which says a lot about the quality of the library).&lt;/p&gt;
-
-&lt;p&gt;You might have to email the developers regarding documentation and source code.&lt;/p&gt;
-
-&lt;p&gt;Or use a different library, since poor documentation is going to bite you in the ass.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Yep. You should never use the &lt;code&gt;gets&lt;/code&gt; function. There is literally no way to use the &lt;code&gt;gets&lt;/code&gt; function safely, because there is no method for specifying a maximum length of the string to read. If you use the &lt;code&gt;gets&lt;/code&gt; function, your program is vulnerable to buffer overflows. You should use &lt;code&gt;fgets&lt;/code&gt; instead.&lt;/p&gt;
-
-&lt;p&gt;If you are learning C from a source that is teaching you to use &lt;code&gt;gets&lt;/code&gt;, you should seriously consider abandoning that source and using something better instead.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;If something is telling you to use &lt;code&gt;gets()&lt;/code&gt;, put it down, never read it again, and burn it for good measure, because it&amp;#39;s terrible.  There is no excuse for teaching &lt;code&gt;gets()&lt;/code&gt; in 2015.  None.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Sorry, this can be confusing if you&amp;#39;re learning.&lt;/p&gt;
-
-&lt;p&gt;All that means is the function is out of date and may be removed in a later version the compiler/library/language.&lt;/p&gt;
-
-&lt;p&gt;Usually there is another function that replaces it such as fgets.&lt;/p&gt;
-
-&lt;p&gt;But it should still work now but you might have to force it. By say allowing your code to compile with warnings (depends on the language what you have to do).&lt;/p&gt;
-
-&lt;p&gt;But what you usually should do is figure out what function is supposed to replace the outdated one and use that instead. &lt;/p&gt;
-
-&lt;p&gt;Also, the replacement function may not work exactly the same and sometimes it takes different parameters.&lt;/p&gt;
-
-&lt;p&gt;Happens to the best of us but you usually just have to Google for the warning message to figure out which function you&amp;#39;re supposed to be using now.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Have you created a new project in VS?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;It looks like you are on the right track conceptually, but your code is just disorganized. Thus, you look at your own code, and you are confused, and then don&amp;#39;t know how to modify it.&lt;/p&gt;
-
-&lt;p&gt;Your Trivia class, as it is now, holds only one Question. Expand it to hold more than one, and then rework your code to operate on multiple Questions.&lt;/p&gt;
-
-&lt;p&gt;In terms of code organizations, create a hierarchy of types and containers, and it should be much easier to work with.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;using Answer = std::string;
-
-struct AnswerSet {
-    std::vector&amp;lt;Answer&amp;gt; answers;
-    size_t correct;
-};
-
-using Question = std::string;
-using TriviaProblem = std::pair&amp;lt;Question, AnswerSet&amp;gt;;
-
-struct TriviaGame {
-    std::vector&amp;lt;TriviaProblem&amp;gt; problems;
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you create types or type names appropriately, where each type has a clearly defined role, you won&amp;#39;t get confused with what is a question, versus multiple questions, and so on.&lt;/p&gt;
-
-&lt;p&gt;Similarly, your functions need to have clearly constrained roles, operating on a specific type. Your functions right now are operating across multiple levels of responsibility, dealing with reading from files, decoding JSON, extracting answer strings, and modifying the trivia game data all in one function. This is poor design.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Without looking too closely, it sounds like you should create custom data structures to better organize your data.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;JSON:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;questions&amp;quot; : [
-         {
-           &amp;quot;question&amp;quot; : &amp;quot;What color is called green?&amp;quot;,
-           &amp;quot;answers&amp;quot; : [
-                &amp;quot;Green&amp;quot;,
-                &amp;quot;Yellow&amp;quot;,
-                &amp;quot;Banana&amp;quot;
-           ],
-           &amp;quot;answer&amp;quot; : 0
-         },
-         {
-           &amp;quot;question&amp;quot; : &amp;quot;Where are my keys?&amp;quot;,
-           &amp;quot;answers&amp;quot; : [
-                &amp;quot;In my pocket&amp;quot;,
-                &amp;quot;In your pocket&amp;quot;,
-                &amp;quot;On the moooooon!&amp;quot;
-           ],
-           &amp;quot;answer&amp;quot; : 1
-         },
-    ]
+void foo() {
+    int a = 5;
 }
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;C++:&lt;/p&gt;
+<p>Why does this code fail to compile?</p>
+</div><div class="md"><p>The writeGnuplotFile() is the function I need to create a .gnuplot file based on the argument (filename) from the getPngFilename() function.</p>
+</div><div class="md"><p>You want smart indent instead, :set si</p>
+</div><div class="md"><p>Lots of plugins for auto parentheses, just google for vim auto parentheses</p>
+</div><div class="md"><p>Welcome to the cult!</p>
 
-&lt;pre&gt;&lt;code&gt;struct Question {
-    std::string text;
-    std::array&amp;lt;std::string, 3&amp;gt; answers;
-    int correct_answer;
-};
+<p>I know you mentioned not wanting to use plugins but that&#39;s where the real power is.  I&#39;d recommend searching around for plugin packs.  Lots of developers have spent a lot of time cultivating very powerful vim configurations and have the posted on github.</p>
 
-std::vector&amp;lt;Question&amp;gt; readQuestions()
+<p>If you&#39;re doing C and or Python development I can recommend a configuration.</p>
+</div><div class="md"><p>The installation directory for vim has an example vimrc and gvimrc file to give you a start.</p>
+</div><div class="md"><p>The method I have always used is to find a problem in my life and solve it with code.</p>
+
+<p>Luckily, I work in the IT industry so there are plenty of problems to solve.</p>
+</div><div class="md"><p>Get a book. I would suggest <a href="http://learnpythonthehardway.org/">Learn Python the Hard Way.</a> Codecademy only really teaches syntax, not much more. I also found <a href="http://cscircles.cemc.uwaterloo.ca/">this site</a> to be very useful and fun.</p>
+
+<p>On a completely separate note, I noticed I have you tagged as &quot;heavy ad voicework&quot;. I think it was from when you offered to do voicework for some post on <a href="/r/tf2">/r/tf2</a>... anyway, interesting to meet you again :)</p>
+</div><div class="md"><p>Put together a program of your own. Tutorials will get you started, but you will learn a ton by making something useful and/or fun for yourself. My first project automating one of my tasks at work and it was a great learning experience. </p>
+</div><div class="md"><p>Hmmmm. Fiddle around with it and make your own stuff? Its easy to get bored with some of the very beginning stuff in programming classes/books. You can supplement that boredom by exploring it and making your own stuff. Quick little dumb scripts.</p>
+</div><div class="md"><p>Definitely do projects as you go. I&#39;ve been having a lot of fun with <a href="https://projecteuler.net/">Project Euler.</a> Maybe wait to try it out until you have the basics down, but it definitely provides a tangible goal for each project and will help you develop better coding practices. (Sloppy algorithms will take forever to execute etc)</p>
+</div><div class="md"><p>You calculate <code>str(n)</code>, throw away the result without doing anything with it, and then try to loop over <code>n</code> itself.</p>
+
+<p>And then you also do an <code>int(n)</code> calculation which is equally pointless.</p>
+</div><div class="md"><p>You&#39;re trying to iterate over an int, which is not an iterable. I suspect you think it&#39;s a string at this point, but str(n) doesn&#39;t make n a string. It returns a string. To get that string you would call str(n) like:</p>
+
+<pre><code>nString = str(n).
+</code></pre>
+
+<p>n is still an int, but now you have nString which is a string, which is what I think you wanted. 
+You&#39;re also never using adam, which means your code won&#39;t do what you expect. Also not sure why it&#39;s called adam.</p>
+
+<p>Additionally, you cast n to an int (it&#39;s already an int), I suspect you mean to cast adam to an int and use that instead.</p>
+
+<p>Also, you don&#39;t declare x anywhere, where is x coming from?</p>
+</div><div class="md"><p>I&#39;m a more or less a total noob but I&#39;m gonna give this a shot anyway.</p>
+
+<p>Try making a list first?</p>
+
+<pre><code>def digit_sum(n):
+    sumlist = []
+    for adam in str(n):
+      sumlist.append(int(adam))
+    return sum(sumlist)
+</code></pre>
+</div><div class="md"><p>I got carried away looking at the problem itself before coming back here, so others have touched on what&#39;s going wrong in your code.</p>
+
+<p>On a separate topic, while the string equivalent of an integer will let you check the length in digits, you can do a more straightforward approach with some modulo 10 math.</p>
+</div><div class="md"><p>This is my solution:</p>
+
+<pre><code>def digit_sum(n):
+    num = 0
+    while n != 0:
+        num += n % 10
+        n = n // 10
+    return num
+</code></pre>
+
+<p>In the code you provided it looks like you convert &#39;n&#39; to a string only to try and convert it back to an integer immediately after, I assume to pull out an individual value from it.
+Instead it is easier to define a new variable &#39;num&#39; under the function &#39;digit_sum&#39;. Then you can store the rightmost value in &#39;n&#39; to &#39;num&#39; by modulo&#39;ing by 10, then you can remove the rightmost that is now stored in &#39;num&#39; from &#39;n&#39; by floor dividing by 10.
+So to sum that up, you chop the right-most number off of &#39;n&#39; and put it in &#39;num&#39;, then return the value in &#39;num&#39; and chop of that number from &#39;n&#39;, rinse and repeat until &#39;n&#39; has no numbers left in it.</p>
+
+<p>The Q&amp;A Forum button in the bottom left is probably a better resource if you are confused, usually someone has had this issue before and will post a question or solution. Happy coding!</p>
+</div><div class="md"><p>If it&#39;s &quot;essential&quot; complexity, then ultimately it just has to be dealt with. It&#39;s inherent to the problem. For example, if there are 100 independent conditions that each have completely different inputs coming from 20 different sensors and completely different actions, then there&#39;s not a whole lot that can be done.</p>
+
+<p>Note that in the specific case above, you can kind of simplify it by encoding each condition into a bit, then using a switch:</p>
+
+<pre><code>unsigned int cond = red | (blue &lt;&lt; 1) | (green &lt;&lt; 2);
+switch (cond) {
+...
+</code></pre>
+
+<p>Probably debatable though whether or not it&#39;s really simpler. Note that things like code coverage tools and perhaps other software engineering tools can help some with QA.</p>
+</div><div class="md"><p>First of all, don&#39;t be afraid to write functions for each of the conditions.  So:</p>
+
+<pre><code>if (yellow &amp;&amp; !blue &amp;&amp; !green &amp;&amp; !red) {
+  turnOnLeftTurnSignal();
+}
+if (yellow &amp;&amp; blue &amp;&amp; !green &amp;&amp; !red) {
+  turnOnRightTurnSignal();
+}
+</code></pre>
+
+<p>Even if each function is tiny, only 1 line, it still makes the flow easier to read.</p>
+
+<p>Also, I like the style where it&#39;s a series of ifs, but not elses, and you check all conditions.  It makes it easier to debug.  That way, if you know the inputs, you can find the conditional block easily.</p>
+
+<p>Using this style, this function becomes a router.  Based on the input, route flow to one or another function.  As the program&#39;s requirements grow, the complexity of the router doesn&#39;t have to (unless you add inputs).</p>
+</div><div class="md"><p>Google&#39;s self-driving car uses machine learning (probably things like neural networks) which build the decisions in hidden layers... they don&#39;t actually code much about how the car drives itself.</p>
+</div><div class="md"><p>[deleted]</p>
+</div><div class="md"><p>You loop while x isn&#39;t -1 <strong>and</strong> y isn&#39;t -1. Both one <strong>and</strong> the other. Did you want to loop as long as x isn&#39;t -1 <strong>or</strong> y isn&#39;t -1?</p>
+</div><div class="md"><p>That loop exits if at least one of the statements isn&#39;t true, since it &quot;breaks&quot; the conditions that both statements (AND) should hold at the same time. If you use an OR (||), only one of them has to hold (A <strong>or</strong> B has to be true)</p>
+</div><div class="md"><p>(x != -1 &amp;&amp; y != -1)</p>
+
+<p>Pay attention to the &amp;&amp; operator. If you do x = -1 and y = 5...</p>
+
+<p>(False &amp;&amp; True)</p>
+
+<p>False &amp;&amp; True evaluates to False, so the loop exits.</p>
+</div><div class="md"><p>My proposed solution since you know why its exiting already:</p>
+
+<pre><code>while (true) {
+   if (x == -1 &amp;&amp; y == -1) break;
+}
+</code></pre>
+</div><div class="md"><p>If they give you a textbook, read it. There&#39;s a bug hump to get over at the very beginning of learning programming. Some people never do. Reading will help you get over that hump and start to really learn. </p>
+</div><div class="md"><ol>
+<li><p>Don&#39;t cheat. I can&#39;t emphasize this enough. Don&#39;t rationalize cheating either. After a class or two of programming you can really tell who has cheated. The fundamentals are critical for programming. Without a solid fountain you are setting yourself up for failure. </p></li>
+<li><p>Make sure you always understand your code. If you find something online to help you don&#39;t just accept it because it works. Make sure you know exactly what is going on. </p></li>
+<li><p>Programming assignments for beginners are everywhere online. DO NOT look them up when they are assigned to you. The assignments given to you are within your means and you shouldn&#39;t look up their answers online. </p></li>
+<li><p>Do extra work outside of class.  You don&#39;t need to go overkill on this but it will help. </p></li>
+</ol>
+</div><div class="md"><p>Server-side code is executed when the client hits the URL. Of course, that implies that a web page can then trigger server-side execution via JS code via HTTP to the server.</p>
+
+<p>EDIT: And the server-side code then generates the HTML that gets sent back to the browser.</p>
+</div><div class="md"><p>From what you have written, it seems that the problem is mainly with the course, not the language.</p>
+</div><div class="md"><p>You can end up with exam/test questions like that in any language. My C++ exam questions (in college) were all pretty similar to that too, in fact I remember answering one or two of those (a few lines of code + &quot;does this compile? why not?&quot;). </p>
+</div><div class="md"><p>Java is the &quot;official&quot; language for AP computer science, and the test students need to take to get AP (College)  credit is heavily biased towards Java, and towards a specific set.</p>
+
+<p>While the AP test is changing, momentum is keeping Java in the high schools.  Java is an excellent teaching language, but it&#39;s got some problems as a first language (public static void main String[] args.... amiright?) </p>
+
+<p>Many universities have moved on to Python as a first language, and then teach C/C++ or Java in the second course.  This is a very sensible approach (and it&#39;s the one I use in my classes.)</p>
+
+<p>Unfortunately, high school programming teachers do not have the luxury of flexibility nearly often enough. 
+Programming teachers in most states get no support or training, and in many states, aren&#39;t even in the math or science departments, but business or vocational programs. Often the teachers have never taken a programming class at all, and very few are professional level programmers.  (The ones that are can make a much better and less frustrating living outside the classroom.) Many times the teachers learn the material the night before class, and often rely on students to teach themselves.  </p>
+
+<p>Many high school programming teachers are excellent, but the system really works against them in the best situations. </p>
+</div><div class="md"><blockquote>
+<p>Why is Java an Introductory language?</p>
+</blockquote>
+
+<p>Because your class uses it as one.</p>
+
+<blockquote>
+<p>And why is the course work ridiculous/useless?</p>
+</blockquote>
+
+<p>Maybe because real life assignments are too difficult for people who are complete beginner?</p>
+
+<blockquote>
+<p>and they gave something like 20 of these statements casting back and forth and introducing new objects created and old ones and it was so fucking tedious</p>
+</blockquote>
+
+<p>Maybe they wanted to ensure students really understood things, instead of getting lucky and guessing right on a question or two?  The point of a test is to see what you know, not to be exciting...</p>
+
+<blockquote>
+<p>Then ask does the code compile?</p>
+</blockquote>
+
+<p>If there are obvious errors you should be able to spot them and say so.  A lot of programming is reading code and seeing if you think it&#39;s correct.  You seem to be getting all self-righteous about nothing here..</p>
+
+<blockquote>
+<p>Its not a yes or no question. Its 4 Yes/No&#39;s</p>
+</blockquote>
+
+<p>They want to see if you can spot compile or runtime errors...  This is a standard part of programming.  You&#39;re just ranting that they want you to know the material thoroughly, which is ridiculous of you.</p>
+
+<blockquote>
+<p>It is discouraging him into thinking he is a bad programmer when half the people in my firm wouldn&#39;t be able to answer this question.</p>
+</blockquote>
+
+<p>Then those people lack very basic Java knowledge.  It reflects poorly on those people and your firm, not on this course, unless your firm/those people just don&#39;t use Java much at all, in which case it&#39;s no surprise they couldn&#39;t answer those questions...</p>
+
+<blockquote>
+<p>These questions are useless</p>
+</blockquote>
+
+<p>What&#39;s the point of the class if it&#39;s not to learn the language?</p>
+
+<blockquote>
+<p>if these young kids were learning a scripting language like Python or JavaScript they would be building useful applications in a shorter period of time.</p>
+</blockquote>
+
+<p>I&#39;d be worried about that if I was working on the job and not taking a class.  edit: And then of course they&#39;d also not know much about inheritance, compile and runtime errors, types, etc. if you&#39;d designed the course as you seem to think it should be designed.  What evidence do you really have that they&#39;d be any better off, and not struggling more in the end due to their lack of knowledge regarding the basics?  Do you want all these kids to be hacks who can throw together a crappy PHP site but can&#39;t handle using other languages because they never learned the basics?</p>
+
+<blockquote>
+<p>They would be able to see progress and have fun doing so. </p>
+</blockquote>
+
+<p>I&#39;m sure they can still do that if they sit down and think of ways to use the things they are going over.</p>
+</div><div class="md"><p>Yeah as the other guy said the problem is with the course not the language. The work I had in my java classes (im in my 2nd one- Data structure) is at time difficult but very possible and manageable. </p>
+
+<p>Java was originally intended as a sort of &quot;teacher&quot; language- a languages aimed to teach people how to program. Thus, it serves as a great introductory language. Also it is part of an object-oriented family of programming languages and has syntax that is very similar to other main programming languages. It has many possible purposes and honestly is a very good way to get an intro to programming. </p>
+
+<p>Also I did take a course in java which means Im technically in my 3rd java course- but the course in highschool covered less than half the curriculum of the intro java course I took in college- it was very stress free. Anyways I think java is good. For highschool maybe they should teach python because I heard its easier to learn- but Java will prepare them for university courses just fine (And I&#39;m pretty sure its what the AP test for cs is based on). </p>
+
+<p>Don&#39;t be angry at java. The questions you posted in the example are things that I&#39;ve never seen at the highschool level. Hopefully they are also creating cool projects like I did in highschool (simple and easy ones- but still satisfying for an intro programmer). </p>
+</div><div class="md"><p>You&#39;re going to have to explain what you don&#39;t understand, because it seemed relatively clear to me. Did you try going to your TA in person?</p>
+</div><div class="md"><p><a href="http://pastebin.com/c3dxuPpi">http://pastebin.com/c3dxuPpi</a></p>
+</div><div class="md"><p>For debugging purposes learn to use &quot;inspect element&quot; and you will be able to see all the data points you will need. </p>
+</div><div class="md"><p>What do you want to do with programming?</p>
+</div><div class="md"><p>You can bare metal program with an Rpi/Teensy and C if you&#39;re looking to do hardware stuff.</p>
+</div><div class="md"><p>I&#39;ll give you a hint. Put a print statement when you detect a collision, and print out the balls that are colliding.</p>
+
+<p>Also, as an aside, using x and y as indices in your for loops is very confusing. :-)</p>
+</div><div class="md"><p>If you haven&#39;t read the FAQ, read that first. Then if you still have questions, come back, but try to be a bit more specific as to your goals, or what you want to do with your programming skills.</p>
+</div><div class="md"><p>Not a guru, but a quick solution would be to have Monkey, Elephant, etc. subclass Animal. Or maybe an interface would be more appropriate.</p>
+
+<p>You could also do Cage&lt;Object&gt;[10], (I&#39;m pretty sure, anyway), but you really shouldn&#39;t. </p>
+</div><div class="md"><pre><code>Cage&lt;T&gt;     
+</code></pre>
+
+<p>T is not exactly a wildcard in this case. <code>T</code> means that we can choose whatever type animal the Cage will hold, but they all will have to be <em>of the same type</em> (or at least, extend the same superclass or implement the same interface). If we choose T to be &quot;Monkey&quot;, that one instance of Cage will only be able to hold monkeys. If we choose T to be &quot;String&quot;, that instance of Cage will only be able to hold Strings. That way you won&#39;t have to make a different Cage class for each animal. You create one common container class Cage and <em>parametrize</em> it (or make it &quot;generic&quot;) using <code>T</code> as a placeholder for the future type of an animal its instances will hold.    </p>
+
+<p>To limit a particular Cage <em>instance</em> (not the class itself!)  to hold animals only, you can do this:    </p>
+
+<pre><code>Cage&lt;IAnimal&gt; animals = new Cage&lt;IAnimal&gt;();    
+</code></pre>
+
+<p>where IAnimal is an interface that all your animals implement (or alternatively, a superclass Animal that they extend). Then later you will be able to add instances of all Animal subclasses to it with no problem.    </p>
+
+<p>(By the way, Cage is supposed to be a <em>container</em> itself. You implement it using an array or ArrayList, and use <code>add()</code> or <code>put()</code> to add elements to it. <code>new Cage&lt;Animal&gt;[10]</code> means &quot;make an array of 10 Cages&quot; which is not what the problem statement says (besides it&#39;s illegal, see below). This is the correct way to implement it:    </p>
+
+<pre><code>class Cage&lt;T&gt; {    
+    private ArrayList&lt;T&gt; animals;    
+    private int size;    
+
+   public Cage(int n) {    
+       this.size = n;    
+       this.animals = new ArrayList&lt;T&gt;(size);    
+   }    
+
+   public void put(T animal) {   
+        animals.add(animal);    
+    }    
+
+    //other methods, &quot;get&quot;, &quot;size&quot;, &quot;getAll&quot;, etc.     
+}    
+</code></pre>
+
+<p>2) <code>T</code> and arrays. Ugh. <em>tl:dr</em> - don&#39;t do it. At least for now. Generics don&#39;t play nice with arrays (there&#39;s a <a href="http://www.angelikalanger.com/GenericsFAQ/FAQSections/ParameterizedTypes.html#FAQ104">ginormous FAQ</a> dedicated to that particular pita specifically which I&#39;m assuming you&#39;re not too eager to suffer through right now). If you need to limit the max size of each cage, simply use ArrayList&lt;T&gt; and pass the max size as a constructor parameter (<code>animals = new ArrayList&lt;T&gt;(size)</code>) (and then in your Cage class implementation, add a size check which will print an error or throw an  exception if you&#39;re trying to add another animal to a Cage that&#39;s at full capacity).    </p>
+
+<p><strong>tl:dr</strong> - 1) MyClass&lt;T&gt; is called a parametrized (generic) class, and T is called a <em>type parameter</em>. Think of it as a placeholder like a variable is a placeholder for value, only T is a placeholder for the variable type. <code>T</code> doesn&#39;t mean &quot;throw at me whatever&quot;, it means &quot;choose any type you want and then throw at me objects of that type&quot;.    </p>
+
+<p>2) You can declare T[] but you cannot instantiate it with <code>new T[]</code> because complicated type safety reasons. So for now if you can find any way around it, like using List or Set or whatever that is not an array, do it instead. </p>
+</div><div class="md"><p>The reason is simply because there is no year 0 (in most [all?] calendars, in particular the Gregorian which he is referring to in the question). In <a href="http://learnpythonthehardway.org/book/ex34.html">Shaw&#39;s terms</a> (which I just read over) apparently &quot;ordinal&quot; means count starting from 1, and &quot;cardinal&quot; means count starting from 0, so I suppose the answer he is looking for is that since the calendar year is <em>meant</em> to be &quot;ordinal&quot; no conversion to &quot;cardinal&quot; is necessary. However you should know I&#39;ve never seen anybody else define <a href="http://en.wikipedia.org/wiki/Ordinal_number">ordinal</a> and <a href="http://en.wikipedia.org/wiki/Cardinal_number">cardinal</a> numbers this way and I&#39;m leaning towards calling it completely incorrect, or at least that it totally ignores the more important aspects of their usual meanings. Normally you&#39;ll see this issue referred to as &quot;0 or 1 based indexing&quot;, not ordinal vs cardinal.</p>
+</div><div class="md"><p>Don&#39;t worry about this question.  It appears to be of questionable value.</p>
+</div><div class="md"><p>I was thinking of trying LPTHW out... Not anymore if those are the stupid questions it asks. </p>
+</div><div class="md"><p>Awesome, thanks guys. I can now sleep easy knowing this question is just wonky. </p>
+</div><div class="md"><p>You can&#39;t meaningfully do this with client-side code (such as the javascript running on the browser).  Security best practices dictate that you should assume the entire client is compromised/malicious, so you need to do this on the server side.</p>
+</div><div class="md"><p>I&#39;d advise you to generate the captcha server-side or use something ready made like recaptcha, as a captcha implemented completely in the browser would be trivial to bypass.  However, to answer the question:</p>
+
+<p>First you&#39;ll need to store which text maps to which image somewhere, something like this:</p>
+
+<pre><code>var capchas = [
+    { text: &quot;q24gs&quot;, image: &quot;1.png&quot; },
+    { text: &quot;86fs3&quot;, image: &quot;2.png&quot; },
+    { text: &quot;xp936&quot;, image: &quot;3.png&quot; },
+    ...
+];
+</code></pre>
+
+<p>Then you&#39;ll need to select one using the Math.random() function.  It returns a random floating point number between 0 and 1, so you need to multiply up to the number of images and round it with Math.floor():</p>
+
+<pre><code>var selectedCaptcha = captchas[Math.floor((Math.random() * captchas.length) + 1)];
+document.getElementById(&quot;yourImageElement&quot;).src = &quot;yourImageFolder/&quot; + selectedCaptcha.image;
+</code></pre>
+
+<p>Then, although not specified in your question, you&#39;ll need to compare the user&#39;s input to the text stored against your captcha image:</p>
+
+<pre><code>document.getElementById(&quot;yourButton&quot;).addEventListener(
+    &quot;click&quot;, 
+    function() {
+        var attempt = document.getElementById(&quot;YourUserInputField&quot;).value;
+        if(attempt === selectedCaptcha.text) {
+            // Success, handle correct captcha match here.
+        } else {
+            // Failure, handle incorrect captcha match here.
+        }
+    },
+    false
+);
+</code></pre>
+
+<p>Again, I&#39;d strongly advise you DON&#39;T do this in anything but a learning exercise.</p>
+</div><div class="md"><p>Learn python the hard way: <a href="http://learnpythonthehardway.org/book/">http://learnpythonthehardway.org/book/</a></p>
+</div><div class="md"><p>Coursera has some great courses<br/>
+<a href="https://www.coursera.org/course/interactivepython1">https://www.coursera.org/course/interactivepython1</a><br/>
+You might also find some on udacity.</p>
+</div><div class="md"><p>This site is brilliant. Its a bit like a textbook but with videos and activities you can do on the page.</p>
+
+<p><a href="http://interactivepython.org/courselib/static/thinkcspy/toc.html">http://interactivepython.org/courselib/static/thinkcspy/toc.html</a></p>
+</div><div class="md"><p>You should ask whoever grades your functions why the grades are poor.  Or post your functions here.  Or tell us what is it you can&#39;t grasp specifically.</p>
+</div><div class="md"><p>Show us your functions.</p>
+</div><div class="md"><p>OK. Tell me what did you learn about functions in high school math?</p>
+</div><div class="md"><p>It would help to see your code so we can get an idea of your current understanding. </p>
+
+<p>The simplest way to put it is that functions are blocks of reusable code. Let&#39;s say you want to do something that requires 4 lines of code. Now what if you want to do that thing again? Or two or three more times? Are you going to copy and paste those original 4 lines of code over and over again? </p>
+
+<p>This would be a mess! So instead of rewriting the same code over and over, you make a function containing those 4 lines of code, and whenever you want to do that thing, you simply call the function. There&#39;s a little more to it, but that&#39;s the general idea. </p>
+</div><div class="md"><p>For me, the use for functions in mainly to reuse code. I can for example create a function that reads a file and return the contents. It would consist of a couple of lines of code. Now everytime i need to read a file, i just call that function! It&#39;s particularely usefull in object oriented language where you can pack those functions in an object to use in other classes.</p>
+</div><div class="md"><p>For the first one: <a href="http://pastebin.com/W3W8D2fq">http://pastebin.com/W3W8D2fq</a></p>
+</div><div class="md"><p>Probably, but this is because you have prior programming experience.</p>
+</div><div class="md"><p>You said you&#39;ve already used Django, so why don&#39;t you think you&#39;re already competent?  Can&#39;t you just look up things you need in their docs and make your own projects with it now?</p>
+</div><div class="md"><p>Maybe the class has too much responsibility? Maybe you can pass some of these parameters in while you&#39;re calling methods instead? But sometimes you just need a lot of parameters. </p>
+</div><div class="md"><p>Yes, it&#39;s far too many. Like any other function, a constructor should generally take no more than three or four parameters, ideally fewer.</p>
+
+<p>Also, if you want to get any help here in the future, please do <em>not</em> delete your questions.</p>
+</div><div class="md"><p>As many as it needs. So the question isn&#39;t &quot;is 12 too many&quot;, it&#39;s &quot;does it <em>need</em> 12&quot;. The answer is likely that it doesn&#39;t. Without seeing the code I can&#39;t give you much direct advice, but I would recommend having a good long look at it and determining just what <em>needs</em> to be passed to the constructor and why.</p>
+</div><div class="md"><p>Go through your <code>appendNode</code> function very carefully by hand, on paper, assuming that you are appending the value&nbsp;5 to an empty list. Describe very carefully and precisely exactly what every line of code is doing.</p>
+</div><div class="md"><p>See <a href="http://www.reddit.com/r/cscareerquestions/wiki/faq_certifications">http://www.reddit.com/r/cscareerquestions/wiki/faq_certifications</a></p>
+
+<p>The general consensus is that certifications for software development are more or less useless, and can actually detract from your resume in some cases (the logic is that anybody who can program wouldn&#39;t waste time on earning some certification).</p>
+
+<p>There are a few exceptions/a few certificates which might perhaps be useful to acquire, depending on what you plan to do with your career, and people&#39;s attitudes regarding IT certificates are completely different, but the above link should cover all the nuances.</p>
+
+<p>The best way to demonstrate skill is to prepare a portfolio/have multiple non-trivial projects to show and talk about. You&#39;ll find that most developers tend to host their portfolio on Github, so you should definitely think about making an account there/using Github for version control, if you haven&#39;t already.</p>
+</div><div class="md"><p>Portfolio i.e. github. Write things.</p>
+
+<p>Certs are worthless.</p>
+
+<p>Source: software engineer, have no certs. No one even asks about my degree either tbh, just care about experience.</p>
+</div><div class="md"><blockquote>
+<p>My question is what&#39;s the best way to show employers I&#39;m competent at coding and have more experience in coding than other Mechanical Engineers? </p>
+</blockquote>
+
+<p>Write something. Publish it.</p>
+
+<blockquote>
+<p>Should I take some programming certification exams?</p>
+</blockquote>
+
+<p>No. They are essentially worthless.</p>
+</div><div class="md"><p>I think your best bet is to build a portfolio showcasing your coding, a few good quality projects on Github will be cheaper and just as good if not better than one of those certifications. </p>
+</div><div class="md"><p>They can help you get your foot in the door. HR and non-technical managers aren&#39;t going to look at a portfolio. But another programmer is going to want to see some code.</p>
+</div><div class="md"><p>Certs are a red flag for our screening process. Especially shady or ridiculous ones. If coupled with lack of work experience, it means at best, bottom of pile, at worst, we toss the resume out. I wouldn&#39;t recommend navigating that minefield.</p>
+
+<p>Not saying all certifications are bad. There are some worthwhile certification programs out there. But they are few and far between in an ocean of snake-oil. Also, the appropriate certifications are highly dependent on the position and company you&#39;re applying for. </p>
+</div><div class="md"><p>Having motivation is the only way to go, so yes. Do everything in your power to keep the motivation up. Don&#39;t get stuck with minor things like &quot;is this the best solution,&quot; because no, it&#39;s really not. :)</p>
+
+<p>Maybe a few years from now you could be an authority on distributed accounting systems. Anyways, just focus on what you think is the smallest accounting program possible - and work towards that. Before hitting the books (or courses) I recommend watching videos that show an introduction to a topic, such as classes or functions. That way, you&#39;ll have some inkling of what it&#39;s all about.</p>
+</div><div class="md"><p>I see that it might be hard for beginners to estimate the effort needed to develop software, but doing a real-world end-user application is quite much.</p>
+
+<p>Complexity-wise, I don&#39;t think it&#39;s too hard to implement mathematical formulas. So I&#39;d start with them and test them (google for &quot;test-driven development python&quot; or something like that). You don&#39;t have to necessarily implement reading or inputting data or any user interface to be able to test your formulas (or any function you&#39;ll ever write). However you&#39;d have to write testing functions in this case.</p>
+
+<p>This by itself should make a library/module you are importing in your actual application.</p>
+
+<p>Then you&#39;ll have to consider how you are going to store persistent data. You aren&#39;t limited to files. You also have the possibility for databases, and actually for your specific project, and since you are just starting as a programmer, I&#39;d recommend using SQLite. The Python standard library module to interact with SQLite is very good. An SQLite database does not require any additional software installed, since it&#39;s either included in your Python runtime. And it&#39;s quite error-tolerant and simple (there are only 5 different data types for example). The advantage over raw text files would probably be that you wouldn&#39;t have to care about a data format, parsing it, fear manipulation etc. - and your datasets will probably have only a few, repeated different structures anyway.</p>
+
+<p>I&#39;d also recommend to wrap that up as a <em>data abstraction layer</em> in a library you import.</p>
+
+<p>Then, independently of all this, you can think about user input/and output, about a GUI and so on. Here you&#39;ll also have multiple options. The standard library only offers Tcl/Tkint as a way do make GUIs, but you could also use the (external) libraries GTK or Qt. In anyway, don&#39;t underestimate the sheer amount of code need to implement a seemingly simple UI. As an example just look at <a href="https://github.com/telegramdesktop/tdesktop/tree/master/Telegram/SourceFiles/gui">all those files</a> that are needed to implement the GUI for the <a href="http://stadt-bremerhaven.de/wp-content/uploads/2014/02/Telegram-Windows.jpg">Telegram client for Windows</a>. (It&#39;s based on Qt iirc)</p>
+
+<p>You could also implement a website (not on the internet though) as a GUI. That might be simpler. (And would have the benefit that you could acess it from any device in your home network or in a business network) And if you are going to seperate your concerns into different modules, it should be possible to switch between UI implementations.</p>
+</div><div class="md"><p>There are lots of points you could start.</p>
+
+<p>There are libraries like SFML, frameworks like <a href="http://qt-project.org/">Qt</a>, engines like <a href="https://www.unrealengine.com/">Unreal</a>, and going from the ground up like in <a href="https://www.youtube.com/user/handmadeheroarchive">Handmade Hero</a>.</p>
+
+<p>I&#39;d guess SFML or Qt is the way for your level of experience.</p>
+</div><div class="md"><p>Check out <a href="http://www.sfml-dev.org/">http://www.sfml-dev.org/</a></p>
+
+<p><a href="http://www.sfml-dev.org/tutorials/2.0/">http://www.sfml-dev.org/tutorials/2.0/</a></p>
+</div><div class="md"><p>I&#39;d REALLY recommend sfml.</p>
+</div><div class="md"><p>Yikes! Neither version of the code in that article should ever be used.  It does no kind of escaping, leaving the door wide open for a <a href="http://en.wikipedia.org/wiki/SQL_injection">SQL injection attack</a>.  The name of the parameter collides with the global <code>$_POST</code> variable in PHP, which is bad form at best and broken at worst (depending on how PHP handles the situation).  There are several other issues, but those are the two that stood out to me immediately.</p>
+</div><div class="md"><p>Of course HTML is not obsolete. All Web pages are written in HTML.</p>
+
+<p>Note, however, that HTML is not a programming language. It is a markup language, used to describe the content and structure of Web pages. You cannot write <em>programs</em> in HTML.</p>
+</div><div class="md"><p>No, as the others have pointed out HTML is the language of the web. It&#39;s not a programming language, but literally any website you use today is built with HTML and CSS</p>
+</div><div class="md"><p>if you learn both a programming language (python/C etc) and html you can use the code to generate html for you... I&#39;ve done this quite a few times, and it&#39;s beneficial when you have many similar html elements with slightly different properties. </p>
+</div><div class="md"><p>HTML and css aren&#39;t going anywhere but to do any real development you will need to add other languages (c#, javascript, sql, etc) to go with them.</p>
+</div><div class="md"><p>This sort of thing usually happens when you try to use a <code>Scanner</code> after it&#39;s been closed. You&#39;ll need to post at least the code around this <code>Scanner</code> use for someone to help you more specifically. Better if you can trim your problem down to an SSCCE (see sidebar guideline 5) and post that.</p>
+
+<p>There&#39;s no reason you could not catch <code>IllegalStateException</code> and have the program continue. You&#39;d need to post the code you tried to use that didn&#39;t work to get advice on that.</p>
+
+<p>Better, I think, to make sure that exception never happens in the first place.</p>
+</div><div class="md"><p>In general, you could just make a new <code>Scanner</code> every time you need to read in a file.</p>
+</div><div class="md"><p>Since you&#39;ve given us zero information about what it is you&#39;re actually trying to accomplish, I recommend learning the kazoo. </p>
+</div><div class="md"><p>It&#39;s worth learning if you want to work with it, or if you <em>have</em> to work with it.  It does&#39;t have any unique features that would make it interesting academically.</p>
+</div><div class="md"><p>There are loads of jobs near where I live that ask for some experience with servlets, and I was taught how to use JSP in uni, so on a generic level, it&#39;s probably worth learning.</p>
+</div><div class="md"><p>.NET is a platform used for everything from desktop applications to web apps and games. You can do pretty much anything short of writing drivers in it (actually, you may be able to do that with .NET Native it will just be really awkward compared to writing it in C++). It&#39;s kind of a big platform. Microsoft has a bunch of tutorials on their developer site to help you get started in any of the main languages built on .NET (I recommend using either C# or F#- C# is going to be more familiar coming from Java, but F# is a lot of fun). </p>
+
+<p>If you&#39;re talking about HTML and CSS with .NET, you&#39;re probably referring to ASP.NET, Microsoft&#39;s web framework. That can be used to write any dynamic website you want. Make a simple Reddit clone, or social network, or inventory system. If you want to get more complex, write a networked game or chat system using SignalR. </p>
+</div><div class="md"><p>The best resource I found when learning .Net was easily learnvisualstudio.net</p>
+
+<p>It&#39;s Bob Tabor&#39;s site and he now does a lot of the developer tutorials on MSDN.</p>
+
+<p>It&#39;s slightly expensive, but I&#39;ve never second guessed my decision of buying the lifetime membership.  Being able to quickly go right to the topic you&#39;re working on was a real help.</p>
+</div><div class="md"><p>My first big C# application when I was learning it was actually a reddit statistics bot. It would scrape subreddits for data (subscriber count) and log it to a database, and it would always be running. That was a lot of fun and I learned a ton. </p>
+</div><div class="md"><p>Just pick a project and start coding. You can pick a big project or a <a href="http://blog.jenniferdewalt.com/post/56319597560/im-learning-to-code-by-building-180-websites-in">bunch of small projects</a>. Come to forums like these for help, on the other side of the summer you should be in fairly solid shape to start learning more. </p>
+</div><div class="md"><p>Well, you need to give it an <code>ArrayList</code> of <code>Integer</code>s. Do you have such an object to pass to the <code>sort</code> method? If not, you need to make one.</p>
+</div><div class="md"><blockquote>
+<p>I just want to find informations regarding the proper way to develop and submit something on linux.</p>
+</blockquote>
+
+<p>I&#39;m going to assume you mean the linux kernel.  There&#39;s all sorts of useful stuff in <a href="https://github.com/torvalds/linux/tree/v3.19/Documentation">linux/Documentation</a>.</p>
+
+<p>Essential pre-requisite reading would obviously include <a href="https://raw.githubusercontent.com/torvalds/linux/v3.19/Documentation/SubmittingPatches">submitting patches</a>.  If you intend to work on drivers, make sure you also have a read through <a href="https://raw.githubusercontent.com/torvalds/linux/v3.19/Documentation/SubmittingDrivers">submitting drivers</a>.</p>
+
+<p>As with any project, find the documentation and read it!</p>
+</div><div class="md"><p>Ideally, when talking about the &quot;proper&quot; way to develop software it <em>should</em> be the same for Windows and Linux. As long as you weren&#39;t using MS/Win-exclusive products, you are should be able to reuse the most of your tools on Linux and keep your workflow.</p>
+
+<p>If talking about general best practices regarding the dev workflow, this shouldn&#39;t be an OS-specific discussion. Most tools can be used on nearly all common platforms anyway. I&#39;m talking about git/mercurial, editors, debuggers, shells, make, autotools etc. (I&#39;m using MSYS2 on Windows anyway...)</p>
+
+<p>Anything more detailed just depends on the kind of project.</p>
+
+<blockquote>
+<p>Is there a list where everything should go ? Where should I put user config files ? databases ?</p>
+</blockquote>
+
+<p>Do you know about the <a href="http://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard">Filesystem Hierarchy Standard</a>? However, some distros have a little bit different conventions, but it&#39;s the job of the package maintainers to care about that, not yours.</p>
+
+<blockquote>
+<p>I know it&#39;s relative to the distro. but still...</p>
+</blockquote>
+
+<p>But still what? It&#39;s relative to the distro, and that&#39;s it. Sometimes people put up project sites like <a href="http://dwm.suckless.org/">dwm</a>. And distro maintainers download the code from there. Or you host it at Github/alternative.</p>
+</div><div class="md"><p>I think you will need to format your code much better before anyone will read that properly. Yes, I can see the javascript inside it, but you can make it much easier by for example using a code-pasting site:</p>
+
+<p><a href="https://gist.github.com/">https://gist.github.com/</a></p>
+
+<p><a href="http://pastebin.com/">http://pastebin.com/</a></p>
+</div><div class="md"><p>Is there a particular part of those instructions that your are having an issue with?</p>
+
+<p>1) Create a Payroll class<br/>
+2) Create an driver class to demonstrate the Payroll class.</p>
+</div><div class="md"><p>This assignment is worded as straight as it gets.</p>
+
+<p>Most of the assignment text can directly be converted to Java code.</p>
+
+<ul>
+<li>You need 2 classes, <code>Payroll</code> and a class to test the implementation of Payroll.</li>
+<li>Currently, you only need 2 fields in the Payroll class, <code>hoursWorked</code> and <code>payRate</code> (which is obviously an hourly rate).</li>
+<li>You need to find a suitable data type for the fields. </li>
+<li>You need a default constructor.</li>
+<li>You need setters and getters (mutators and accessors) for the two fields.</li>
+<li>Last, you need a method (your prof calls it getter) that returns the gross pay which is hoursWorked * payRate.</li>
+<li>If hoursWorked &gt; 40, you need to multiply all the hours over that limit by 1.5 (that&#39;s an overtime regulation).</li>
+</ul>
+
+<hr/>
+
+<p>Your second file should test the implementation of the Payroll class.</p>
+
+<ul>
+<li>You need to create a new object of type Payroll</li>
+<li>You need to ask the user to enter the hours worked</li>
+<li>You need to ask the user to enter the pay rate</li>
+<li>Store that information in the payroll instance (using the setters)</li>
+<li>Calculate and print out the gross pay, formatted as $00.00</li>
+</ul>
+
+<p>Really, that assignment is perfectly clearly worded without leaving any, even the smallest, room for doubt.</p>
+</div><div class="md"><p>Yes, a pixel is just a tuple <code>&lt;R, G, B&gt;</code>, where <code>R</code>, <code>G</code>, <code>B</code> are all integers within [0, 255].  You can just randomly assign values to each pixel.  The resulting image would look like garbage, of course.</p>
+</div><div class="md"><p>You&#39;ll probably get more assistance debugging the behavior if you put it into JSFiddle so others could quickly try to help. </p>
+
+<p>Anyhow, any reason you&#39;re not trying responsive design/media queries? Seems like that&#39; be the best way of handling desktop/mobile versions. I could be misunderstanding you though. </p>
+</div><div class="md"><p>Possible, sure.  You&#39;ll get pretty good at &quot;printf&quot; debugging ;P.  But seriously, a debugger is a very powerful tool if you know how to use it - learn.</p>
+
+<blockquote>
+<p>If so, how can I fix the bugs in my large codebase quickly?</p>
+</blockquote>
+
+<p>&quot;I shall learn how to unit test.&quot;</p>
+
+<p>&quot;I shall learn how to unit test.&quot;</p>
+
+<p>&quot;I shall learn how to unit test.&quot;</p>
+
+<p>&quot;I shall learn how to unit test.&quot;</p>
+
+<p>...</p>
+</div><div class="md"><p>It&#39;s certainly possible.  More than likely slower.     </p>
+
+<p>Using a debugger with MPI systems or distributed systems can be troublesome depending on the types of bugs. Problems usually end up being timing related so a good logging mechanism often is best for tracking down errors.</p>
+</div><div class="md"><p>It&#39;s certainly possible. What works best is highly variable and depends on many factors. Ultimately, you are trying to be as productive as possible. Note that debugging distributed applications such as MPI is trickier with a debugger, but can still work.</p>
+
+<p>What kind of a bug was it?</p>
+</div><div class="md"><p>Gdb has a steep learning curve. I&#39;m afraid (but not certain, of course) they may be unwilling to admit their inexperience with it to you. I most definitely <em>would</em> master gdb as quickly as possible if I were you. You&#39;d be at a huge advantage to other programmers. I still know little about gdb, unfortunately.</p>
+
+<p>In the meantime, you could try strace:</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Strace">https://en.wikipedia.org/wiki/Strace</a></p>
+
+<p>Don&#39;t forget to use -ff -o &lt;filename&gt; for a per-fork trace. How feasible this is for your aims, I don&#39;t know.</p>
+</div><div class="md"><p>I&#39;m not clear what you&#39;re trying to do. Are you attempting to make a class that you can modify on the fly, after the program is compiled, or are you just trying to make a... Class?</p>
+
+<p>If all you want is to make a class to hold a bunch of stuff you thought up while writing the program, you just write it:</p>
+
+<pre><code>public class Thing
 {
-    Json::Reader parser;
-    Json::Value root;
-    std::ifstream file(&amp;quot;file.json&amp;quot;);
-    parser.parse(file, root);
-    Question q;
-    std::vector&amp;lt;Question&amp;gt; result;
+    string Name { get; set; }
+    string Place { get; set; }
+    double Height { get; set; }
+    double Weight { get; set; }
+    decimal Price { get; set; }
+    bool ForSale { get; set; }
 
-    for (Json::Value&amp;amp; question_it : root[&amp;quot;questions&amp;quot;]) {
-        q.text = question_it[&amp;quot;question&amp;quot;].asString();
-        Json::Value&amp;amp; answers = question_it[&amp;quot;answers&amp;quot;];
-        std::transform(answers.begin(), answers.end(), q.answers.begin(), [](Json::Value&amp;amp; v) { return v.asString(); });
-        q.correct_anwer = question_it[&amp;quot;answer&amp;quot;].asInt();
-        result.push_back(q);
+    // to store multiple items of a given type
+    ICollection&lt;Weapon&gt; Weapons { get; set; }
+}
+</code></pre>
+
+<p>This is generally preferable because it gives you compile time checking of the work you do with the class. You can make one and add arbitrary properties at runtime, but that is actually a lot harder to do and you only rarely need to do it.</p>
+
+<p>Does this help?</p>
+</div><div class="md"><p>C# doesn&#39;t have dictionary literals, and C# objects are not just dictionaries anyway. You can deserialize JSON into C# objects if that&#39;s what you&#39;re looking for- there&#39;s a couple different deserializers built-in but the general consensus is to use the 3rd party <a href="http://www.newtonsoft.com/json">JSON.NET</a>.</p>
+
+<p>Alternatively, you could do this part in F# which does have object literals. See <a href="https://msdn.microsoft.com/en-us/library/dd233184.aspx">here</a>. You&#39;d have to define this in a separate DLL because I don&#39;t think .NET supports compiling multiple languages into a single file yet, but it will show up in C# as a normal class.</p>
+</div><div class="md"><blockquote>
+<p>If I change the for loop check on line 18 from i &lt; arr.length to i &lt;= arr.length the solution works. Why?</p>
+</blockquote>
+
+<p>No, it doesn&#39;t (in the sense that it would work for any case). You aren&#39;t multiplying the values of the array, you are multiplying the index i.</p>
+
+<blockquote>
+<p>Why is the numbers variable being modified by the square function on line 43? Shouldn&#39;t that function modify only the arr local variable?</p>
+</blockquote>
+
+<p>Since</p>
+
+<pre><code>var arr = n;
+</code></pre>
+
+<p>doesn&#39;t make a new copy of the array, but references to the old.</p>
+</div><div class="md"><p>Please see our <a href="http://www.reddit.com/r/learnprogramming/wiki/faq">FAQ</a>.</p>
+</div><div class="md"><p>Learning how to code just for your kids is admirable, but probably not necessary. I would start them with Scratch (scratch.mit.edu) when they seem to be at the right age (probably around 7-9). You can use this book (<a href="http://www.amazon.com/Learn-Program-Scratch-Introduction-Programming/dp/1593275439">http://www.amazon.com/Learn-Program-Scratch-Introduction-Programming/dp/1593275439</a>), and follow along with them.</p>
+</div><div class="md"><p>To expand on vba,  you can use that for all Microsoft Office software, not just excel. </p>
+</div><div class="md"><p>There are some often overlooked freewares that help greatly:</p>
+
+<ul>
+<li><a href="https://www.autoitscript.com/site/autoit/">AutoIt</a> - Basic like general scripting language for application automation (IMO very powerful - I&#39;ve used it to build complete stand-alone install systems for programs)</li>
+<li><a href="http://www.autohotkey.com/">AutoHotkey</a> - mostly a hotkey/macro language - requires some getting used to, but is also quite powerful</li>
+</ul>
+
+<p>And a professional product for browser automation:</p>
+
+<ul>
+<li><a href="http://www.seleniumhq.org/">Selenium</a></li>
+</ul>
+</div><div class="md"><p>Some good suggestions in here, I&#39;ll add one more. Some applications (Java applications are an offender here, if I remember correctly) may not be very friendly exposing their GUI elements to applications like AutoIT and QTP. You can take a look at <a href="http://www.sikuli.org/">Sikuli</a>. It uses Python as a programming language, and it&#39;s a screen reader. You can visually select for portions of the screen you may want to evaluate and click on.</p>
+
+<p>It will not be suitable for all tasks, but if you are using any application with a GUI you can wrap some Python logic around it.</p>
+</div><div class="md"><p>You might try printing out the values as you check then.</p>
+
+<p>It might help you see why you are missing so many checks.</p>
+</div><div class="md"><p>Can you explain what your algorithm is trying to do?</p>
+
+<p>Let&#39;s begin with an assessment of at least the minimum amount of work that any correct algorithm would have to do.  In this case, the contents of the two arrays are unknown and arbitrary (e.g. the array is not sorted, and there are no constraints on what strings may appear in the array).  Therefore, at minimum, the algorithm needs to examine every element in both arrays in order to determine common strings.</p>
+
+<p>Since your code only has one for loop that iterates over the <code>b</code> array, it cannot be correct, since it has not examined every element in <code>a</code>.</p>
+
+<p>As some thought, the most efficient data structure for this problem would be a <code>HashSet&lt;String&gt;</code>.</p>
+
+<p>Edit: Your post doesn&#39;t actually mention the constraint that both arrays are actually sorted, which makes a merge operation the most optimal solution.</p>
+</div><div class="md"><p>Have you <a href="https://www.reddit.com/r/learnprogramming/wiki/faq#wiki_where_can_i_find_some_good_learning_resources.3F">read the FAQ</a>?</p>
+</div><div class="md"><p><a href="https://jsfiddle.net/ddd967/rz2gvt7t/">created a demo for you</a></p>
+
+<p>note: include jquery if you use it on your site.</p>
+</div><div class="md"><p>I&#39;m trying to learn programming, I know this wouldn&#39;t work on a web page, but I&#39;d still like someone to tell me if this is a decent way of doing things in Java, since I&#39;m always interested in small test projects.</p>
+
+<pre><code>public class RandomString {
+
+    public static void main(String[] args) {
+
+        int stringPicker = (int) (Math.random() * args.length);
+        System.out.println(args[stringPicker]);
+
     }
 
-    return result;
 }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I see a couple of issues, but I don&amp;#39;t want to spoon-feed you, so:&lt;/p&gt;
+</code></pre>
 
-&lt;p&gt;What is currently &amp;quot;not working correctly&amp;quot; ?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I think I have figured it out. If I have any specific questions, I shall return.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;No, that&amp;#39;s pretty much what arrays are there for.&lt;/p&gt;
+<p>Thanks in advance!</p>
+</div><div class="md"><p>Ok. It&#39;s done. Keep in mind, this will only run if you have jQuery attached to your HTML as well (it has to be linked before the file that contains the following script, or else it will fail.) </p>
 
-&lt;p&gt;If you want to save them permanently, as in, on the harddrive, look into cookies or localstorage. But you&amp;#39;d end up using an array anyway&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Hmm .... why would you store all clicks in an array?  That seems a little strange, but if you want to store all clicks on a page this would do that.  Maybe explain what you&amp;#39;re trying to do and we can help more.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Yes.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;This is so pratyush.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Put aside your ego and ask them. &lt;/p&gt;
+<pre><code>var list1 =[&quot;text&quot;,&quot;text1&quot;, &quot;text2&quot;, &quot;text3&quot;, &quot;text4&quot;, &quot;text5&quot;,&quot;text6&quot;,&quot;text7&quot;,&quot;text8&quot;, &quot;text9&quot;];
 
-&lt;p&gt;One of my favourite professors once said this in class when nobody was answering his question: &amp;quot;If you guys  say more stupid shit, we will arrive at the smart shit way quicker&amp;quot;&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I&amp;#39;ve been doing this a long time and that still happens to me.  No one knows everything, don&amp;#39;t be afraid to ask.  Or make yourself a note and look it up later.&lt;/p&gt;
+var list2 =[&quot;blah&quot;,&quot;blah1&quot;, &quot;blah2&quot;, &quot;blah3&quot;, &quot;blah4&quot;, &quot;blah5&quot;,&quot;blah6&quot;,&quot;blah7&quot;,&quot;blah8&quot;, &quot;blah9&quot;];
 
-&lt;p&gt;I&amp;#39;m sometimes in meetings where I ask the speaker what the hell he&amp;#39;s talking about &amp;amp; find out no one else knows either :)&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;mersenne twister bitshift Two&amp;#39;s complement, push pop flop?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Ask them to explain it.  You might discover they don&amp;#39;t know as much as they say they do.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Anytime you hear something you don&amp;#39;t know, write it down. When you get home google it.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I have been out of school for ~ 10 years. This still happens. CS is hard stuff and it is a HUGE field.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;There&amp;#39;s already a bunch of comments here, but I&amp;#39;m going to add just a little as well.&lt;/p&gt;
+var list3 =[&quot;meh&quot;,&quot;meh1&quot;, &quot;meh2&quot;, &quot;meh3&quot;, &quot;meh4&quot;, &quot;meh5&quot;, &quot;meh6&quot;,&quot;meh7&quot;,&quot;meh8&quot;, &quot;meh9&quot;];
 
-&lt;p&gt;What you&amp;#39;re describing is called imposter syndrome. You feel like you are a sham, you don&amp;#39;t belong, you couldn&amp;#39;t possibly be smart enough for this field.&lt;/p&gt;
+var list4 =[&quot;whatevs&quot;,&quot;whatevs1&quot;, &quot;whatevs2&quot;, &quot;whatevs3&quot;, &quot;whatevs4&quot;, &quot;whatevs5&quot;, &quot;whatevs6&quot;,&quot;whatevs7&quot;,&quot;whatevs8&quot;, &quot;whatevs9&quot;];
 
-&lt;p&gt;This is something 95% (made up that figure, but you&amp;#39;d be surprised) of students go through. CS is a bloody hard field, and it takes a while before you are comfortable and familiar with the broad range of topics.&lt;/p&gt;
 
-&lt;p&gt;Another thing you need to realise is that people love to bullshit and talk about things they don&amp;#39;t really know. In my first/ second year of a software engineering degree, I got self conscious because I heard other students talking about stuff I had no idea about. They sounded right, it sounded like they knew their shit. &lt;/p&gt;
+$(&quot;.buttonA&quot;).click(function(){
 
-&lt;p&gt;Then I saw these students got real crap grades, sometimes failing. And then as time went on and I learned more and more, I listened to these &amp;quot;smart&amp;quot; conversations,and realised these people don&amp;#39;t actually know what the hell they are talking about. By my third and fourth year, I was in a position where I knew enough to realise these people are talking out their asses, and there is a reason they failed papers.&lt;/p&gt;
+var pickRandomtext= Math.floor(Math.random() * (10-0)) + 0;
 
-&lt;p&gt;I then realised I had no reason to be self conscious in those first few years, because those people I was listening to really didn&amp;#39;t know what they were talking about.&lt;/p&gt;
 
-&lt;p&gt;Other people have given you lots of advice on how to fix this. Just be prepared to do a lot of research about different fields and ask questions.&lt;/p&gt;
+console.log(pickRandomtext);
 
-&lt;p&gt;And of course there are genuine people who do know their stuff, not everyone is bullshitting. It can be hard at first to distinguish these people, so I guess doing research and learning yourself helps. &lt;/p&gt;
+var i=0;
 
-&lt;p&gt;Just give it time, keep learning, and try not to be discouraged in the mean time.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Thank you guys so much for the encouraging words. I guess it&amp;#39;s time to invest in a small notebook and wrote down things I&amp;#39;m unfamiliar with when I hear them.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;What everyone else here has said is true. Everyone is better at certain aspects of the field than others. I bet you have a dozen or so words in your vocabulary that would stump most of your class mates too.&lt;/p&gt;
+for(i=0; i &lt;list1.length; i ++){
 
-&lt;p&gt;That said, if you want to know about something you heard, look it up.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I used to work more or less 2 jobs plus study engineering, my grades were mediocre. A relative eased my situation financially.  A few months down the road I was top student. One day after a particular complicated class, teacher asked if it was understood, 95% of class scoffed, with words tossed around like trivial, easy, simple. I leaned over to crazy bastard # 2 and asked him&amp;quot; did you understand?&amp;quot;, -nope. &amp;quot;Yet everybody says it&amp;#39;s easy?&amp;quot; - yup. &amp;quot;Chances are with this level of difficulty we will out score them by a wide margin&amp;quot;. -yup. Discovery TIL moment. &lt;/p&gt;
+if(i===pickRandomtext){
+    console.log(pickRandomtext[i]);
+    alert(&quot;You have been given&quot; + &quot; &quot; + list1[i]);
+    return;
+}
 
-&lt;p&gt;Tl;dr: people like to oversell themselves, if they can make it sound like they understand complicated stuff, chances are, they will. &lt;/p&gt;
+}
 
-&lt;p&gt;Edit: commas. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I&amp;#39;m new as well. I keep a small notepad with me and write down anything unfamiliar I hear and look it up as soon as I can and write a paragraph or two in my notebook about it just to try and cement it into my brain&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;One big problem in programming is that we programmers &lt;strong&gt;LOVE&lt;/strong&gt; to make up new words for terms that already have a dozen words describing them. Every single sub-field will happily take a whole bunch of basic concepts and re-brand them because reasons. A lot of these you may be able to figure out from context, and for the rest don&amp;#39;t be afraid to ask. &lt;/p&gt;
 
-&lt;p&gt;Unfortunately it&amp;#39;s more or less impossible to actually learn all these terms, because even if you did put in the herculean effort necessary to memorize all the terminology you are likely to encounter, all that knowledge will quickly become obsolete because everyone went on to the next big thing. I&amp;#39;ve always been more of a fan of working with what I&amp;#39;ve got, instead of constantly chasing a moving target. Once in a blue moon when someone actually comes up with something original you should take the time to memorize it, otherwise there&amp;#39;s no need to pollute your brain with terminology that all roughly means the same.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Consider the fact that now second year has done, you and your colleagues are beginning to branch out and specialise in different languages and technology. CS is an incredibly broad field, and everyone naturally finds themselves different languages and technologies they are partial to. They ate usually closely tied to personal projects. &lt;/p&gt;
+});
 
-&lt;p&gt;Another analogy this is a nurse working in a hospital ward talking to a group of surgery nurses: they share the same field but their experience has grown apart over the years. Your experience is not unique to CS or programming&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;While everyone in this thread is absolutely correct, I thought I&amp;#39;d touch on something I&amp;#39;ve noticed as a CS student that I felt was a big part of this. &lt;/p&gt;
 
-&lt;p&gt;Something that a good portion of my friends who are CS students complain about is that they&amp;#39;ve passed the halfway point in their collegiate careers, but still feel like they don&amp;#39;t really know anything except &amp;quot;kinda how to program&amp;quot;. The catch is that most of the experiences you have in the classroom as a university student are very different from the kinds of less-directed experiences you get from working on projects or programming as a job. &lt;/p&gt;
+$(&quot;.buttonB&quot;).click(function(){
 
-&lt;p&gt;The thing about programming classes is that they&amp;#39;re fantastic for learning the material they present, but not so great for teaching you how to act and feel like a programmer. Along with the suggestions of everyone else in the thread, I also recommend (assuming you aren&amp;#39;t already!) looking for parttime programming jobs you can work during the school year or over summer. Short of that, as jobs like that can be hard to find or just otherwise not feasible, try to work on projects on your own time, purely for yourself. Start a Github account, find some neat tool or framework, and just start figuring stuff out on your own. Hell, even game jams and hackathons can be a great way to &amp;quot;find yourself&amp;quot; as a programmer, and if you&amp;#39;re a college student they shouldn&amp;#39;t be that hard to find, either! :)&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;You just explained me, but with life in general&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I joined a python club in my area and this shit would happen all the time. And when I asked about the words, I was either given an equally confusing answer or I was condescended to. Sometimes both!&lt;/p&gt;
+var pickRandomtext= Math.floor(Math.random() * (10-0)) + 0;
 
-&lt;p&gt;I quit the club and started studying independently through online tutorials and books. Much less of a pain in the ass.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;This will always happen even when you graduate and are working.  There is an endless amount of things you don&amp;#39;t know and it&amp;#39;s not expected that you know everything.  It took me a few years to realize this and that if I don&amp;#39;t know what people are talking about, that I should just ask.  &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I have been writing software for 15 years and this shit still happens. I have needed to discuss &amp;quot;algorithms for rapidly traversing multi-variadic problem spaces&amp;quot; but when I just asked the guy what he meant it made sense, I just hadn&amp;#39;t heard that phrasing before.&lt;/p&gt;
 
-&lt;p&gt;EDIT -
-Sometimes it really is BS. Every once in a the problem is “homeomorphic endofunctors mapping submanifolds of a Hilbert space”: &lt;a href="http://programmers.stackexchange.com/questions/256450/are-git-branches-in-fact-homeomorphic-endofunctors-mapping-submanifolds-of-a"&gt;http://programmers.stackexchange.com/questions/256450/are-git-branches-in-fact-homeomorphic-endofunctors-mapping-submanifolds-of-a&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Along with writing down the words, looking things up and asking questions. Figure out what books/resources are standard for your slice of the industry/profession and then go read those books and subscribe to those resources.&lt;/p&gt;
+console.log(pickRandomtext);
 
-&lt;p&gt;For example, here in the Pacific NW being a primarily .NET developer most people have read these books.
-* Code Complete
-* The Pragmatic Programmer&lt;/p&gt;
+var i=0;
 
-&lt;p&gt;Those then become a baseline for terminology used. Along with that I know that most of the developers in the area read Scott Hanselman&amp;#39;s blog since he&amp;#39;s local and big in the .NET/Microsoft world so subscribing to his blog and twitter streams keep me up to date with what&amp;#39;s happening there. (along with a variety of other high profile programmer twits and bloggers)&lt;/p&gt;
+for(i=0; i &lt;list2.length; i ++){
 
-&lt;p&gt;Also there&amp;#39;s the local code camps, other local bloggers, the MSDN forums, local MSDN events,  Stack Overflow and then of course here on reddit a variety of programming specific subs to peruse.&lt;/p&gt;
+if(i===pickRandomtext){
+    console.log(pickRandomtext[i]);
+    alert(&quot;You have been given&quot; + &quot; &quot; + list2[i]);
+    return;
+}
 
-&lt;p&gt;Keeping that information coming and continually drinking from the firehose (especially the same information your colleagues/industry/profession use) will start to help fill in those gaps as well and get you using the same familiar lexicon everyone else does.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Decent at programming after only two years?&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;As others suggested, write down those words and google them. Also find good blogs and reddits and read them often  (I can&amp;#39;t suggest you which blogs because I don&amp;#39;t know your interest but the programming subreddit is a good way to start). Reading a lot and watching webcast will increase your knowledge a lot.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Allow it to motivate you to learn more but don&amp;#39;t allow it to shake you. You&amp;#39;re on your own path. If you like what you&amp;#39;re doing and you&amp;#39;re giving it an honest effort you&amp;#39;ll get to where you need to go in your time. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Ask.  Embrace the limits of your knowledge and seek to expand it.  No one knows everything when they start.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Don&amp;#39;t sweat it. You will continue learning and honestly no one expects much of you when you graduate (and they shouldn&amp;#39;t). You&amp;#39;ll learn as much in the first year or so after your out than you did in the four years getting the degree.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;The jargon changes all the time but the basic concepts more or less stay the same. Ask if you don&amp;#39;t recognize a word, you&amp;#39;re a student.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;I absolutely suck at terminology. Sometimes people are talking about something I know about but I don&amp;#39;t know they are :O&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Don&amp;#39;t concern yourself with where other people are at in your field. Computer Science is an incredibly vast field that covers several different subject maters from physics, engineering, mathematics, and programming and it&amp;#39;s easy to get lost and feel like you really don&amp;#39;t know much about the subject. I&amp;#39;ve gone through that and it nearly killed me. By the end of my sophomore year of college I felt like absolute shit about my abilities. I worried about how I would be able to find a career in two or three years, if I&amp;#39;m really cut out for computer science, and if I just wasted the past few years of my life. I was depressed and unhappy with myself. This was only made worse by the fact that my computer science department went to shit. My freshman year there were four professors, and by my sophomore year there were only two, one of which was absolutely terrible (this professor spent nearly the entire semester of my HTML class ignoring HTML5 and CSS and instead taught us how to make a website all inside of a table). I kept comparing myself to other students, noting my apparent lack of skill compared to them.&lt;/p&gt;
 
-&lt;p&gt;The truth is in computer science, there are always going to be millions of people who know more, do more, and are flat out better than you in every single regard. You cannot let this bother you though. Don&amp;#39;t waste time and effort wrecking your mental health over the knowledge of others, and or what you don&amp;#39;t know. Instead, but that effort and energy into just improving your skills. Struggling with a concept everyone seems to grasp? Don&amp;#39;t sweat it, just take your time to get better at it and just worry about that. No mater how small or in complex a problem is, take pride in solving it, in learning something new even if everyone else seems above it. It&amp;#39;s new to you and you now understand it better, and that is all that maters with computer science. If  Someone uses a term you aren&amp;#39;t familiar with? Ask them about it and what it means. I stopped comparing myself to others, transferred schools, picked up a second complementary major to computer science, and I haven&amp;#39;t been happier.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;This still happens to me, and will to everyone - because new terms are constantly being added. Best advice is just remember it and google it. If it&amp;#39;s important to know right then, then just ask. &lt;/p&gt;
+}
 
-&lt;p&gt;Had a thing the other day where they said &amp;quot;The IRS project&amp;quot; and of course,  assumed tax... nope. They meant &amp;quot;Inventory Reservation System&amp;quot;. Acronyms aren&amp;#39;t just used, they are often overloaded!&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;First off computer science isn&amp;#39;t programming it is fundamentals of computation.   You may think you are decent but you are not , not yet,  and neither are the guys using fancy terms.  Don&amp;#39;t worry about them.  I use to be like you.  I worried about fancy terms and thought  i was  decent/good at programming.  Getting my first job changed all of that.  I was terrible and I didn&amp;#39;t know anything on the grand scheme of things.  Finish your degree.  Go get a job then the real fun and learning starts. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Do you have an example? Just to get a feel for the types of things you encounter.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;When I was a chemist most people were struggling to grasp the subject, I followed the money into CS. In twenty years of programming I&amp;#39;ve never worked with a programmer who didn&amp;#39;t claim to be an expert, (usually just the Dunning–Kruger effect).&lt;/p&gt;
 
-&lt;p&gt;As others here have said, Google it and stay hungry, the fun thing about programming is there&amp;#39;s always a better way to do it.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Read this/listen to the audio book a couple times. Will give you a high level of cs. &lt;/p&gt;
+});
 
-&lt;p&gt;&lt;a href="http://www.amazon.com/The-Information-History-Theory-Flood/dp/1400096235"&gt;http://www.amazon.com/The-Information-History-Theory-Flood/dp/1400096235&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;My friend is a second year and he has a similar problem. But I&amp;#39;d say that&amp;#39;s nothing - try getting a Master&amp;#39;s degree after doing Bachelor&amp;#39;s in a field completely unrelated to CS. The gaps I have to fill are super huge and I spend hours figuring out the super basic shit so I can undertake the tasks that pose problems to people who have 3 years more of knowledge and experience. Sometimes I outright have to cheat and lie to my professors in order to barely pass. I almost had a nervous breakdown because I had just two weeks to create three projects in AngularJS, jQuery and some web-based Java framework I don&amp;#39;t remember the name of while I had no idea how to program in neither Java nor Javascript.&lt;/p&gt;
 
-&lt;p&gt;Unlike me you still have a lot of time, so ask them or google this stuff. Do a tutorial or something if you don&amp;#39;t understand. You&amp;#39;re studying CS, you should get as proficient as possible when it comes to searching information, it&amp;#39;s a great skill on it&amp;#39;s own.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;There&amp;#39;s a difference between textbook and applied knowledge. &lt;/p&gt;
+$(&quot;.buttonC&quot;).click(function(){
 
-&lt;p&gt;In the long term I&amp;#39;ll learn much better by immediately applying what I&amp;#39;m reading versus just taking in the terms and the concepts. I have a lot of friends that are like sponges and can parrot back whatever they just learned, and like you I&amp;#39;ll hear terms that I don&amp;#39;t know the definitions of. But more times than not when I look up the term it&amp;#39;s something I&amp;#39;ve used before I just never remembered the vocabulary. &lt;/p&gt;
+var pickRandomtext= Math.floor(Math.random() * (10-0)) + 0;
 
-&lt;p&gt;While it is important to know the terms, the concepts, and how to apply them just knowing the concepts or terms without how to apply them doesn&amp;#39;t necessarily make somebody a better programmer.&lt;/p&gt;
 
-&lt;p&gt;Don&amp;#39;t get caught up on people knowing vocabulary terms you don&amp;#39;t understand, just write them down or remember them and look them up. &lt;/p&gt;
+console.log(pickRandomtext);
 
-&lt;p&gt;As always the best way to become a more experienced programmer is to apply, apply, apply. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;That was my problem after graduation. I knew how to program and knew how to think like a programmer. The words and terminology were what I didn&amp;#39;t know. &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Any idea what classes are ahead of you your junior year?&lt;/p&gt;
+var i=0;
 
-&lt;p&gt;Your second year, unless you doing an associates degree first, should consist of very few actual computer science classes and more general ed stuff. The 300 and 400 level CS classes are coming and you should expect the info-dump to be overwhelming. &lt;/p&gt;
+for(i=0; i &lt;list3.length; i ++){
 
-&lt;p&gt;It doesn&amp;#39;t take long to develop a strong vocab.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Besides programming,  what other CS courses are you taking and plan to take? I graduated in 2009 with my bachelors in CS. I was literally in your same position but I guess worse in a way...I was a senior, not good at programming (although I liked it), I had no idea what I could do when I graduated,  and this was all happening during my senior year. First, it will work out. You could be experiencing what I was experiencing however I failed to realize it until 3 years after I graduated. That realization was that there&amp;#39;s so much more to your major than what your college or university are teaching you. I&amp;#39;ve learned more in 2014 from my job than undergraduate and grad school together. I learned what SCCM was in 2013 and went gung-ho with it from then until present. I didn&amp;#39;t even know sccm was a thing. Someone here mentioned that you can&amp;#39;t learn the things that you don&amp;#39;t know that you don&amp;#39;t know (not a typo). And sccm was a thing I didn&amp;#39;t know that I didn&amp;#39;t know. And for the last year and a half I&amp;#39;ve loved it and became very good with it. I&amp;#39;m one of 4 sccm engineers at my firm. I wish colleges would teach students about sccm, group policy,  active directory,  powershell. At least give an option for it. I got forced with java (3 levels of it). I liked java but I don&amp;#39;t use it now and I never have except for passing classes. Even then I had to repeat 2 of the java courses. After a certain point I lost interest in it and was lost.&lt;/p&gt;
+if(i===pickRandomtext){
+    console.log(pickRandomtext[i]);
+    alert(&quot;You have been given&quot; + &quot; &quot; + list3[i]);
+    return;
+}
 
-&lt;p&gt;So after that long winded response... to get better at understanding your field  I would ask people in the IT world what they do, why their business calls for what they do, if they enjoy it, how could you get started in that position (if you&amp;#39;re interested), etc. I got started at my firm&amp;#39;s help desk answering phone calls and resolving issues and properly escalating when necessary. A year into that I applied for an sccm engineer position which I still have today. It&amp;#39;s great. Most of the time you&amp;#39;ll start with a job you may not like. But that job won&amp;#39;t last long if you keep learning and get out when you&amp;#39;ve learned enough to move on to bigger and better things. &lt;/p&gt;
 
-&lt;p&gt;Let me know if you have any questions about this. I can probably explain better when I&amp;#39;m not typing on a note II lol&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;How does that saying go? &amp;quot;If You Are The Smartest Person In The Room, Then You Are In The Wrong Room&amp;quot; Don&amp;#39;t be afraid to ask questions. Ever. To anyone. Don&amp;#39;t feel embarrassed about it either, no one knows everything. (plus it&amp;#39;s a great way to meet new friends)&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Just ask them. It really is that simple.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Polymorphism!! heh. Don&amp;#39;t worry about. Sounds like you&amp;#39;re young (at least in computer science) and have plenty of time to learn. You&amp;#39;re not suppose to know all the big words like polymorphism or TDD or scrum or cloud or whatever ... I could go on and on. When you hear these things, ask questions, look them up. Curiosity is a good thing! Part of a software engineers job is to read read read. Matter of fact I would venture to say that reading is at least 40% of the job if not more. Reading and asking questions is how you learn all these cool technologies and catchy words. &lt;/p&gt;
+}
 
-&lt;p&gt;Happy coding and reading!&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Haha, a familiar feeling for many of us &amp;quot;normal&amp;quot; programmers in a class full of over-achievers.&lt;/p&gt;
+});
 
-&lt;p&gt;Many other people have given you the advice to ask your peers (which is great advice!), but I came to say something a little different.&lt;/p&gt;
+$(&quot;.buttonD&quot;).click(function(){
 
-&lt;p&gt;You have a certain skill set which makes you a better fit for a certain role that no one else in your class (or maybe even the world) can do as well as you.  Maybe you won&amp;#39;t become the best programmer in the world, but you might use your knowledge of programming and your thirst to learn more to become an academic programmer.  Or something else...it&amp;#39;s up to you to find out what you&amp;#39;re good at.&lt;/p&gt;
+var pickRandomtext= Math.floor(Math.random() * (10-0)) + 0;
 
-&lt;p&gt;I give this advice, because I found myself in the same position as you. I never felt awkward (maybe I&amp;#39;m a robot), so I was able to ask questions from the smart ones and learn a great deal about software engineering.  &lt;/p&gt;
 
-&lt;p&gt;When my classmates went to Google and Microsoft after school, I found myself in a consulting company, and that&amp;#39;s where I really came into my own.  I realized that my software engineering ability wasn&amp;#39;t the biggest skill I brought to the table.  Instead, I used that ability to augment my soft skills, and quickly gained a reputation as someone who would communicate with anyone: technical, non-technical, clients, bosses, sub-ordinates, strangers, etc.&lt;/p&gt;
+console.log(pickRandomtext);
 
-&lt;p&gt;This is turning into a wall, so I&amp;#39;ll wrap it up: I still don&amp;#39;t know what my role is - I&amp;#39;m still searching.  I know I&amp;#39;ll NEVER be the best software engineer in the world, but those skills help me every day.  Use the skills you  have to the best of your ability.&lt;/p&gt;
+var i=0;
 
-&lt;p&gt;Good luck!&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Programmer themed podcasts are a great way to learn this stuff.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Writing unit tests, or adopting test driven development may help you. &lt;/p&gt;
+for(i=0; i &lt;list4.length; i ++){
 
-&lt;p&gt;You feel more confident about changing a core piece of your code if you know you&amp;#39;ll be notified if you&amp;#39;re breaking something elsewhere in the code base...&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Every large design is made up of many small designs. Layers of abstraction help you build high-level algorithms that rely on lower-level implementations without having to be constantly conscious of the details of those implementations. Abstraction, encapsulation, and modularization are all attempts to simplify the complexity that comes with large code bases.&lt;/p&gt;
+if(i===pickRandomtext){
+    console.log(pickRandomtext[i]);
+    alert(&quot;You have been given&quot; + &quot; &quot; + list4[i]);
+    return;
+}
 
-&lt;p&gt;As others have suggested, testing becomes very important. If you test each module in isolation, it helps to ensure you don&amp;#39;t accidentally make a small change that ripples throughout the system. Likewise, system level (integration) tests are useful for ensuring your little pieces still fit together to accomplish your overall goal.&lt;/p&gt;
 
-&lt;p&gt;With small projects, it&amp;#39;s easy enough to just start writing and get something working, but this quickly gets messy when you write a lot, so plan ahead and design your structure before writing anything. Mentally break down the problem into smaller problems that help solve the big problem. Write down this design -- it will be the structure that you will want to follow as you begin coding. Then start filling in the pieces. You can start at the top and work your way down by putting in stubs or scaffolding for the low-level things that aren&amp;#39;t yet built, or you can start at the bottom and build the little pieces, then build the higher-level parts that combine their efforts into the bigger picture.&lt;/p&gt;
+}
 
-&lt;p&gt;And as others have said, if you find things getting messy, don&amp;#39;t be afraid to refactor. Rename, reorganize, combine and simplify -- do whatever you need to tidy up the complexity. Having good tests will help you do this more confidently, since you&amp;#39;ll know what the code should do and you&amp;#39;ll be able to easily run the tests to ensure it actually works as intended.&lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Experience/practise, the more you do it, the easier it becomes.&lt;/p&gt;
 
-&lt;p&gt;You don&amp;#39;t try and remember every line of code - you remember entry and exits and ensure you can work between them - e.g. if you enter data on screen x, you remember that will end up in the database in table y. Keeping notes/diagram can help this.&lt;/p&gt;
+});
+</code></pre>
 
-&lt;p&gt;To keep things simpler in code you write - keep it simple and readable, keep it all &lt;a href="http://en.wikipedia.org/wiki/Loose_coupling"&gt;Loosely coupled&lt;/a&gt; so small changes in one area don&amp;#39;t impact any others - you objective is to have lots of simple components joined together simply (rather than links resembling a plate of spaghetti) &lt;/p&gt;
-&lt;/div&gt;&lt;div class="md"&gt;&lt;p&gt;Nothing new here. It seems here that you are getting to the point where you should do a rough designs of your projects before starting to write them. Spend a day or two outlining the basic design (do I need an input system? event system? internal messaging? render? how will they work together?) and you will not only halve your programming time but will also make it easier to code it as well.&lt;/p&gt;
+<p>The following is the HTML docutment:</p>
+
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Basic Random List Generator&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;BRLG.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=buttonA&gt; List One &lt;/div&gt;
+
+&lt;div class=buttonB&gt; List Two &lt;/div&gt;
+
+&lt;div class=buttonC&gt; List Three &lt;/div&gt;
+
+&lt;div class=buttonD&gt; List Four &lt;/div&gt;
+&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;reddit.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>The following is the CSS file:</p>
+
+<pre><code>.buttonA, .buttonB, .buttonC, .buttonD {
+text-align: center;
+height: 50px;
+width: 100px;
+background: #1e5799; /* Old browsers */
+background: -moz-linear-gradient(top,  #1e5799 0%,     #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8)); /*   Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=&#39;#1e5799&#39;, endColorstr=&#39;#7db9e8&#39;,GradientType=0 ); /* IE6-9 */
+color: white;
+text-shadow: 1px 1px black;
+float: left;
+margin-right: 4px;
+}
+</code></pre>
+
+<p>Feel free to correct anything or let me know if you have any questions about how something works. </p>
+</div><div class="md"><p>Hey, I&#39;m working on making your buttons now using JavaScript. I&#39;ll let you know when it&#39;s done. I&#39;m creating an array with the texts inside of it, and a function to sort through the array and pick out a text at random. Each heading will be a button that will activate the function. Can you send me the lists of texts? That would make it easier than using placeholders. I can also teach you, if you&#39;d like. </p>
+</div><div class="md"><p>Use a double dimension array.</p>
+
+<p><code>char*[]</code> or <code>char**</code> or <code>char[][]</code></p>
+
+<p>If you know the number of sentences you&#39;re receiving, then you can use the first option, which assumes a number of variable length sentences held in a fixed array (known <em>number</em> of sentences).</p>
+
+<p>something like this:</p>
+
+<pre><code>[&quot;Hello world!&quot;]
+
+[&quot;This is r/learnprogramming!&quot;]
+
+[&quot;This is another message of variable length&quot;]
+
+[&quot;This array contains 4 sentences, each of variable length!&quot;]
+</code></pre>
+
+<p>You can use a double pointer when you have a variable number of sentences and a variable sentence length. </p>
+
+<p>Use the last option if you know the exact length of each sentence and how many sentences you&#39;re going to have.</p>
+
+<p>Hope this helped! good luck</p>
+</div><div class="md"><p>I wrote this up quickly, this is how you would read an unknown amount of lines (that are of an unknown length) from a file. I tested it and it works/no memory leaks</p>
+
+<p><a href="http://pastebin.com/3LJN88g8">http://pastebin.com/3LJN88g8</a></p>
+</div><div class="md"><p>Use an array of sentences.</p>
+</div><div class="md"><p>It seems like you&#39;re using the pre-built binaries, and opencv got rid of support for MinGW pre-built binaries.  Currently, only Visual Studio is supported with pre-built libraries.</p>
+
+<p>Visual Studio will be easier to set up than MinGW/Code Blocks.  I would personally go that route since it&#39;s the path of least resistance.</p>
+
+<hr/>
+
+<p><strong>Code Blocks</strong></p>
+
+<p>If you&#39;re deadset on MinGW and Code::Blocks, then you&#39;ll need to build opencv from source.  Follow the steps listed in <a href="http://kevinhughes.ca/tutorials/opencv-install-on-windows-with-codeblocks-and-mingw/">the tutorial you&#39;ve been using</a>.  </p>
+
+<p>CMake will generate the MinGW libraries for you to use.</p>
+
+<p>In Code Blocks, you&#39;ll need to add the opencv include files to your build path.  Additionally, you&#39;ll have to add the static binaries you just generated in the linker.  The tutorial describes how to do this.</p>
+
+<hr/>
+
+<p><strong>Visual Studio</strong></p>
+
+<p>If you end up using Visual Studio, you can make a new project right away.</p>
+
+<p>Right-click on the project&#39;s name in the Solution Explorer and go to Configuration Properties -&gt; C/C++ -&gt; General.  In &quot;Additional Include Directories&quot;, click the dropdown arrow, and click Edit.  Add the directory where opencv/include is located.  For me, it is C:\opencv\build\include.  Press OK</p>
+
+<p>While you&#39;re still in Project Properties, go to Configuration Properties -&gt; Linker -&gt; General.  In &quot;Additional Library directories&quot;, you should add the directory where the Visual Studio libraries are installed.  For me, this is C:\opencv\build\x86\vc12\lib.  Keep in mind that a 64-bit build of your project requires x64 instead of x86.  Also, your version of Visual Studio matters.  I&#39;m using Visual Studio Community (highly recommend this free version), so I selected vc12.</p>
+
+<p>At this point, you should be able to use opencv&#39;s features in your project.</p>
+
+<p><strong>Edit:</strong> VS linker path should be \vc12\lib according to <a href="http://docs.opencv.org/doc/tutorials/introduction/windows_visual_studio_Opencv/windows_visual_studio_Opencv.html">this link</a>.</p>
+</div><div class="md"><blockquote>
+<p>since Code::Blocks doesn&#39;t include MinGW anymore)</p>
+</blockquote>
+
+<p>Yes, it does.</p>
+
+<blockquote>
+<p>The codeblocks-13.12mingw-setup.exe file includes the GCC compiler and GDB debugger from TDM-GCC (version 4.7.1, 32 bit). The codeblocks-13.12mingw-setup-TDM-GCC-481.exe file includes the TDM-GCC compiler, version 4.8.1, 32 bit. </p>
+</blockquote>
+</div><div class="md"><ul>
+<li>Try and find somewhere that will take you on as an intern. Probably difficult unless you have connections.</li>
+<li>Work on some open source software. It looks very impressive if you can say you&#39;ve contributed code to Firefox, for example.</li>
+<li>Work on a portfolio.</li>
+</ul>
+</div><div class="md"><p>Are you trying to make the best of your year in terms of overall learning, or in terms of increasing your chances of getting accepted next year?</p>
+</div><div class="md"><p>A number of companies offer data feeds.  The organization that I work for subscribes to Bloomberg for their market data.  They provide a.software suite got analysis of the data and the feed itself.  </p>
+</div><div class="md"><p>This book: <a href="http://www.amazon.com/Flash-Boys-Michael-Lewis/dp/0393244660">Flash Boys</a> provided a pretty incredible look at how things are setup and how we (the average, individual investor) is always going to be at a loss the way the system has been set-up.</p>
+</div><div class="md"><p>From people like Reuters, who themselves get it through contracts with the stock exchanges.  Real-time market data is pretty expensive - most of what you can get for free or cheap is delayed or limited in other ways.</p>
+</div><div class="md"><p>The simplest way is to name the thumbnail either &quot;$username.jpg&quot; or &quot;$user_id.jpg&quot;. Something that is unique between the users.</p>
+
+<p>Then just do:</p>
+
+<pre><code>&lt;img src=&quot;profiles/thumbnail_&lt;?php echo $user_id; ?&gt;.jpg&quot; ... /&gt;
+</code></pre>
+</div><div class="md"><p>Always start at 0 if for no other reason most collections you iterate on will start at index 0.  Its not hard to make the conversion in your head and soon enough you will count everything beginning at 0.</p>
+</div><div class="md"><p>A <code>for</code> loop in&nbsp;C doesn&#39;t really have &quot;a variable which will dictate how many times the loop should be run.&quot; Rather, it has a <em>condition</em>, and the loop will iterate for as long as the condition is true.</p>
+
+<p>To address your question, think about how many times the following loops will iterate:</p>
+
+<pre><code>for (int i = 0; i &lt; 2; ++i) {
+    printf(&quot;Loop one: %d\n&quot;, i);
+}
+
+for (int i = 1; i &lt; 2; ++i) {
+    printf(&quot;Loop two: %d\n&quot;, i);
+}
+
+for (int i = 0; i &lt;= 2; ++i) {
+    printf(&quot;Loop three: %d\n&quot;, i);
+}
+
+for (int i = 1; i &lt;= 2; ++i) {
+    printf(&quot;Loop four: %d\n&quot;, i);
+}
+</code></pre>
+</div><div class="md"><p>The convention is to start counters at 0 because 0 is a valid number.  After awhile, starting at 1 will feel awkward, and that&#39;s how other programmers will react to it.</p>
+
+<p>All of these will execute twice:</p>
+
+<pre><code>for(int i=0; i&lt;2; ++i) {}
+
+for(int i=0; i&lt;=1; ++i) {}
+
+for(int i=1; i&lt;=2; ++i) {}
+</code></pre>
+</div><div class="md"><p>What a question. It depends on your condition, ie the operator. </p>
+</div><div class="md"><p>If you start at zero and want the loop to run twice then make sure the loop stops at one. This is often done using less than:</p>
+
+<pre><code>for (int i = 0; i &lt; 2; i++)
+</code></pre>
+</div><div class="md"><p>I recommend you stick with what you&#39;re doing and to write some programs. Programming is best learned by doing.</p>
+
+<p>Don&#39;t worry too much about whether some resources are destructive to beginners. Many people will have reasons why one thing or the other is bad but your measure, as a beginner, should be whether you can write programs of increasing scope and complexity.</p>
+</div><div class="md"><p>Best way to learn, in my experience, is to just think of a program you want to make, and work on it. Google when you get stuck. It doesn&#39;t have to be the perfect idea, just start with something simple. Actually running into problems and having to find solutions on your own will speed up learning a lot.  </p>
+</div><div class="md"><blockquote>
+<p>For most skills or trades, people point to a few different resources that are considered very good by almost everyone. But when it comes to programming, you have people ask about things like codeacademy, and you get a third of people saying it&#39;s great, a third saying it&#39;s terrible, and a third saying it&#39;s okay.</p>
+</blockquote>
+
+<p>This is not a problem unique to programming. The problem is most people are not good teachers; they often don&#39;t know how learning works in general, they just know how learning worked for <em>them</em>, and are eager to give advice along that direction. The state of online education is like a quilt of many thousands of people trying to teach something which will often be effective to only some percentage of its consumers. This is not in any way a bad thing. It means there are lots of sources which can appeal to different people&#39;s style of learning and different people&#39;s objectives. But it does make the world of independent learning rather daunting. </p>
+
+<p>My advice is pick some good universities (especially large public universities that appeal to a large diversity of students), go to their website, and see how they shaped their curriculum. There is a lot of thought on curriculum design going on in these schools, and you can benefit from what they think is a general way to shape an education in this field. </p>
+</div><div class="md"><p>I think that a good way - use a variable called &quot;delay&quot;
+and so construction:
+&quot;wait &#39;delay&#39; sec&quot;
+say line for &quot;delay&quot;*0.5 sec
+all bind to a variable or two variables. By changing the coefficients - change speed</p>
+</div><div class="md"><p>+1 for CS50. This will teach you basic foundations in C, move to PHP and a bit of JavaScript for the web. This will be a solid start for being a full stack developer.</p>
+
+<p>You&#39;re going to need to be proficient in order to manipulate the browser as in the samples. I would recommend eloquent javascript to get up to speed:<br/>
+<a href="http://eloquentjavascript.net">http://eloquentjavascript.net</a><br/>
+and then to help master it, Professional JavaScript:  <a href="http://www.amazon.com/Professional-JavaScript-Developers-Nicholas-Zakas/dp/1118026691">http://www.amazon.com/Professional-JavaScript-Developers-Nicholas-Zakas/dp/1118026691</a></p>
+
+<p>Once you have the fundamentals I would recommend learning a framework to help you build web apps for clients quickly and efficiently.</p>
+
+<p>For Ruby (and Rails) I would recommend Michael Hartl&#39;s Rails Tutorial book that teaches you how to build and <em>test</em> a Twitter clone. <a href="https://www.railstutorial.org">https://www.railstutorial.org</a></p>
+
+<p>For JavaScript, Meteor is becoming really popular and makes web apps that are <em>really</em> fast and snappy on the client end. DiscoverMeteor shows you how to build a mini Reddit clone. I&#39;ve built 3 production Meteor apps and they are now secure, fast, and performant (even with thousands of concurrent users). <a href="https://www.discovermeteor.com">https://www.discovermeteor.com</a>  A further step would be to use better architecture which is a bit out of scope for the book (you could even start this book now and revisit after CS50), but I use this setup for prod. apps: <a href="https://github.com/AdamBrodzinski/meteor-generate">https://github.com/AdamBrodzinski/meteor-generate</a></p>
+
+<p>I&#39;m sure there are other good frameworks and languages but i&#39;ve had great luck with these. Currently I use Meteor for almost all projects due to the customer demands of needing fast web apps.</p>
+</div><div class="md"><p>If you have no programming experience at all, I&#39;d start with something like <a href="http://learnpythonthehardway.org/book/">Learn Python The Hard Way</a> or MIT&#39;s <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00sc-introduction-to-computer-science-and-programming-spring-2011/">Introduction To Computer Science and Programming</a>. </p>
+
+<p>I&#39;d honestly recommend <a href="http://cs50.tv/2014/fall/#about,lectures">CS50</a>(C) or <a href="http://see.stanford.edu/see/courseinfo.aspx?coll=824a47e1-135f-4508-a5aa-866adcae1111">Stanford&#39;s 106A introduction course</a>(Java) instead, if you&#39;re absolutely new to programming because the MIT course is freakin&#39; hard.  You learn a lot, but it pushes you and if you haven&#39;t had math in a while like me, it&#39;s even rougher.</p>
+
+<p><a href="http://cs75.tv/2012/summer/">
+CS75</a> is Harvard&#39;s course on web development.  All the lectures and materials are available online for free.  It teaches a LAMP stack which is Linux, Apache, MySql and PHP. The class assumes you have a decent understanding of HTML/CSS and programming.  I think it&#39;s a decent primer on full stack web programming.</p>
+
+<p>The appliance CS75 uses is a little bit of a pain to set up so if you do decide to take that route, PM me and I&#39;ll walk you through the setup so you&#39;re not pounding the keyboard in frustration trying to get it to work.</p>
+
+<p>For C# <a href="http://www.robmiles.com/c-yellow-book/">The Yellow Book</a> is a pretty good starting point. </p>
+
+<p>That&#39;s all I got. Hopefully it&#39;s somewhat helpful.</p>
+</div><div class="md"><p>loving the effect in the background of: <a href="http://jviewz.com/">http://jviewz.com/</a></p>
+</div><div class="md"><p>As people have said already I think Python is a great place to start as an introduction to programming in general and the logic behind it which is very transferable skills wise.</p>
+
+<p>If you&#39;d like to get on a similar level talking to your dev teams I&#39;d recommend speaking to them, ask what tools &amp; technologies they use. From my experience every organisation will use their own combination of these tools &amp; technologies so you could learn a different set that people on here suggest but if the organisation you work for uses something radically different the concepts might transfer but its not going to be as easy as if you get to grips with the same stuff they use on a daily basis. Plus if the place you work for is pushing out some good work then you will get a feel for what clients expect too.</p>
+
+<p>Also it seems like you want to build websites in general but as I&#39;m sure you&#39;re aware at your current job people usually work in front-end (actual web page content, appearance etc) or back-end (API development, databases etc) development with some cross over usually. In your case I think you can learn concepts for both in a 6 month period but I would definitely drift towards front-end development if you are interested in user interfaces and experiences.</p>
+
+<p>If you do want to go the front-end route I&#39;d probably look at stuff like jQuery, AngularJS, Node.js, modernizr and generally learn about JavaScript (not to be confused with Java) first as many of these frameworks use JavaScript in some capacity and of those three websites you sent a link for they use frameworks from the above.</p>
+
+<p>I think finally I&#39;d say do what you are interested in, people may tell you this framework is awesome or you should only ever build stuff the way they say, while there will be good design guides and popular technologies at the end of the day people are interested in what gets the job done best and meets their needs, so play about and good luck! </p>
+</div><div class="md"><p>Are there coders who work there as well? Would your boss take unkindly to you sitting in with them, maybe start taking on a few light coding duties after you&#39;ve gone through a book or two on $languageYourShopUses? </p>
+</div><div class="md"><p>Unless you want to work for large enterprise type companies, I wouldn&#39;t bother with C++ or C#.  If you want to get into development learn one of the following stacks - Ruby on Rails, Python/Django, or Mongo Express Angular Node (MEAN).  These are extremely popular and highly used for small and medium size websites.  </p>
+
+<blockquote>
+<p>be able to design/code some really slick responsive interaction-based experiences.</p>
+</blockquote>
+
+<p>If this is your goal, focus on JavaScript and the MEAN stack.  There are numerous JS frameworks you can specialize in and that are in high demand.</p>
+</div><div class="md"><p>I&#39;d go with LPTHW to get started with Python, then learn Django.  Don&#39;t start crying if you can&#39;t understand why Django is the way it is or get bogged down in needing to understand the entire design of it, just make sure you can do the things in their main tutorial.  Don&#39;t waste your life worrying about which version of Python you&#39;re learning, just read LPTHW.  C++ would be a fairly ridiculous choice for someone worried about doing web projects.</p>
+</div><div class="md"><p><a href="http://theodinproject.com">http://theodinproject.com</a></p>
+
+<p>Ruby on Rails and more</p>
+
+<p><a href="http://freecodecamp.com">http://freecodecamp.com</a></p>
+
+<p>Javascript and more</p>
+
+<p>Both of these are detailed. There are plenty of modifications out there to these on the web as well. Good luck!</p>
+</div><div class="md"><p>Google released a &quot;class&quot; on Android programming on Udacity. You can watch all the videos for free. That&#39;s a good place to start learning especially because they go into best practices often. </p>
+</div><div class="md"><p>Android development is at a weird point in its life cycle. Most resources are geared towards the old style of using Eclipse with the Android add-on, where that is slowly being replaced as people make their way over to Android Studio, Google&#39;s proprietary development environment.</p>
+
+<p>Resources are relatively scarce for the new environment, but most of the old practices still apply. Might be in your best interest to read up on the Android SDK. You&#39;ll need to familiarize yourself with the new event handlers, since the input method is different than in normal Java (you have to account for touch, obviously.)</p>
+
+<p>Most books are not free, but you can easily find PDFs online if you do a little bit of digging. I would suggest Head First Android Development, only for its &quot;less-technical&quot; approach to introducing concepts. Once you understand them, then perhaps move on to something a little more professional, like Learn Java for Android Development. Otherwise, there are plenty of free &quot;Hello World&quot; and other basic tutorials online through several &quot;code schools&quot; if you&#39;d rather be walked through some of the development, rather than reading about it.</p>
+
+<p>Hope that helps!</p>
+</div><div class="md"><p>No better place than here: <a href="http://developer.android.com/training/index.html">http://developer.android.com/training/index.html</a></p>
+</div><div class="md"><blockquote>
+<p>As a general rule, it is better to design performance measures according to what one actually wants in the environment, rather than according to how one thinks the agent should behave.</p>
+</blockquote>
+
+<ul>
+<li>Peter Norvig, <em>Artificial Intelligence: A Modern Approach</em></li>
+</ul>
+
+<p>&#39;Become a better coder&#39; is not a very good objective function. Figure out what exactly you want to do, figure out how to do it, then don&#39;t reconsider for at least a month.</p>
+</div><div class="md"><p>There is no language that will make you a super coder. Even if there was you&#39;d never find it by reading the introductory material for every language in existence</p>
+
+<p>If the people around you work an 8 to 8 job debugging legacy code then they&#39;re <em>possibly</em> not as brilliant (which is an awfully nebulous concept in the first place) as it seems (no offense here, I don&#39;t even have a job yet)</p>
+
+<p>Overwhelming yourself with reading material on weekends that you treat as a second job is a great way to feel overwhelmed</p>
+
+<p>What I&#39;d do:</p>
+
+<ol>
+<li>Chill out a little </li>
+<li>Treat coworkers as coworkers, not geniuses (even if they were brilliant this would be good advice)</li>
+<li>mercilessly cull reading material until you have a relatively small relatively focused set</li>
+<li>Stick to one language for awhile
+
+<ol>
+<li>Even if it feels you&#39;ll be &quot;left behind&quot;</li>
+<li>Even if it&#39;s not cool anymore</li>
+<li>Even after it gets harder than making for loops</li>
+</ol></li>
+<li>See also the comments in that thread you linked</li>
+</ol>
+</div><div class="md"><blockquote>
+<p>Also, I won&#39;t accept a first job that makes less than 45k a year. Thoughts?</p>
+</blockquote>
+
+<p>I think you should focus on becoming a competent programmer first rather than thinking about how much $$$ you&#39;re going to make for skills that you still don&#39;t have.</p>
+</div><div class="md"><p>When you&#39;re learning it doesn&#39;t matter what language you use. Your goal is to learn how to program since programming skill carries over to all languages. For the same reason, learning tools traditionally used by front end development doesn&#39;t tie you to becoming a front end developer - when you can program you can use that knowledge to be whatever type of developer you wish.</p>
+</div><div class="md"><p>Have you read the <a href="http://www.reddit.com/r/learnprogramming/wiki/faq#wiki_which_programming_language_should_i_start_with.3F">FAQ</a>?</p>
+</div><div class="md"><p>If you&#39;re wanting more money, your best bet is enterprise. Enterprise just throws money left and right without much thought (mostly because management almost always has no technical background, but makes technical decisions anyway).</p>
+
+<p>If that&#39;s a route you want to take, you can pretty much put an ax in the back of python and jump in to java or c#.</p>
+
+<p>Also, massive player aside, my anecdotal experience is that small to medium programming firms don&#39;t pay anywhere near enterprise levels.</p>
+
+<p>That said, the other posters are correct. Thinking about wage is not something you should do (aside from having a target in mind) till you have a portfolio to demand that wage.</p>
+
+<p>Also, don&#39;t fall for break time gimmicks. Lots of programming firms say &quot;our break room has an Xbox!&quot; To distract you from the fact that they pay $20,000 less than everyone else.</p>
+</div><div class="md"><p>Z-Index.</p>
+
+<p>If X is horizontal, and Y is vertical, Z is your depth axis. It allows you to place elements in layers. Use the Z-index CSS property to put your elements on new layers. Think of it as a stack of papers, and each paper can potentially have something written on it at the same position of the piece of paper on top of it. The higher the z-index, the higher up in the &quot;stack&quot; it will be.</p>
+
+<p>Hope that helps.</p>
+</div><div class="md"><p>HTML isn&#39;t a programming language.</p>
+</div><div class="md"><p>While questions like these are welcome here, I&#39;d suggest stack overflow for this.</p>
+</div><div class="md"><p>awk is as old as they come.  All about pattern matching and producing formatted output.  Should already be on the mac mini.</p>
+</div><div class="md"><p>Is Perl an option?</p>
+</div><div class="md"><p>Try <a href="https://www.perl.org">Perl</a>.</p>
+</div><div class="md"><p>Perl.</p>
+
+<p>Use the following:</p>
+
+<ul>
+<li><a href="https://metacpan.org/pod/Text::CSV_XS">https://metacpan.org/pod/Text::CSV_XS</a></li>
+<li><a href="https://metacpan.org/pod/HTML::Table">https://metacpan.org/pod/HTML::Table</a> (You could do this by hand, too, if you&#39;d like)</li>
+<li><a href="https://metacpan.org/pod/DBI">https://metacpan.org/pod/DBI</a>  (From this suite, use DBD::MySQL or DBD::SQLite for example)</li>
+</ul>
+</div><div class="md"><p>AWK!</p>
+</div><div class="md"><p>I think watin is no longer developed.  If you like it but would like to use something more current; you should look at selenium webdriver.  It is the defacto standard for functional testing in a browser. Even better there are a couple wrappers built around it that reduce the boilerplate required.  If you prefer to stick with .NET, take a look at canopy. It is built on f# and provides a very terse syntax.  If you don&#39;t mind using ruby you might be interested in watir webdriver.</p>
+</div><div class="md"><p>I didn&#39;t believe you until this part;</p>
+
+<blockquote>
+<p>I&#39;m trying to gather a list of talking points in order to get this project killed</p>
+</blockquote>
+
+<p>Hats off to you for being professional about this.  It&#39;s a bad idea and I&#39;d like to help you expand on the reasons why that is so.</p>
+
+<ul>
+<li><p>Technical debt.  One person, with very limited experience can&#39;t pull off a job like this.</p></li>
+<li><p>Unrealistic expectations.  Where did this 2 month deadline come from?  Has the project been properly spec&#39;ed, planned and estimated.  I doubt it.</p></li>
+<li><p>Migration.  All the existing information from the previous system needs to be merged into the new one.  That in itself is a massive and risky task.</p></li>
+<li><p>Training.  Everyone in the company knows how to use the existing system. They will all need to be trained on the new system.</p></li>
+<li><p>Transition.  How/when does the transition from the old to the new take place? What are the fallbacks and recovery plans?</p></li>
+<li><p>Fixes/Workarounds.  Something is wrong with the existing system.  The decision to re-write a system is a massive one.  Fixing something is always easier than re-building it from scratch.  Your search problems might be as simple as a few tweaks. They might not be but it&#39;s worth exploring first.</p></li>
+<li><p>People.  I find that a lot of problems with a large system stem from the way they are used.  Is the root cause the way the system is used (ie. incorrect file names, tags, etc)?  If so replacing the system isn&#39;t the right path.</p></li>
+<li><p>Of the shelf solutions.  Basic document management has been solved before, by bigger dogs than you.  Personally, I&#39;d be spending that two months researching and trialling other products.</p></li>
+</ul>
+</div><div class="md"><p>I don&#39;t know how difficult this is using a laptop keyboard, but AFAIK, it&#39;s possible.</p>
+
+<p>Press and hold the ALT key, press 0165 (that&#39;s 0, 1, 6, 5) from the numeric keypad keys using the Fn key, then release the ALT key. On laptop, the numeric keypad keys are combined onto the 7, 8, 9; U, I, O; J, K, L; and M keys.</p>
+</div> as well.&lt;/p&gt;
 
 &lt;p&gt;Big companies are doing this for weeks/months before they even write a line of code. Especially when they have multiple teams working on the same project.&lt;/p&gt;
 

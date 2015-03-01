@@ -5,35 +5,38 @@ from urlparse import urlparse
 from tldextract import tldextract
 import logging
 import praw
+import HTMLParser
 
 
 LOG_FILENAME = 'redditScraper.log'
 logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
+h = HTMLParser.HTMLParser() #we need this to unescape the escaped characters
 
 
 #create a file for saving the reddit stuff to
-f1 = open('prawScrape.html', 'r+')
+f = open('prawScrape.html', 'r+')
 
 #let's grab the stuff from reddit using praw
 reddit = praw.Reddit(user_agent='example')
 lp = reddit.get_subreddit('learnprogramming')
 for x in lp.get_new(limit=100):
     for c in x.comments:
-        f1.write(c.body_html.encode('utf-8'))
+        f.write(h.unescape(c.body_html.encode('utf-8'))) #do this in the other order?`
 
 
+'''
+#or get input through a file on the command line
 f = open(sys.argv[1]) #remember sys.argv[0] is the name of the script
 					  #open defaults to read if no argument given
+'''
 
 resources = {} #create a dictionary to keep the resource names in and count the number of appearences
-
-soup = BeautifulSoup(f1) #parse the document. we're using the praw version now
+soup = BeautifulSoup(f) #parse the document. we're using the praw version now
 links = soup.find_all('a') #find all a href link tags
 # we need to find markdown links also
 
-
 for x in links:
-	print x
+	print x1`
 	burl = urlparse(x['href']).hostname 
 	
 	if burl:
