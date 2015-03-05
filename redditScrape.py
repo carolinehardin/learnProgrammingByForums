@@ -12,31 +12,34 @@ LOG_FILENAME = 'redditScraper.log'
 logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
 h = HTMLParser.HTMLParser() #we need this to unescape the escaped characters
 
+'''
 
 #create a file for saving the reddit stuff to
 f = open('prawScrape.html', 'r+')
 
 #let's grab the stuff from reddit using praw
-reddit = praw.Reddit(user_agent='example')
+reddit = praw.Reddit(user_agent='script to understand what links people post - research by /u/cstrumpet')
 lp = reddit.get_subreddit('learnprogramming')
-for x in lp.get_new(limit=100):
-    for c in x.comments:
-        f.write(h.unescape(c.body_html.encode('utf-8'))) #do this in the other order?`
+for x in lp.get_top(limit=None):  # we put a limit of none b/c we want everything
+    for c in x.comments:			#this will return at most 200 comments per thread, which is well within the max for this forum
+       f.write((h.unescape(c.body_html)).encode('utf-8')) #unescape the html and put in unicode
 
 
 '''
-#or get input through a file on the command line
+#or get input through a file on the command line, this is much faster
 f = open(sys.argv[1]) #remember sys.argv[0] is the name of the script
 					  #open defaults to read if no argument given
-'''
+
+
+
 
 resources = {} #create a dictionary to keep the resource names in and count the number of appearences
 soup = BeautifulSoup(f) #parse the document. we're using the praw version now
 links = soup.find_all('a') #find all a href link tags
-# we need to find markdown links also
+# we need to find markdown links also?
 
 for x in links:
-	print x1`
+	print x
 	burl = urlparse(x['href']).hostname 
 	
 	if burl:

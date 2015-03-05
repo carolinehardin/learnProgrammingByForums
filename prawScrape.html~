@@ -280,8 +280,6 @@ Feedback would be great!</p>
 </div><div class="md"><p>This will be of great use to me. I really need to get back into the coding shape, I&#39;ve lost my touch :(</p>
 </div><div class="md"><p>saved, saved, saved.</p>
 </div><div class="md"><p>Thank you so much!! Much easier to search through than the course sites themselves. Coursera doesn&#39;t sort by newest course well. I&#39;m going to subscribe right now!!</p>
-</div><div class="md"><p>I&#39;m currently taking a MOOC on Python for beginners (via Coursera).  Could someone recommend a class that would either complement or be a good next step for me?</p>
-</div><div class="md"><p>Thanks op! I already have a degree and a job, and I find MOOCS invaluable to continuing my advancement as a developer. </p>
 </div><div class="md"><p>If you&#39;re not concerned with programming everything yourself so much, Unreal might be the way to go if you&#39;re creating a shooter, horror game, or something else that remains around those types. The Blueprints system is really intuitive and very nice to work with, and there are plenty of tutorials out there.</p>
 
 <p>Unity is definitely more suited toward a smaller, more independent development team, even just one person, but it comes at the cost of visuals, which Unreal takes without competition. Unity is usually easier to use however, as you can use a variety of languages. Plus you&#39;ve got an advantage in being able to deploy your game into a web player, so you don&#39;t need to download an executable to play it. The Unity community and Asset Store are also far more active and populated than UE4.</p>
@@ -330,7 +328,6 @@ For example:</p>
 <p>If there&#39;s terminology or anything you don&#39;t understand, you should consider googling the specific problem you are having.</p>
 
 <p>Good luck!</p>
-</div><div class="md"><p>Sounds like you&#39;re trying to make a twitch plays Pokémon clone</p>
 </div><div class="md"><p><a href="http://ajf.me/websocket/">Websockets</a> is what you&#39;re looking for</p>
 </div><div class="md"><p>Python tuples are immutable so you can not change (mutate) them efficiently.</p>
 </div><div class="md"><p>What Netstroyer said.  Use a list.  If that still isn&#39;t efficient enough use a numpy array.</p>
@@ -422,9 +419,6 @@ For example:</p>
 
 <pre><code>table.getModel().addTableModelListener(new MyTableListener() );
 </code></pre>
-</div><div class="md"><p>It sounds like you had these files checked in, then ignored in a subsequent commit, and tried to merge master into your working branch. Because those files are no longer tracked for future changes, the old files will be the only versions to be acknowledged. If you&#39;re working on them, then don&#39;t ignore them.</p>
-
-<p>Typically you want to ignore the dependencies (you just run &quot;npm i&quot;) and files that are auto-generated (just regenerate them).</p>
 </div><div class="md"><p>This may or not be helpful, I just got the gmail API working on Android, and I was having the same authorization error until I added  &quot;oauth2:&quot; in front of the scope. </p>
 
 <p>&quot;oauth2:<a href="https://www.googleapis.com/auth/gmail.compose">https://www.googleapis.com/auth/gmail.compose</a>&quot;</p>
@@ -755,9 +749,6 @@ void setPosition(double x, double y, double z, double t)
 </div><div class="md"><p>Very few other disciplines are skin to programming in the portability of ideas, and because there is so much software out  and because a single line can be the dieter between success and failure, it&#39;s not viewed in the same light as, say, asking for an idea for a book.  You can&#39;t teach someone artistic talent, someone cannot say, put the last brush stroke on this painting.  If you ask  for MN an idea for a book you still have hundreds of pages I front of you that need to be written.  There&#39;s no analog to physical labor (construction, food service), though i suppose one could argue that you could send a 99% complete blueprint to someone and ask for an idea to finish them, though you&#39;d still be giving them the entire finished product and trusting them not to copy.  Code is simultaneously complex and insignificant, i mean, it&#39;s just one line.  It leads to this weird dichotomy where, it&#39;s super easy to share an idea, or a concept.  The problem with this is that it&#39;s easy to justify asking for help, like i said, it can be as simple as just one line, and the set of exercises to teach programming is finite, so many people go though the exact same set of assignments so the same questions come up over and over.</p>
 
 <p>I know I&#39;m rambling, but I&#39;m tired.  I get why they ask, it doesn&#39;t make the lack of effort to understand it for themselves right but i do understand why they ask.</p>
-</div><div class="md"><p>Sometimes people just want to be part of a back-and-forth or discussion about programming. A lot of people who use this sub don&#39;t know other people to talk to about programming, that&#39;s why they are here. </p>
-
-<p>As someone who is a beginner I like seeing some lesser questions. They give me a chance to see what concepts other beginners are having trouble with, or see if I&#39;ve learned something that I could explain to someone else.</p>
 </div><div class="md"><p>Or, my own personal peeve, why do people think asking reddit &quot;What happens if ...?&quot; is a better learning strategy than trying it?</p>
 
 <p>So often, by the  time someone has typed up the question, they could have written the damn code and learned something.</p>
