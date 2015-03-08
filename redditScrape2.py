@@ -20,7 +20,7 @@ f = open('prawScrape.html', 'r+')
 #let's grab the stuff from reddit using praw
 
 reddit = praw.Reddit(user_agent='script to understand what links people post - research by /u/plzHowDoIProgram')
-reddit.login('plzHowDoIProgram', 'Uqyuuy1PLa4C2KrLC0Vn')
+reddit.login('plzHowDoIProgram', '')
 lp = reddit.get_comments('learnprogramming', limit=None)
 for c in lp:
 		f.write((h.unescape(c.body_html)).encode('utf-8')) #unescape the html and put in unicode
