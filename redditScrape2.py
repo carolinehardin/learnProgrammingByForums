@@ -21,24 +21,15 @@ f = open('prawScrape.html', 'r+')
 
 reddit = praw.Reddit(user_agent='script to understand what links people post - research by /u/plzHowDoIProgram')
 reddit.login('plzHowDoIProgram', 'Uqyuuy1PLa4C2KrLC0Vn')
-lp = reddit.get_subreddit('learnprogramming')
+lp = reddit.get_comments('learnprogramming', limit=None)
+for c in lp:
+		f.write((h.unescape(c.body_html)).encode('utf-8')) #unescape the html and put in unicode
+		
 
-lp_comments = lp.get_comments()
-for c in lp_comments:
-	f.write((h.unescape(c.body_html)).encode('utf-8')) #unescape the html and put in unicode
 
-'''
-for x in lp.get_top(limit=None):  # we put a limit of none b/c we want everything
-    for c in x.comments:			#this will return at most 200 comments per thread, which is well within the max for this forum
-       f.write((h.unescape(c.body_html)).encode('utf-8')) #unescape the html and put in unicode
-'''
-
-'''
 #or get input through a file on the command line, this is much faster
 f = open(sys.argv[1]) #remember sys.argv[0] is the name of the script
 					  #open defaults to read if no argument given
-
-'''
 
 
 resources = {} #create a dictionary to keep the resource names in and count the number of appearences
@@ -62,10 +53,10 @@ print resources
 
 #now go back through the file and find how many times in all text each resources shows up
 
-#with open(sys.argv[1],'r') as inputFile:
-#	allText = inputFile.read()
-with f as inputFile:
-	allText = f.read()
+with open(sys.argv[1],'r') as inputFile:
+	allText = inputFile.read()
+#with f as inputFile:
+#	allText = f.read()
 	for key in resources:
 		totalCount = 0
 		totalCount = allText.count(key)
