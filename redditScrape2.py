@@ -47,16 +47,12 @@ for x in links:
 			resources[resourceFound] = (resources[resourceFound]+1)  #if in list, increment count
 		else:
 			resources[resourceFound] = 1  #if not in list, add it 
-	else: 
-		print x
 print resources
 
 #now go back through the file and find how many times in all text each resources shows up
 
 with open(sys.argv[1],'r') as inputFile:
 	allText = inputFile.read()
-#with f as inputFile:
-#	allText = f.read()
 	for key in resources:
 		totalCount = 0
 		totalCount = allText.count(key)
