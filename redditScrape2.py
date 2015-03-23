@@ -1,4 +1,4 @@
-import os, logging, praw, HTMLParser, ConfigParser, pprint
+import os, logging, praw, HTMLParser, ConfigParser, pprint, csv
 from bs4 import BeautifulSoup
 from urlparse import urlparse
 from tldextract import tldextract
@@ -12,7 +12,7 @@ Grab the config file (we're gonna need it later on)
 try:
   config = ConfigParser.ConfigParser()
   config.read(os.path.dirname(os.path.realpath(__file__)) + '/settings.conf')
-  assert(config.get('global', 'outputfile'))
+  assert(config.get('global', 'outputhtml'))
   print "Settings parsed correctly."
 except ConfigParser.NoSectionError:
   print "Your config file does not appear to be valid. Please verify that settings.conf exists."
@@ -28,8 +28,13 @@ logging.basicConfig(filename=LOG_FILENAME, level=LOG_LEVEL)
 # we need this to unescape the escaped characters
 redditParse = HTMLParser.HTMLParser() 
 
-# create a file for saving the reddit stuff to
-outputFile = config.get('global', 'outputFile')
+# create files for saving the reddit stuff to
+outputHTML = config.get('global', 'outputhtml')
+outputCSV  = config.get('global', 'outputcsv')
+
+# put together a dictionary for building the CSV file
+# resource, number of links, number of mentions
+fieldnames = ['resource', 'number of links', 'number of mentions']
 
 #let's grab the stuff from reddit using praw
 reddit = praw.Reddit(user_agent='linux:ResearchRedditScraper:v0.1 (by /u/plzHowDoIProgram)')
@@ -45,7 +50,7 @@ commentPile = reddit.get_comments('learnprogramming', limit=None)
 
 print "Request complete. Parsing raw comments to HTML..."
 commentCount = 0
-with open(outputFile, 'w+') as scrapeOutput:
+with open(outputHTML, 'w+') as scrapeOutput:
 	for comments in commentPile:
 		scrapeOutput.write((redditParse.unescape(comments.body_html)).encode('utf-8')) #unescape the html and put in unicode
 		commentCount += 1
@@ -53,7 +58,7 @@ with open(outputFile, 'w+') as scrapeOutput:
 print "Complete. We parsed " + str(commentCount) + " comments."
 	
 # parse the document. we're using the praw version now
-with open(outputFile, 'r') as scrapeOutput:
+with open(outputHTML, 'r') as scrapeOutput:
 	soup = BeautifulSoup(scrapeOutput) 
 	# find all a href link tags
 	linkPile = soup.find_all('a') 
@@ -80,18 +85,31 @@ with open(outputFile, 'r') as scrapeOutput:
 			else:
 				resources[resourceFound] = 1  #if not in list, add it 
 	
-	print "Dictionary complete. \n Here's what I've found so far: "
-	pp.pprint(resources)
+	print "Dictionary complete. "
+	#pp.pprint(resources)
 
+# create an empty list for collecting results
+csvOutput = []
+csvOutput.append(fieldnames)
 
 
 # now go back through the file and find how many times in all text each resources shows up
-with open(outputFile, 'r') as scrapeOutput:
+#print "Here's the number of mentions."
+with open(outputHTML, 'r') as scrapeOutput:
 	allText = scrapeOutput.read()
 	for key in resources:
 		totalCount = 0
 		totalCount = allText.count(key)
-		print key + " was referenced " + str(totalCount) + " times."
+		#print key + " was referenced " + str(totalCount) + " times."
+		csvOutput.append([key, resources[key], totalCount])
+
+# finally, save a CSV file
+print "Writing results to CSV file..."
+with open(outputCSV, 'w+') as csvfile:
+	csvwrite = csv.writer(csvfile)
+	for row in csvOutput:
+		csvwrite.writerow(row)
+print "Complete. Results can be found in " + outputCSV
 
 
 
