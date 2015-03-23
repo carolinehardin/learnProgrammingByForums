@@ -1,4 +1,156 @@
-<div class="md"><p>I can compile my code but when I click on the window the background will not change</p>
+<div class="md"><p>...</p>
+
+<p>I meant what&#39;s the benefit of storing these queries in the database, not what&#39;s the benefit of having SQL queries that do whatever in your game...</p>
+</div><div class="md"><p>Hmm, like...  In Python I can do this:</p>
+
+<pre><code>&gt;&gt;&gt; a=set([1, 2, 5])
+&gt;&gt;&gt; b=set([2, 4, 5, 7])
+&gt;&gt;&gt; a.difference(b)
+set([1])
+&gt;&gt;&gt; a.intersection(b)
+set([2, 5])
+&gt;&gt;&gt; 
+</code></pre>
+
+<p>I thought I could do similar with OUTER JOIN or similarly confusingly named things.</p>
+</div><div class="md"><blockquote>
+<p>And yet it seems that you don&#39;t realize that I was fully aware of your advice, and you don&#39;t seem to understand that your advice was absolutely worthless.</p>
+</blockquote>
+
+<p>I guess that&#39;s possible, except you have yet to identify the thing I said that&#39;s actually the advice, let alone explain why it sucks.  So that just looks like some idiotic fantasy you have.  Keep running with that if it makes you feel better.</p>
+</div><div class="md"><p>Sure, so to be clear, database design is also kind of an art, so there are usually more than one way to do things.</p>
+
+<p>I&#39;m just listing out one of the more common ways to do this.</p>
+
+<p>Your specs were &quot;I want one shop to be available to members of a certain clan, another shop to be available to people whose accounts are a certain age, another shop to be available to people whose names begin with the letter &quot;P&quot;, etc.&quot;.</p>
+
+<p>Your <code>shops</code> table would look like this:</p>
+
+<pre><code>Shops:
+   #id (integer ; identity column)
+    name (string)
+    accessTypeId (non-nullable integer ; foreign key to the accessTypes table)
+    clanId (nullable integer)
+    age (nullable integer)
+    initialLetter (nullable char)
+
+AccessTypes
+    accessTypeId     description
+    1                      &#39;By clan.  Only members of a certain clan may visit this shop.&#39;
+    2                      &#39;By age.  Only users whose age are above a certain value may visit this shop.&#39;
+    3                      &#39;By initial letter.  Only users whose name begins with a certain letter may visit this shop.&#39;
+    4                      &#39;Public.  All users may visit this shop.&#39;
+    5                      &#39;Closed.  Nobody can visit this shop.&#39;
+</code></pre>
+
+<p>Then, for instance, if you want to make shop #123 restricted to only clan 50, you could do:</p>
+
+<pre><code>UPDATE shops
+SET accessTypeId = 1, clanId = 50
+WHERE id = 123
+</code></pre>
+
+<p>Or if you wanted to make a shop restricted to only people whose names begin with the letter &quot;P&quot;, you could do:</p>
+
+<pre><code>UPDATE shops
+SET accessTypeId = 3, initialLetter = &#39;P&#39;
+WHERE id = 123
+</code></pre>
+
+<p>In your game logic, to determine who has access, you then read from the <code>shops</code> table.  Given the <code>accessTypeId</code>, <code>clanId</code>, <code>age</code>, and <code>initialLetter</code>, your game logic code can then generate the appropriate SQL query.</p>
+
+<p>If your shop access logic got more complicated, you could also move all of this stuff (e.g. clanId, age, initialLetter, etc) to a completely separate table (e.g. <code>accessInfo</code>) and just have a <code>shop</code> store an <code>accessInfoId</code>.  </p>
+</div><div class="md"><p>thank you for the advice fellow :D</p>
+</div><div class="md"><p>That was a rhetorical question.  It appears as though the answer for one wheel is the list containing each element on the wheel.  If you know that, you should be able to make the recursive call to get those solutions and then use those solutions by combining them with the solutions for the current wheel.</p>
+
+<pre><code>List&lt;List&lt;Symbol&gt;&gt; restOfSolutions = calculateAllOutcomes(numWheels - 1, numSymbols, outcomesLeft);
+List&lt;List&lt;Symbol&gt;&gt; result = new ArrayList&lt;List&lt;Symbol&gt;&gt;();
+// combine restOfSolutions with current wheel&#39;s symbols here
+return result;
+</code></pre>
+
+<p>Edit: it looks like you know this is just the permutations, so it shouldn&#39;t be hard to figure out how to make all permutations of the current wheel with everything else...</p>
+</div><div class="md"><p>Probably around and leading up to the object oriented lesson.</p>
+</div><div class="md"><p>What do you mean?</p>
+</div><div class="md"><p>Yes, for domains where it makes sense.</p>
+</div><div class="md"><p>What chapter did you start to &quot;hit the cliff&quot; in Learn Ruby the Hard Way?</p>
+</div><div class="md"><p>I&#39;m <em>pretty</em> new to database theory as a whole, would you be able to link me to something to read about this metadata stuff?  So if I set the <code>permissionType</code> to <code>guild</code>, that&#39;d...  Unlock some fields for use or something?  My foggy mind can&#39;t see the next step.</p>
+</div><div class="md"><p>Uh.  I&#39;m not sure how I could put it better.  Select arbitrarily unique users to be able to access whatever.</p>
+
+<p>Say you&#39;re selling some kind of cool new gun or whatever, but you only want newer players to be able to use it at first, or you wanna let people who&#39;ve donated to the server have a week&#39;s head start (&#39;cause you&#39;re a terrible terrible community manager), the sky&#39;s the limit.</p>
+</div><div class="md"><p><a href="https://www.google.com/search?q=prolog+literal+list">https://www.google.com/search?q=prolog+literal+list</a></p>
+</div><div class="md"><p>I was under the impression I could use some manner of magic joining methods.  D:</p>
+</div><div class="md"><blockquote>
+<p>If things turn out ugly, can I revoke use of this software once I have allowed them to use it?</p>
+</blockquote>
+
+<p>Best to have an agreement in place. Do that now, while things are not ugly. Talk to a lawyer.</p>
+</div><div class="md"><p>You can (and at work, we occasionally have tables that contain SQL queries), but in general, you should avoid it when possible.</p>
+
+<p>There are usually cleaner ways to implement whatever logic you&#39;re trying to do.</p>
+
+<p>Just to give one example of the consequences, imagine one day you wanted to rename a column; for instance, you decide to rename <code>clanid</code> to <code>guildid</code> on the <code>users</code> table.</p>
+
+<p>If you follow normal database design, this is do-able with some amount of work.  You simply find all the places where <code>users</code> is used, and you change occurrences of <code>clanid</code> to <code>guildid</code>.  If you store SQL queries in a string within the database, then you have to go parse through all the tables that contain SQL queries and fix those too. It might turn out that someone named themselves &quot;guildid&quot;, so now to do it completely right, you have to actually re-parse the SQL query.</p>
+
+<p><strong>The textbook approach would be to store the information necessary to generate the query, rather than store the query itself.</strong></p>
+
+<p>Maybe your shops in your game are sometimes restricted based on guild (i.e. &quot;only members of guild X may enter this shop&quot;), or maybe based on person (i.e. &quot;only this user and his friends may enter this shop&quot;) or maybe completely public.</p>
+
+<p>The textbook approach would then say that the shop should have some sort of <code>permissionType</code> (which could be <code>guild</code>, <code>public</code>, or <code>person</code>), and maybe some additional metadata about each one (e.g. if type is <code>guild</code>, what is the <code>guildId</code> of the guild).</p>
+</div><div class="md"><p>Read the FAQ for challenges.</p>
+</div><div class="md"><p>You can place your parse method and the sum line inside the <code>else</code> block of your <code>if</code> statement.</p>
+</div><div class="md"><p>Yes, it&#39;s fine to do this.  Most commonly I see this done with internal analytics dashboards where people can write queries and there is some kind of system to generate a report from the raw query.</p>
+
+<p>In this case, though, SQL is likely the wrong level of abstraction.  For starters, SQL queries aren&#39;t composable.  It&#39;s not easy to say things like this in SQL...</p>
+
+<pre><code>canPurchase = memberOf(ownClan) &amp;&amp; !memberOf(specialClan)
+</code></pre>
+
+<p>to mean &quot;can purchase from a member of their own clan unless they&#39;re a member of specialClan.&quot;</p>
+
+<p>Well, it&#39;s easy enough to say that <em>one</em> specific thing in SQL, but it&#39;s not easy to break it apart into composable units.  I can imagine that this will quickly become a thing you need to do unless you want the logic for each player to depend in subtle way&#39;s on the logic for every other player.</p>
+</div><div class="md"><p>Does it even matter how hard it is, for something that sounds this simple???  Like we can tell over the internet how much of a genius or moron you are?  Stop wasting time and just do it.  <a href="http://www.rebooti.com/wp-content/uploads/2015/03/Motivational-Way.jpg">http://www.rebooti.com/wp-content/uploads/2015/03/Motivational-Way.jpg</a></p>
+</div><div class="md"><p>Your professor wants to use Polymorphism, most likely.</p>
+
+<p>Super super = new Sub(); // Polymorphism, yay!</p>
+
+<p>(Sub)super.ModifyZ(); // ModifyZ is your child class&#39;s modifier</p>
+</div><div class="md"><p>You should be able to take the vector made by going from the nose to the target and subtract that from everything to get the coordinate system that&#39;s relative to the nose, like you want...</p>
+
+<p>This <a href="http://en.wikibooks.org/wiki/Linear_Algebra/Orthogonal_Projection_Onto_a_Line">http://en.wikibooks.org/wiki/Linear_Algebra/Orthogonal_Projection_Onto_a_Line</a> should get you the shortest line going from the line your plane is on to the target point.</p>
+</div><div class="md"><p>What do you imagine the benefit of this would be?</p>
+</div><div class="md"><p>Do you have to use an object of the super class or just a variable with that type? If it&#39;s the latter, try this:</p>
+
+<p>Parent p = new Child();
+((Child)p.z)++;</p>
+</div><div class="md"><blockquote>
+<p>If things turn out ugly, can I revoke use of this software once I have allowed them to use it?</p>
+</blockquote>
+
+<p>Sure, just like the bank can revoke your house, car, clothing, etc. at any time.</p>
+</div><div class="md"><p>Congrats you did someone&#39;s homework for them</p>
+</div><div class="md"><blockquote>
+<p>So I&#39;ve been building a POS in PHP for a family business</p>
+</blockquote>
+
+<p>The business almost certainly owns the software, not you. If this worries you, consult a lawyer, not a bunch of guys on the internet, and particularly not the people in <a href="/r/learnprogramming">/r/learnprogramming</a>.</p>
+</div><div class="md"><p>So you have an array of elements that may contain objects of a superclass or any of its subclasses. Then when you access the elements of the array you need to call a method or access a variable that&#39;s only in one of the subclasses, correct?</p>
+</div><div class="md"><p>How do you set permissions? </p>
+</div><div class="md"><p>Thank you so much it works perfectly :) you&#39;re awesome :)</p>
+</div><div class="md"><p><a href="http://www.informit.com/store/implementing-domain-driven-design-9780321834577">Implementing Domain Driven Design</a></p>
+</div><div class="md"><p>That&#39;s a pretty nice idea.  I wish my school could implement something like it, but half my teachers don&#39;t know how to upload photos to their computers and the other half wouldn&#39;t bother trying to communicate with students. </p>
+</div><div class="md"><p>On line 7 (or 19 if you format the code properly) you have this:<br/>
+<code>addMouseListener(new MouseAdapter(){});</code> but what you really want is:<br/>
+<code>addMouseListener(new MouseLocationListener());</code>, because you want to use your own mouse listener object.</p>
+</div><div class="md"><blockquote>
+<p>A neater way might be to construct the queries from some metadata</p>
+</blockquote>
+
+<p>How do you mean?</p>
+</div><div class="md"><p>Hmm, I&#39;ll definitely have to keep that in mind, but it doesn&#39;t seem too hard to switch to it later on, and I&#39;m not all too hot on my SQL skills, AND I wanna get working on stuff that isn&#39;t this.</p>
+</div><div class="md"><p>Maybe post your classes? </p>
+</div><div class="md"><p>I can compile my code but when I click on the window the background will not change</p>
 </div><div class="md"><p>Where are you having trouble? What are you stuck on?</p>
 </div><div class="md"><p>I think that&#39;s where there&#39;s a large difference in education between the UK and US (I&#39;m in the UK). The vast, vast majority of students, at least at my school (~2000 students), have a degree of trust between the staff. Our IT department is also rather large and employs at least 3 &quot;apprentices&quot; under the age of 25 that we mostly can relate to in some way.</p>
 
@@ -134,6 +286,12 @@ private Color[] colors = {new Color(14, 163, 253), new Color(50, 50, 18), new Co
 
 <p><strong>TL;DR: Google is your friend</strong></p>
 </div><div class="md"><p>Thank you for the feedback! That makes sense. If I go that route, a sentinel value shouldn&#39;t be necessary anyway. I will try that and update once I do.</p>
+
+<p><strong>Edit:</strong> I got it to work, but still can&#39;t figure out the sentinel value correctly. I had to change my exception from what is above to a NumberFormatException, since I&#39;m working with strings. </p>
+
+<p>If I use a string as a sentinel value, it triggers the exception. If I use the -1, it takes it off of the sum (which I don&#39;t want to do).</p>
+
+<p>The question doesn&#39;t appear to ask for a sentinel value, however, if a user inputs several numbers in the correct format and wants to stop, there should be a way to do that (at least in my opinion). I guess the other option is to enter two incorrect inputs and then the sum will compute as it should.</p>
 </div><div class="md"><p>I really appreciated the help, and you deserved it for helping out others on here too!</p>
 </div><div class="md"><p>The most helpful books for me were:  </p>
 
@@ -1364,7 +1522,7 @@ for each line and its type</p>
 
 <p>Moreover, it&#39;s not the languages you use but what projects you can show the world. If you have a portfolio, the job market as a whole is not going to reject you because you wrote something cool in an unfashionable language. On the other hand, if you just learn languages without building something, getting hired will be harder. </p>
 
-<p>Not avoiding your question, just dissolving the the underlying priorities that make the question relevant. Priorities should be: focus on really learning programming, particularly web programming fundamental requirements--HTML/CSS/JavaScript--and make something cool. Then you&#39;ll learn programming and be able to get a job or create your own. Then Python vs Java vs C vs whatever will be irrelevant--pick whatever you want. In short, if you were focused on the most important fundamental priorities a budding developer must contend with, you&#39;ll never need to worry whether your backend language choice will hold back your career. Why? Because if your fundamentals are strong, you&#39;ve got enough skills to start a career without an extra backend language. But if you&#39;ve got a backend language but haven&#39;t nailed HTML/CSS/JavaScript, and haven&#39;t built a portfolio demonstrating that, then you&#39;ll have a much harder time getting your foot in the door. </p>
+<p>Priorities should be: focus on really learning programming, particularly web programming fundamental requirements--HTML/CSS/JavaScript--and make something cool. Then you&#39;ll learn programming and be able to get a job or create your own. Then Python vs Java vs C vs whatever will be irrelevant--pick whatever you want. In short, if you were focused on the most important fundamental priorities a budding developer must contend with, you&#39;ll never need to worry whether your backend language choice will hold back your career. Why? Because if your fundamentals are strong, you&#39;ve got enough skills to start a career without an extra backend language. But if you&#39;ve got a backend language but haven&#39;t nailed HTML/CSS/JavaScript, and haven&#39;t built a portfolio demonstrating that, then you&#39;ll have a much harder time getting your foot in the door. </p>
 
 <p>If you need someone to use as a sounding board or chat with, PM me. Good luck!</p>
 </div><div class="md"><p>Sorry, I lack the terminology to properly explain what I mean. In Eclipse, there are classes that act like tabs (Like when you click the new class button and stores this class in the package), what would be the use of those as opposed to storing all of your classes in one tab?</p>
@@ -4292,262 +4450,4 @@ old code here
 <p>And if he still thinks Java is a good language for web development, tell him thanks for continuing to make Windows that much less secure.</p>
 
 <p>Not that I&#39;m telling people not to learn Perl or Java, they&#39;re both very useful languages, they&#39;re just not languages I would recommend as &quot;first choice&quot; unless you have a specific need for them.</p>
-</div><div class="md"><p>Do you have data to support this? Last I saw python or Python based frameworks were used in less than 3% of websites. PHP had the lions share at 70%+, followed by ASP.NET and Java.</p>
-
-<p>I would be excited if it were popular as I prefer it to the previously mentioned languages but I have not set it play out that way in the data.</p>
-</div><div class="md"><p>I can&#39;t use pointers though, we haven&#39;t been formally taught that yet. </p>
-</div><div class="md"><p>The majority around here is slightly in favor of C++.</p>
-</div><div class="md"><blockquote>
-<p>if i&#39;ve been working on one or two files which he might be working on too (say, shared/utility code) and i push, then he pushes, what would happen?</p>
-</blockquote>
-
-<p>Assuming you haven&#39;t modified any of the exact same lines? Automatic merge and everything is gravy.</p>
-
-<blockquote>
-<p>With regards to a manual merge, i&#39;ve not seen anything on github/bitbucket giving me the option before. When this situation has occured in the past, i&#39;ve just had to manually extract code I wrote that needed to go in, and paste it back - perhaps this is what you meant by manually merging?</p>
-</blockquote>
-
-<p>There are tools to help with this, but yes. You&#39;re made aware of conflicting lines and you sort out how to make it work out.</p>
-
-<blockquote>
-<p>I guess that a modified function would be &quot;last come last served&quot; (ie. whoever pushed last would have their function in the commit) but is there any way to avoid/merge new functions?</p>
-</blockquote>
-
-<p>Yes, you can commit over old code. The repository will retain the old one, though. A Git/Mercurial/whatever repository knows the whole state of the system on each commit, so if you ever overwrote something important or wanted to look at the old version for reference you can get a hold of the older version.</p>
-
-<blockquote>
-<p>for example, I&#39;ve added two functions, he&#39;s working on an older version and has just modified a function slightly, would my functions be included within the final merge? or would it revert to his version (with no added functions, and the slightly modified version);</p>
-</blockquote>
-
-<p>If you add two functions and he modifies some other 3rd function there&#39;d be no conflict and all changes would appear together just fine.</p>
-
-<p>The &#39;not modifying the same line&#39; bit I&#39;m mentioning <em>isn&#39;t</em> based on the order in which each line shows up in the file, but actually based on the line content itself. If you both get the latest, your friend adds 10 new lines at the top and commits, you modify something near the bottom and commit the system recognizes that, although his 10 new lines pushed down the rest of the lines, you were modifying those lines there. It can make the file include both changes just fine.</p>
-
-<p>If you both edit some of the same lines in one function it&#39;s time for a manual merge. </p>
-
-<blockquote>
-<p>perhaps this is where branching may come in handy?</p>
-</blockquote>
-
-<p>Perhaps. When and why one branches is something of an opinion more that totally concrete fact. It&#39;s more something a team decides in advance like styling rules.</p>
-
-<blockquote>
-<p>sorry for the somewhat stupid questions, but i rarely see this topic discussed and am genuinely interested how professionals with larger teams address this problem without locking files</p>
-</blockquote>
-
-<p>If I&#39;m assigned to write the database wrapper and Jim is assigned to write the interface it&#39;s unlikely we&#39;ll need to edit the same files too often, and very unlikely we&#39;ll need to edit the same lines at any point. If Jon is added to write the business logic in between it&#39;s still reasonably safe to assume we won&#39;t step on each-other line for line very often as long as we&#39;re fairly clear about what is and isn&#39;t our respective responsibility. </p>
-</div><div class="md"><p>What do you mean by in the minority?</p>
-</div><div class="md"><p>But if I knew that in a method that abstract type would be an Integer, how would go i about doing somenthing like if(E &gt; 0) (E being the abstacrt object)</p>
-</div><div class="md"><p>Keep learning Python. It&#39;s excellent for beginners as it allows you learn CompSci concepts without having to wade through complex syntax or memory handling. Python is a good base that will prepare you for other, more difficult to learn, languages like C and its variants or Java. And Python is definitely not useless in all of industry. I see Python dev jobs all the time in my area (Pacific Northwest). </p>
-</div><div class="md"><blockquote>
-<p>My Father In Laws friend (he&#39;s a web developer) has now advised me to stop bothering with Python. He has told me Python is not a language that many employers require</p>
-</blockquote>
-
-<p>The most charitable interpretation of this is that your Father-in-law&#39;s friend has already done some research into the job market in your local area, and has found that local employers tend to not to use Python. </p>
-
-<p>However, his mistake (if this is what he did) was extrapolating that out, and assuming that was globally true of all employers across the world.</p>
-
-<p>It also signals a certain level of programming immaturity on his part -- Python, Java, and C share many similarities, so fundamentally, if you know one language, you should be able to transfer your &quot;understanding-of-how-to-program&quot; to other languages and learn them very rapidly -- the core is always the same. He&#39;s too focused on the superficial differences.</p>
-
-<p>It <em>may</em> be that your father-in-law&#39;s friend was trying to say to you was that you should branch out and learn other languages, and <a href="http://pgbovine.net/programmers-talking-to-beginners.htm">completely botched the explanation</a>. If that <em>was</em> what he was trying to say, then yes, he&#39;s right -- in the long run, a truly excellent programmer should have a firm understanding of multiple programming languages/styles of programming to the point where he or she can transcend all of them/understand the similarities and differences between each languages/work with any of them fluently.</p>
-
-<p>The other benefit of learning new languages is that each language will teach you something new, teach you new ways of thinking, and teach you new tips and tricks. However, this is definitely something which you should <em>not</em> try and do as a beginner, and should instead wait until you&#39;ve acquired a solid understanding of one language beforehand.</p>
-
-<p>(Plus, if you want to do mobile app development, or gamedev, then yes, Java and C are much much more commonly used then Python in these fields. However, Python is very commonly used in webdev, among other fields).</p>
-
-<blockquote>
-<p>...and even though it&#39;s easier, it will set me back more learning python rather than just getting to grips with Java or C.</p>
-</blockquote>
-
-<p>The fact that Python is easier is an <em>advantage</em>, not a disadvantage. It means you have to waste less time trying to learn the language itself, and can move straight away to learning how to write programs (which is a skill that is completely independent from learning a programming language).</p>
-
-<blockquote>
-<p>I have now become distracted and can&#39;t get to grips with for and while loops because all I can think about is starting again on a different language.</p>
-</blockquote>
-
-<p>For loops and while loops work the same way in almost every mainstream language. If you spend 1 year learning Python, it&#39;ll take you about 30 minutes to learn the fundamentals of Java or C and start writing complex programs with them (and vice-versa).</p>
-
-<p>To summarize, whenever you&#39;re learning a programming language, you&#39;re actually simultaneously training two skills -- how to use that specific programming language, and how to <em>program</em>. The former might not necessarily transfer from one programming language to the other, but the latter will always transfer from programming language to programming language, and even to other parts of your life.</p>
-
-<p>Programming is fundamentally a mindset -- it&#39;s the ability to look at a set of very basic, primitive tools and instructions, and figure out how to combine them and merge them to tackle very large challenges and problems. Programming is applied problem-solving, and once you have that mindset, it doesn&#39;t matter if you need to use Python or Java or C or whatever. The tools might be different, but the ability to see how to use them is far more important and will stay constant.</p>
-
-<p>The long and short of it is that I would treat anything else your father-in-law&#39;s friend tells you with a healthy dose of skepticism. </p>
-</div><div class="md"><p>It seems like the consensus around here is that code Academy teaches you in such a way that you feel like you&#39;re learning. Instead of teaching you in a way that you learn useful things. </p>
-</div><div class="md"><p>Maybe you shouldn&#39;t think about that like  &quot;where to put that&quot;, but more like &quot;how could I make changes to this old code to solve this new problem&quot; ;)</p>
-</div><div class="md"><p>What exactly  is an interface?</p>
-</div><div class="md"><p>While you are learning Python, you&#39;re also learning <em>to write code.</em> That skill will never be obsolete.</p>
-</div><div class="md"><p>Thank you for sharing this! I took a C# class at school, but I found your videos help me understand how stuff actually works, and not just the syntax. </p>
-</div><div class="md"><p>For the same reason that this is ok:</p>
-
-<pre><code>int a;
-a = 4;
-</code></pre>
-
-<p>You <em>created</em> a, you just didn&#39;t give it a value so it has a value of &lt;random&gt; unless you say otherwise.</p>
-</div><div class="md"><p>noted, and thank you :-) what would you recommend be the best way to deal with the inevitable situtaion where one of us is working on an outdated commit, and tries to modify an already modified file and then push?</p>
-
-<p>(i know the answer is to put a boot up your ass and not get into this situation in the first place, but i&#39;m curious if there is any option to kind of say &quot;include this bit from his, but exclude the rest&quot; as opposed to saying &quot;include everything&quot; and then manually pull, modify and re-commit</p>
-</div><div class="md"><p>it would just be source. it would only be short-term locking though (ie. lock, change, push, unlock) as opposed to perma-locking like the image/static content scenario you&#39;re talking about i think</p>
-</div><div class="md"><p>The summer before I graduated I taught myself Java and Android development. Over the course of about 3/4 months I made an app. It was a workout tracker called GetBig. I did it more so I could put it on my resume than anything. And, of course, looking back at it now, I could have done it so much better and in a fraction of the time. But, that&#39;s all part of the learning.</p>
-
-<p>Anyway, after that, I applied to probably 100 mobile development jobs. Mostly Android. A couple of them were iOS and they offered it to me. So, I learned objective-c and iOS dev on the job.</p>
-
-<p>But yes, I was able to self teach. The internet is an incredible resource and you can learn just about anything you need to know simply by using Google. When learning Android I picked up a beginning Android book and worked through half of the book before attempting to make my own app. I don&#39;t think the book is necessary, but for the way I think, I was kinda just like &quot;ok, books are cool. this is a nice little resource I can just open and learn from. and I spent 40 bucks on this thing so I better get my money&#39;s worth out of it.&quot; So it was just extra motivation like that that kept me learning.</p>
-
-<p>Honestly, and I know other developers that feel this way, sometimes I&#39;m on the job doing stuff and I&#39;m just like, &quot;Wow. I think absolutely anyone can do this if they just put in time and learn the basics.&quot;</p>
-
-<p>So, yeah, never give up. :)</p>
-</div><div class="md"><p>thanks for this. What i am worried about mainly is the fact that if i&#39;ve been working on one or two files which he might be working on too (say, shared/utility code) and i push, then he pushes, what would happen?</p>
-
-<p>With regards to a manual merge, i&#39;ve not seen anything on github/bitbucket giving me the option before. When this situation has occured in the past, i&#39;ve just had to manually extract code I wrote that needed to go in, and paste it back - perhaps this is what you meant by manually merging?</p>
-
-<p>I guess that a modified function would be &quot;last come last served&quot; (ie. whoever pushed last would have their function in the commit) but is there any way to avoid/merge new functions?</p>
-
-<p>for example, I&#39;ve added two functions, he&#39;s working on an older version and has just modified a function slightly, would my functions be included within the final merge? or would it revert to his version (with no added functions, and the slightly modified version); perhaps this is where branching may come in handy?</p>
-
-<p>sorry for the somewhat stupid questions, but i rarely see this topic discussed and am genuinely interested how professionals with larger teams address this problem without locking files</p>
-</div><div class="md"><p>Yeah you can use MonoDevelop. I dont know if visual studio will ever come to OS X. I do know that Microsoft is making a lot of their stuff open source, and have the plans of going completely open source. So it is possible in the future to see visual studio everywhere.</p>
-</div><div class="md"><p>Do you know what an interface is?   Abstract classes are basically interfaces except it defines some methods while forcing implementations to define the others that are declared abstract.</p>
-
-<p>It&#39;s like having the best of both worlds.  It reduces code repetition like you do when subclassing but forces contractual method definitions like you do when interfacing.</p>
-</div><div class="md"><p>a system for a make belive community center that has memberships you can buy and programs you can sign up for and rooms you can book for events like a wedding reception. </p>
-</div><div class="md"><blockquote>
-<p>I saw FTP mentioned in some of my research, but what is it? I don&#39;t remember anything about it except that it seemed to be the most complicated thing on the journey of making a website.</p>
-</blockquote>
-
-<p>Computers have different protocols for talking to one another. The protocol you&#39;re probably most familiar with (whether you know it or not) is the HTTP protocol. Every time you ask your browser to view a webpage, your web browser is automatically sending out an HTTP request for the associated HTML/CSS/JS/JPG/PNG files.</p>
-
-<p>FTP is similar -- it&#39;s a protocol optimized for transferring files, and is used as a way for you to take the files you were working on and upload them to your server. </p>
-
-<p>Similar to how you need a web browser to make HTTP requests, you need an FTP client to make FTP requests. I personally like using <a href="https://filezilla-project.org/">Filezilla</a> -- make sure to download only the client, not the server. Here&#39;s <a href="https://wiki.filezilla-project.org/FileZilla_Client_Tutorial_%28en%29">a tutorial</a> on how to use it.</p>
-
-<blockquote>
-<p>The website I want to make would be static (I think that&#39;s the word). So I think staying front-end will work.</p>
-
-<p>You said that the bootstrap and jQuery files would be on my computer. Assuming that, for instance, I go with Notepad++, would I just save a HTML file from Notepad to my computer and plop the bootstrap/jQuery files in with the HTML and then link them in the code and that&#39;s it? Or can I just save both to me computer and add the link to that path in Notepad and it will see it?</p>
-</blockquote>
-
-<p>Well, Bootstrap and jQuery are both made up of mainly CSS and JS files, so you wouldn&#39;t directly save them as HTML -- you&#39;d want to do the latter. (More specifically, you add the link to the path in your HTML <em>using</em> Notepad.)</p>
-
-<p>So, let&#39;s say that I have the following file structure:</p>
-
-<ul>
-<li>my_project (folder)
-
-<ul>
-<li>index.html </li>
-<li>assets (folder)
-
-<ul>
-<li>my_styles.css</li>
-<li>my_scripts.js</li>
-<li>bootstrap (folder)
-
-<ul>
-<li>css (folder)
-
-<ul>
-<li>bootstrap.min.js</li>
-<li>bootstrap-theme.min.js</li>
-</ul></li>
-<li>js (folder)
-
-<ul>
-<li>bootstrap.min.js</li>
-</ul></li>
-</ul></li>
-<li>jquery (folder)
-
-<ul>
-<li>jquery-2.1.3.min.js</li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
-
-<p>Then, I&#39;d want <code>index.html</code> to look something like the following:</p>
-
-<pre><code>&lt;!DOCTYPE html&gt;
-  &lt;head&gt;
-    &lt;title&gt;My webpage&lt;/title&gt;
-
-    &lt;!-- Core bootstrap CSS --&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/bootstrap/css/bootstrap.min.css&quot;&gt;
-
-    &lt;!-- Optional bootstrap theme --&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/bootstrap/css/bootstrap-theme.min.css&quot;&gt;
-
-    &lt;!-- My CSS --&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/my_styles.css&quot;&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello world!&lt;/h1&gt;
-
-    &lt;!-- jQuery --&gt;
-    &lt;script src=&quot;assets/jquery/jquery-2.1.3.min.js&quot;&gt;&lt;/script&gt;
-
-    &lt;!-- Bootstrap (for animations and such) --&gt;
-    &lt;script src=&quot;assets/bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
-
-    &lt;!-- My JS --&gt;
-    &lt;script src=&quot;assets/my_scripts.js&quot;&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-
-<p>Note that all the CSS files go at the top, all the JS files go at the bottom, and the content goes in between. </p>
-
-<p>Note that when we transfer our files to the webhost, you need to EXACTLY preserve the file structure/folder hierarchy, otherwise all your links will be broken.</p>
-
-<p>Now, this will cause this particular HTML page to be able to use bootstrap and jquery. If I want the same thing to happen with any other HTML page, I need to duplicate this exact same boilerplate. (and this can get a little tedious -- this is usually about when people will start learning about server-side programming, solely for the purpose of avoiding having to repeat the same damn boilerplate again and again).</p>
-</div><div class="md"><p>I didn&#39;t downvote anyone. I posted this and went to the shop to grab some food, so there&#39;s no need to post that. I&#39;m reading over the answers now and am genuinely looking for the best solution for me and anyone else in my situation (who knows code, but not version control/paired programming solutions).</p>
-
-<p>There won&#39;t be any downvotes for anyone taking the time out of their day to help me out</p>
-</div><div class="md"><p>Well written explanation, I appreciated it. It&#39;s a rare skill to be able to explain the basics clearly and without condescension in CS.</p>
-</div><div class="md"><p>Say you had an abstract class named Shape with an abstract method named draw.</p>
-
-<p>You don&#39;t know what&#39;s supposed to go in that draw method though because that depends on the shape. But you just know every shape needs to be drawn.</p>
-
-<p>So you put it there so you know every shape class that extends shape will have to write a draw method. Unless that class is also abstract.</p>
-
-<p>So later if you have a method that is passed a shape like void doSomethingWithShape(Shape shape) {}</p>
-
-<p>That method doesn&#39;t have to worry about which shapes remembered to implement a draw function and which ones didn&#39;t.</p>
-
-<p>It can just go ahead and call shape.draw() because it&#39;s part of the contract. You know the abstract class forces all shapes to have a draw method or you would have gotten a compile error when you compiled the child shape classes.</p>
-</div><div class="md"><p>Warning: I&#39;m heavily biased on this subject, and in the minority on this sub.</p>
-
-<p>Again, it depends what you want. I love C. C++, not so much. For educational purpose (i.e. learning more about how things works under the hood), I&#39;ll recommend C . But C++ is more used in the industry, so it&#39;s a more sensible choice to just get thins done.</p>
-</div><div class="md"><p>And I&#39;m not trying to reinvent the wheel but would MonoDevelop work in parallel with the course? I see an article from November of last year that talks about visual studio for OS X being released in the coming months but there&#39;s nothing about it after that.  Have you heard anything recently in regards to that?</p>
-</div><div class="md"><p>What does &quot;turning the number into the asteriks&quot; mean? Does it turn <code>10</code> into <code>**</code> or <code>**********</code>? The latter would be <code>std::string(10, &#39;*&#39;)</code>.</p>
-</div><div class="md"><p>Thank you for all of the information. Just to be clear, when I eventually go into another language, you would recommend C or C++?</p>
-</div><div class="md"><p>Just loop from 0 to the number and print out a <code>*</code>?</p>
-</div><div class="md"><p>Again, it depends :) one possible answer is : never :)</p>
-
-<p>For example, EVE Online use Python both in its clients and servers : <a href="http://www.robg3d.com/2014/01/why-ccp-is-still-using-python-2/">http://www.robg3d.com/2014/01/why-ccp-is-still-using-python-2/</a> . If it&#39;s good enough for CCP , it should be good enough for you, right?</p>
-
-<p>Javascript is the new kid in town but gets a lot of traction. It&#39;s heavily optimized because of the browsers war, an now with WebGL you can make advanced 3d games with it.</p>
-
-<p>So in both cases, you can go very very far with these two.</p>
-
-<p>For the record, I&#39;m currently a freelance and independant game developer. My computer science school was focused on C , so that&#39;s how I&#39;ve learnt. Last year I&#39;ve released a mobile game I&#39;ve coded with C++. These days, I&#39;ve several projects ongoing, they are all using a lot of Javascript, and one of the projects also use python on the server-side.</p>
-</div><div class="md"><p>I think op down voted you, but you&#39;re right.</p>
-
-<p>If you need locking on source, that screams of a poor design phase. Locking source is just generally a bad idea. You get sick and I have a critical fix that needs to be done, for example.</p>
-
-<p>At my work, we don&#39;t have merging. It is a locking based source control and it is a giant pain. The old guys are so deeply entrenched in it that even suggesting moving to something better gets you mean looks.</p>
-</div><div class="md"><p>Line 63 should be <code>if (Y &gt; 10) Y = 1;</code></p>
-</div><div class="md"><p>Schwing! haha, as a non technical founder this is huge.  I have been looking for something to sink my teeth into in what spare time I have.  Expect a review when I&#39;m done and if all goes well I&#39;ll keep an eye out for other offerings.</p>
-</div><div class="md"><p>No prob mate. Also, it&#39;s &#39;&lt;= n/2&#39;, not &#39;&lt;&#39;, I fucked up :D.</p>
-</div><div class="md"><p>Does the fact that it&#39;s your father-in-laws friend who is telling you this have real-world implications? By that I mean, does your spouse hold this person in high regard and consider his (the friend&#39;s) opinion worthy of respect? And if you don&#39;t follow this &quot;advice&quot; you are making a mistake?</p>
-
-<p>Because I could totally see how that might happen.</p>
-
-<p>One option is to get a copy of K+R and keep it open at random pages on your desk so your spouse can see you are taking the advice, but you&#39;re really working on Python on your computer.</p>
-
-<p>btw, 35+ years later, K+R is <em>still</em> the best programming book I&#39;ve ever seen, hands down, and worth taking a look at.</p>
-</div><div class="md"><p>The main feature of Git and similar DVCSs is that you <em>can</em> both work on the same file at the same time, and then  merge your changes together - this is <em>far</em> easier to use than a VCS which uses file-locking. And you should <em>never</em> use a service like Dropbox for version control.</p>
-</div><div class="md"><p>Its starts from the beginning. You dont need any programming experience.</p>
-</div>ed file locking in merge based versioning source control. You do need file locking for binaries like images as whatnot.</p>
-</div><div class="md"><p>Is this an ultimate beginner&#39;s guide or does it require any sort of coding experience?</p>
 </div>
