@@ -84,6 +84,8 @@ with open(outputHTML, 'r') as scrapeOutput:
 				resources[resourceFound] = (resources[resourceFound]+1)  #if in list, increment count
 			else:
 				resources[resourceFound] = 1  #if not in list, add it 
+	#seed the dictionary with the most commonly used resources listed on the FAQ
+	resources.update({'RubyMonk':0, 'tryruby':0, 'Hackety Hack':0,'Codecademy':0,'Codeacademy':0,'Eloquent JavaScript':0, 'CaveOfProgramming':0, 'Try Python':0, 'learnpython':0, 'Crunchy':0,  'coursera':0, 'udacity':0, 'edX':0 })
 	
 	print "Dictionary complete. "
 	#pp.pprint(resources)

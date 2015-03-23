@@ -1,0 +1,6 @@
+[global]
+logfile: 		stackOverflowScraper.log
+loglevel:		DEBUG
+outputcsv:		resultsSO.csv
+
+

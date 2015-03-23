@@ -1,4 +1,167 @@
-<div class="md"><p>You should compartmentalize most of your main() code into a startGame() function and call that to begin any iteration of the game.  </p>
+<div class="md"><p>It depends how you implement it. Off the top of my head, I would say all three methods have two DB hits, presuming you need a different stored procedure for each shop.</p>
+
+<p>Storing SQL:</p>
+
+<ul>
+<li>DB hit : Get SQL</li>
+<li>DB hit : Run SQL</li>
+</ul>
+
+<p>Storing SQL metadata:</p>
+
+<ul>
+<li>DB hit : Get SQL metadata</li>
+<li>Construct SQL statement</li>
+<li>DB hit : Run SQL</li>
+</ul>
+
+<p>Stored Procedure</p>
+
+<ul>
+<li>DB Hit : Get stored procedure name</li>
+<li>DB Hit : Run procedure (will incur more DB hits)</li>
+</ul>
+</div><div class="md"><p>Check if your language has sets. If not, you check if it&#39;s already in the array.</p>
+</div><div class="md"><p>Hahah well, mine isn&#39;t perfect but it works well, computer is hard to beat. Easier for me because I know how it thinks. Honestly the computer AI was the hardest part to make. I&#39;d love you help you though!</p>
+</div><div class="md"><p>I guess I just want to learn in general</p>
+</div><div class="md"><p>That sounds like a lot of work. If you really want to take it on, the best place to start might be an <a href="http://www.reddit.com/r/arduino">Arduino</a> board. This is an integrated system with an Atmel microcontroller that is quite easy to extend. There is also a massive amount of code already written - most likely there is also code for SATA.</p>
+</div><div class="md"><p>Would there be a way to chunk that kinda thinking into a stored procedure, so there aren&#39;t two database hits?</p>
+</div><div class="md"><p>you could help me with my tic tac toe game =P</p>
+</div><div class="md"><p>Do you have no friends? Do you like writing books that make no sense? Check out MSDN, otherwise check out C# (also MSDN).</p>
+</div><div class="md"><p>For example, instead of storing the SQL, store an array of the columns you want, the table you want them from and an array of the clauses that apply.</p>
+
+<p>Then, when you want to run the SQL, generate the actual statement from that data.</p>
+
+<p>That way if you change a table or column name, it&#39;s easy to find and update in the database</p>
+</div><div class="md"><p>Sometimes the best way to help someone learn is to show them what&#39;s wrong with their code, bro.  </p>
+</div><div class="md"><p>I&#39;m not too familiar with that pattern. Can you give an example that shows how a parent class can access members of a child class? </p>
+</div><div class="md"><p>Its gone now, I guess xCode just wanted to waste 30 mins of my time trying to fix that :/</p>
+</div><div class="md"><p>that is the right line, which is why i&#39;m confused</p>
+</div><div class="md"><p>Left hand side, Basic setup, you can click C, C++ etc, and it will install all for you</p>
+</div><div class="md"><p>I did Google it. I got the tabs to show. But they refuse to go horizontal.</p>
+</div><div class="md"><p>GCC is a very powerful compiler, but it requires quite a lot of setup, especially since it relies on MingW. If you just want a quick and dirty C compiler for Windows, there is <a href="http://bellard.org/tcc/">TinyC</a>. Just download the Windows version and unpack the archive somewhere. That&#39;s pretty much all you need to get started.</p>
+
+<p>If you want to do serious development, I recommend the <a href="http://www.codeblocks.org/">Code::Blocks</a> IDE with GCC/MingW.</p>
+</div><div class="md"><p>What package(s) do I mark for installation? <a href="http://prntscr.com/6k6l5m">http://prntscr.com/6k6l5m</a></p>
+</div><div class="md"><p>No one is going to do your assignment for you. What are you stuck on? What have you tried? What is giving you trouble?</p>
+</div><div class="md"><p>Done. </p>
+</div><div class="md"><p>it still has the same error unfortunately. </p>
+
+<p>something like this:</p>
+
+<pre><code>int main()
+{
+startGame(); // &lt;&lt; here &lt;&lt;
+}    
+
+void startGame()
+{
+userGreetingPrompt();
+    userInstructionsPrompt();
+    initializeBoard(TTTBoard, BOARD_SIZE);
+    printBoard(TTTBoard); //Displays inital TTT-Board
+
+    while (checkWin() == 0 &amp;&amp; Total_Moves &lt; 9)
+    {
+        do
+        {
+            if (Player_Turn == 1)
+            {
+                cout &lt;&lt; endl &lt;&lt; &quot;Your turn.&quot; &lt;&lt; endl
+                    &lt;&lt; &quot;Enter the number of the square you wish to choose: &quot;;
+                Move = getUserMove();
+                cout &lt;&lt; endl;
+                TTTBoard[Move] = &#39;O&#39;;
+                cout &lt;&lt; &quot;Updated board with your move:&quot; &lt;&lt; endl &lt;&lt; endl;;
+                printBoard(TTTBoard);
+                cout &lt;&lt; endl;
+            }
+            else
+            {
+                cout &lt;&lt; &quot;Computer&#39;s turn.&quot; &lt;&lt; endl;
+                Move = getComputerMove();
+                TTTBoard[Move] = &#39;X&#39;;
+                cout &lt;&lt; &quot;Updated board with computer move:&quot; &lt;&lt; endl &lt;&lt; endl;;
+                printBoard(TTTBoard);
+                cout &lt;&lt; endl;
+            }
+        } while (validMove(Move) == true);
+
+        Total_Moves++;
+
+        switch (Player_Turn)
+        {
+        case (1) :
+        {
+            TTTBoard[Move] = &#39;O&#39;;
+            Player_Turn = 2;
+            break;
+        }
+        case (2) :
+        {
+            TTTBoard[Move] = &#39;X&#39;;
+            Player_Turn = 1;
+        }
+        }
+    }
+
+    if (checkWin() == 1) {
+        cout &lt;&lt; &quot;You won!&quot; &lt;&lt; endl;
+        playAgain();
+    }
+    if (checkWin() == 2) {
+        cout &lt;&lt; &quot;The computer won! &quot; &lt;&lt; endl;
+        playAgain();
+    }
+    if (!checkWin() &amp;&amp; Total_Moves == 9) {
+        cout &lt;&lt; &quot;It&#39;s a tie!&quot; &lt;&lt; endl;
+        playAgain();
+    }
+}
+
+void playAgain()
+{
+    char answer;
+
+    cout &lt;&lt; &quot;Would you like to play again? (Y/N)&quot; &lt;&lt; endl;
+
+    while (cin &gt;&gt; answer)
+    {
+        if (answer == &#39;Y&#39; || answer == &#39;y&#39;)
+        {
+            Player_Turn = 1;
+            Total_Moves = 0;
+            cout &lt;&lt; endl;
+            startGame(); // its same effect, but still gives me that stupid error msg
+
+        }
+        else if (answer == &#39;N&#39; || answer == &#39;n&#39;)
+        {
+            cout &lt;&lt; endl &lt;&lt; &quot;Bye!&quot; &lt;&lt; endl;
+            break;
+
+        }
+        else
+        {
+            cout &lt;&lt; &quot;Please enter a correct input: &quot;;
+            cin.clear();
+            cin.ignore(numeric_limits&lt;streamsize&gt;::max(), &#39;\n&#39;);
+            string str;
+            getline(cin, str);
+            answer = str[0];
+        }
+    }
+
+}
+</code></pre>
+
+<p>it still has the line &quot;Invalid move: Please try again: &quot; before I can input anything. if this goes away, i would be so happy. danggg</p>
+</div><div class="md"><p>First off making a game is a very hard task, and writing it in C by scratch is actually quite difficult. I would recommend you learn python and check out pygame instead.</p>
+
+<p>But none-the-less to your request, I googled &quot;Learn C&quot; and came across this. <a href="http://www.learn-c.org/">http://www.learn-c.org/</a> . I feel like rather than learning it &quot;interactively&quot;, you should pick up a C book and setup an environment on your machine and start just playing around.  </p>
+</div><div class="md"><p>The compiler is saying that <code>temp</code> is an int, if that indeed is the right line.</p>
+</div><div class="md"><p>When you are going through these resources are you just doing their exercises? Are you creating your own programs? How long are you stuck at the wall before you stop?</p>
+</div><div class="md"><p>You should compartmentalize most of your main() code into a startGame() function and call that to begin any iteration of the game.  </p>
 </div><div class="md"><p>That question really depends on what you want to develop. Is it a website, desktop application, game, etc. </p>
 </div><div class="md"><p>To be quite honest you could utilize almost any language to do this, it is all personal preference. But if you&#39;d like an actual answer here is mine:</p>
 
@@ -4380,67 +4543,4 @@ If you&#39;ve enjoyed doing python so far, carry on. If it&#39;s not the exact l
 </div><div class="md"><p>It also crashes if I put ordenar-&gt;next != NULL</p>
 </div><div class="md"><p>That&#39;s cool, thanks. I&#39;ll be sure to keep an eye out for your other courses.</p>
 </div><div class="md"><p>If you have programming experience in another language it may be too easy. I mean I do cover some C# specific stuff, but a lot of it is about learning how to program and understand OOP concepts. However I am in the process of making a bunch of other courses that would probably be more interesting to you.</p>
-</div><div class="md"><p>That&#39;s probably because you call <code>ordenar-&gt;next-&gt;next</code> without making sure <code>ordenar-&gt;next</code> is a valid pointer, and it won&#39;t be near the end of the list.</p>
-</div><div class="md"><p>That worked, thanks!</p>
-</div><div class="md"><p>It crashes</p>
-</div><div class="md"><p>Your description is not very clear or specific.  Please read the sidebar links about asking smart questions and everything else.  It&#39;d be nice if you could follow the part about submitting a minimal example that demonstrates the problem.</p>
-</div><div class="md"><p>You need an actual sort, not a single-pass best-effort, which may only work sometimes. Try following the algorithm described <a href="http://www.chiark.greenend.org.uk/%7Esgtatham/algorithms/listsort.html">here</a>.</p>
-</div><div class="md"><p>You could read the Android docs, if that&#39;s not too mainstream for you...</p>
-</div><div class="md"><p>Damn, I fucked up, again. Haha, sorry. It&#39;s my fault, I&#39;m an idiot.</p>
-</div><div class="md"><p>How is it not working for you?  You should read the sidebar links about how to ask smart questions.</p>
-</div><div class="md"><p>I think starting with python is fine. I study computer science and we started with a &#39;simpler&#39; programming language too, to get to know programming and understand how everything works, and only after half a year we made the switch to java. At first I was very scared of that but what I&#39;ve found out is that apart from the syntax, many programming languages are essentially the same. You use the same forloops, the same whileloops, the same everything, you just write it slightly different (and that&#39;s easy enough to get used to once you start learning another language - and if there&#39;s something you forgot you just google for the syntax).</p>
-</div><div class="md"><p>Thank you for the reply! What about the clients who can&#39;t afford to pay for a custom made website? Would it be better for me and them to if I offered them to check out some WordPress templates and then I get everything setup and change it to be pretty much what they need? </p>
-</div><div class="md"><p>How deep will you go into it?</p>
-
-<p>I&#39;m asking because I don&#39;t need to learn the basics, just the language and its caveats. Do you think this course will be too easy for me?</p>
-</div><div class="md"><p>What did you Google for and how were those results insufficient?</p>
-</div><div class="md"><p>Forget the actual chromosomes.  You just need a way to generate/mutate different solutions from your current solutions, and a function that ranks solutions.  So maybe your ranking function just sums the distance between cities 1 and 2 and 2 and 3 and etc in your path.  And maybe the mutation takes a path and replaces a single city with a random other city.  Maybe the crossover is part of the path being replaced with part of another path.</p>
-</div><div class="md"><p>I&#39;m not a C++ programmer but how does this work? The first loop i is set to 2 and then checked to see it i%2==0. So won&#39;t it always return false?</p>
-
-<p>I would think the if statements needs to be: </p>
-
-<pre><code>if n % i ==0
-</code></pre>
-</div><div class="md"><p>If you use integer division this becomes pretty simple.</p>
-
-<pre><code>size_t number /* = whatever */;
-size_t num_asterisks = number / 100;
-// print out asterisks
-</code></pre>
-</div><div class="md"><p>That worked, thanks!</p>
-</div><div class="md"><p>I think maybe you&#39;re misunderstanding how chromosomes work. Maybe not, but I&#39;ll explain a simple implementation.</p>
-
-<p>If I were to write this program right now, the first thing I&#39;d try to come up with is a function that can take a random n bit string and translate it to a path through my cities. Then my chromosome itself could just be any arbitrary n-bit string. I can generate these strings, look at the paths they represent,  and keep the best. Mutations could be just choosing a random character in the string and changing it. Crossovers would be just taking the first half or so of one chromosome string and appending the last half of of a different chromosome string to it.</p>
-
-<p>Of course,  there&#39;s some things that can be changed (you don&#39;t necessarily need a string for the chromosome, nor does the chromosomes need to be arbitrarily random), but this is what runs through my mind when I think of this problem.</p>
-</div><div class="md"><p>Thank you! </p>
-</div><div class="md"><blockquote>
-<p>You&#39;re in no position to call anyone out on their attitude when you purposely came in just to insult people.</p>
-</blockquote>
-
-<p>I didn&#39;t even do that.  I pointed out how flawed your assumption about the source of your problems is.  It&#39;s not my fault you still have your head too far up your ass to see or admit that&#39;s true.</p>
-
-<blockquote>
-<p>Taking responsibility for my own education can entail getting assistance from other resources.</p>
-</blockquote>
-
-<p>I think I see why you&#39;re having so much trouble with educating yourself, since you seem to think this kind of whining and sniveling is &quot;getting assistance&quot;.</p>
-
-<blockquote>
-<p>&quot;Practice more&quot;, if you are seriously calling that advice, as if it isn&#39;t the most common sense sentence ever, then it&#39;s probably an extreme lack of common sense on your part.</p>
-</blockquote>
-
-<p>It&#39;s common sense, but people like you come in here all the time appearing unwilling to follow that advice or to have obviously not thought of that.</p>
-
-<blockquote>
-<p>Once again demonstrating your uselessness.</p>
-</blockquote>
-
-<p>My history clearly indicates otherwise, but you can&#39;t sell soap to a pig.  You&#39;ll soon be gone, like a fart in the wind.</p>
-</div><div class="md"><p>PMing you now!</p>
-</div><div class="md"><p>Of course, the more the merrier. I&#39;m sure were going to need testers and just people around to help decide votes and such so it wouldn&#39;t hurt to have some opinions and warm bodies around.</p>
-
-<p>I&#39;m PMing you now.</p>
-</div><div class="md"><p>As I said to somebody else, a stretch goal may be to compete in the market but the overall plan is to force people to work as a team, have the smarter programmers help teach the newer ones, and have people of all ranges of skill perform in that team environment. I&#39;m going to PM you.</p>
-</div><div class="md"><p>This isn&#39;t totally to compete in the market unless we make something that&#39;s really amazing. Of course that&#39;s one of our stretch goals but our priority is teamwork, teaching, learning, and making a product that works. PMing you now.</p>
 </div>
