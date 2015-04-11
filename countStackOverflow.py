@@ -59,7 +59,7 @@ for linkCandidate in linkPile:
 
 	try:
 		#get the anchor text in lower case
-		anchorText = linkCandidate.findNext('a').text
+		anchorText = linkCandidate.findNext('a')#.text
 		print anchorText
 		# we only want the hostname
 		baseUrl = urlparse(anchorText).hostname 
