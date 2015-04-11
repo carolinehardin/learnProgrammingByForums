@@ -58,8 +58,8 @@ resources = {}
 for linkCandidate in linkPile:
 
 	try:
-		#get the anchor text
-		anchorText = linkCandidate.findNext('a').text 
+		#get the anchor text in lower case
+		anchorText = linkCandidate.findNext('a').text
 		print anchorText
 		# we only want the hostname
 		baseUrl = urlparse(anchorText).hostname 
@@ -68,10 +68,12 @@ for linkCandidate in linkPile:
 		print linkCandidate
 
 	# if it's not empty
-	if baseUrl:
+	if not baseUrl is None:
 		# extract the TLD
 		resourceFound = tldextract.extract(baseUrl).domain 
 		#check each name against this list to see if it's new
+		if(resources == "ibm"):
+			print 'ibm found'
 		if resources.has_key(resourceFound): 
 			#if in list, increment count
 			resources[resourceFound] = (resources[resourceFound]+1)  
@@ -79,7 +81,7 @@ for linkCandidate in linkPile:
 			resources[resourceFound] = 1  #if not in list, add it 
 
 print "Dictionary complete. "
-pp.pprint(resources)
+#pp.pprint(resources)
 
 #create an empty list for collecting results
 csvOutput = []
@@ -96,6 +98,7 @@ with open(inputCSV,'r') as inputFile:
 		
 #finally, save the CSV file
 print "Writing results to CSV file...."
+
 with open(outputCSV, 'w+') as csvfile:
 	csvwrite = csv.writer(csvfile)
 	for row in csvOutput:
