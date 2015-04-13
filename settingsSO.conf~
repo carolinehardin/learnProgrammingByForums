@@ -1,8 +1,0 @@
-[global]
-logfile: 		stackOverflowScraper.log
-loglevel:		DEBUG
-inputcsv:		StackOverflowRawDataFixed.csv
-outputcsv:		resultsStackOverflow.csv
-inputRawCSV:		StackOverflowRawData.csv
-
-
