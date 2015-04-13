@@ -1,6 +1,7 @@
 [global]
 logfile: 		stackOverflowScraper.log
 loglevel:		DEBUG
+inputcsv:		StackOverflow.csv
 outputcsv:		resultsSO.csv
 
 
