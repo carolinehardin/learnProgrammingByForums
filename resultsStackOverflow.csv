@@ -9,7 +9,7 @@ merbist,1,0
 icu-project,1,0
 webkit,1,1
 cpp-netlib,1,0
-julialang,2,0
+edx,0,0
 theserverside,1,0
 activestate,1,0
 easyeclipse,2,0
@@ -23,7 +23,6 @@ amazedsaint,1,0
 xxxrublearn,1,0
 mimuw,1,0
 aperiodic,1,0
-edX,0,0
 schneier,1,0
 castleproject,1,0
 apishark,1,0
@@ -45,7 +44,7 @@ illism,1,0
 globalplatform,1,1
 ietf,3,0
 lynda,1,3
-gnu,2,8
+chuusai,1,0
 egghead,1,0
 swaroopch,1,0
 blogspot,6,0
@@ -56,7 +55,6 @@ skytopia,1,0
 yolinux,1,0
 wrox,1,0
 opengl-tutorial,2,0
-Try Python,0,0
 regex101,1,0
 durandaljs,1,0
 doctrine-project,1,0
@@ -68,6 +66,7 @@ asp,9,14
 w3,3,1
 albahari,1,0
 stack,1,34
+julialang,2,0
 vmware,1,0
 rubyonrails,5,0
 codeproject,1,2
@@ -88,7 +87,7 @@ devshed,1,0
 javascriptkit,1,0
 moodle,2,1
 coding-robin,1,0
-cozi,1,0
+davidzych,1,0
 berkeley,1,1
 apache,5,20
 buildajoomlawebsite,1,0
@@ -97,9 +96,10 @@ vaannila,1,0
 secretgeek,1,0
 python-distribute,1,0
 padrinorb,1,0
+caveofprogramming,0,0
 highcharts,1,1
 hurlman,1,0
-davidzych,1,0
+cozi,1,0
 googlecode,1,0
 superuser,2,1
 wingolog,1,0
@@ -121,7 +121,7 @@ codeigniter,2,7
 ajaxprojects,1,0
 bbc,1,1
 perl,1,24
-Codecademy,0,0
+secret,1,5
 willj,1,0
 dbpedia,1,0
 highscalability,2,0
@@ -144,7 +144,7 @@ sunet,2,0
 felix-kling,1,0
 linuxconfig,1,0
 ibm,3,1
-chuusai,1,0
+gnu,2,8
 eclipse,1,34
 todomvc,1,0
 secnetix,1,0
@@ -156,6 +156,7 @@ macruby,1,1
 bris,1,0
 nodejs,2,5
 songho,1,0
+udemy,0,0
 jasonfruit,1,0
 hanselman,2,0
 skype,1,1
@@ -175,9 +176,9 @@ wikiversity,1,0
 msdn,9,10
 keith-wood,2,0
 funcage,1,0
+try python,0,0
 apress,2,0
 iop,1,0
-CaveOfProgramming,0,0
 javascriptmvc,2,0
 johnpapa,1,0
 0.0.0.0,1,0
@@ -185,7 +186,7 @@ tufts,1,0
 github,54,13
 developerfusion,1,0
 epx,1,0
-tutorialspoint,2,0
+keil,1,1
 nn4d,1,0
 tldp,1,0
 andengine,1,0
@@ -237,12 +238,13 @@ opendnssec,2,0
 myrrix,1,1
 crisp,1,0
 codinghorror,5,0
+crunchy,0,0
 scikit-learn,12,16
 screencast,1,2
 iidia,1,0
 stackexchange,6,1
 mulesoft,1,0
-mean,1,84
+eloquent javascript,0,0
 marioplanet,1,0
 fancybox,1,0
 google,19,111
@@ -258,7 +260,7 @@ umu,2,0
 msgpack,1,0
 djangoproject,1,0
 msmvps,2,0
-RubyMonk,0,0
+rubymonk,0,0
 lucidchart,1,0
 zdnet,1,0
 worldcat,5,0
@@ -279,7 +281,6 @@ neverstopbuilding,1,0
 mindshare,1,0
 jetcafe,1,0
 ffnn,1,0
-Hackety Hack,0,0
 postgresql,1,6
 magentocommerce,1,0
 netflix,1,1
@@ -292,6 +293,7 @@ elasticsearch,1,0
 qt-project,1,0
 bell-labs,1,0
 politiken,1,0
+mean,1,84
 liftweb,1,0
 reencoded,1,0
 conchango,1,0
@@ -313,7 +315,6 @@ archlinux,2,0
 r-project,4,0
 mamp,1,2
 cplusplus,2,0
-secret,1,5
 bignerdranch,1,0
 uniqpath,1,0
 imageshack,3,0
@@ -321,18 +322,16 @@ wordpress,2,9
 pocoo,1,0
 learncodethehardway,1,0
 d20pfsrd,2,0
-Eloquent JavaScript,0,0
 liferay,1,1
 appcelerator,1,1
 opennetcf,1,0
 pythonblogs,1,0
-Crunchy,0,0
+berlios,1,0
 coursera,0,3
 d3js,1,1
 ogi,1,0
 jsmadeeasy,1,0
 infoq,2,0
-sun,2,4
 amazonaws,1,0
 learnpython,0,0
 smashingmagazine,1,0
@@ -341,7 +340,7 @@ tum,1,0
 cbcg,1,0
 stanford,3,1
 dekorte,1,0
-keil,1,1
+tutorialspoint,2,0
 davidhayden,1,0
 oreilly,4,0
 jqueryui,1,1
@@ -374,8 +373,6 @@ unit-testing,1,1
 arshaw,1,0
 roseindia,1,0
 bubblemark,1,0
-berlios,1,0
-Codeacademy,0,0
 evernote,1,0
 mongodb,2,2
 unicamp,1,0
@@ -383,18 +380,21 @@ sfu,1,0
 readitlaterlist,1,0
 pearsonhighered,1,0
 oracle,4,15
+codecademy,0,2
 dropbox,3,0
 justcallmebrian,1,0
 railstutorial,1,0
 extjs,2,3
+hackety hack,0,0
 xamarin,3,2
 bitbucket,3,0
+codeacademy,0,1
 upenn,1,0
 youtube,4,12
 codewalkers,1,0
 fsu,1,0
 r-statistics,1,0
-rubymonk,1,0
+sun,2,4
 asus,1,1
 friendsofed,1,0
 transterpreter,1,0

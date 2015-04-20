@@ -37,6 +37,7 @@ commentsFixedCSV	= config.get('global', 'commentsFixedCSV')
 # resource, number of links, number of mentions
 fieldnames = ['resource', 'number of links', 'number of mentions']
 
+
 #let's grab the stuff from reddit using praw
 reddit = praw.Reddit(user_agent='linux:ResearchRedditScraper:v0.1 (by /u/plzHowDoIProgram)')
 
@@ -67,6 +68,8 @@ with open(commentsCSV, 'w') as csvFile:
 		commentCount += 1
 
 print "Complete. We parsed " + str(commentCount) + " comments."
+
+
 	
 
 # parse the document. we're using the praw version now
@@ -126,6 +129,9 @@ csvOutput.append(fieldnames)
 for key in resources:
 	#change to unicode to avoid parsing problems. add spaces to get discreet keys, not parts of words
 	unicodeKey = " " + key.encode('utf-8') + " "
+	
+	#make sure we are in lower case for everything
+	unicodeKey = unicodeKey.lower()
 		
 	totalCount = 0
 
