@@ -109,7 +109,7 @@ for linkCandidate in linkPile:
 			resources[resourceFound] = 1 
 
 #seed the dictionary with the most commonly used resources listed on the reddit FAQ
-	resources.update({'RubyMonk':0, 'tryruby':0, 'Hackety Hack':0,'Codecademy':0,'Codeacademy':0,'Eloquent JavaScript':0, 'CaveOfProgramming':0, 'Udemy':0,'Try Python':0, 'learnpython':0, 'Crunchy':0,  'coursera':0, 'udacity':0, 'edX':0 })
+	resources.update({'rubymonk':0, 'tryruby':0, 'hackety hack':0,'codecademy':0,'codeacademy':0,'eloquent javascript':0, 'caveofprogramming':0, 'udemy':0,'try python':0, 'learnpython':0, 'crunchy':0,  'coursera':0, 'udacity':0, 'edx':0 })
 
 print "Dictionary complete. "
 pp.pprint(resources)
