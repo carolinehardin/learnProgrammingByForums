@@ -46,6 +46,8 @@ password = config.get('user', 'password')
 
 print "Logging into Reddit..."
 reddit.login(username, password)
+#DEPRECATED. Will be removed in a future version of PRAW. Password-based authentication will stop working on 2015/08/03 and as a result will be removed in PRAW4.
+
 
 print "We're in. Requesting comments from reddit..."
 commentPile = reddit.get_comments('learnprogramming', limit=None)
