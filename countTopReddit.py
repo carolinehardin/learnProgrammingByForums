@@ -1,4 +1,4 @@
-import os, logging, praw, HTMLParser, ConfigParser, pprint, csv
+import os, logging, praw, HTMLParser, ConfigParser, pprint, csv,re
 from bs4 import BeautifulSoup
 from urlparse import urlparse
 from tldextract import tldextract
@@ -34,6 +34,8 @@ commentsFixedCSV	= config.get('global', 'commentsFixedCSV')
 # resource, number of links, number of mentions
 fieldnames = ['resource', 'number of links', 'number of mentions']
 
+
+'''
 #let's grab the stuff from reddit using praw
 reddit = praw.Reddit(user_agent='linux:ResearchRedditScraper:v0.1 (by /u/plzHowDoIProgram)')
 
@@ -69,16 +71,92 @@ with open(commentsCSV, 'w') as csvFile:
 
 print "Complete. We parsed " + str(commentCount) + " comments."
 
-'''
-# parse the document. We have to remove the double quotes & replace them with single quotes
+
+# parse the document. We already removed the double quotes & replaced them with single quotes
 with open(commentsFixedCSV,'r') as inputFile:
 	#parse the input csv using beautiful soup
 	soup = BeautifulSoup(inputFile)
 	linkPile = [a.attrs.get('href') for a in soup.find_all('a')]
+'''
+
+def regExUrl(commentText):
+	#thanks to  dperini (and adamrofer for the python port) https://gist.github.com/dperini/729294
+
+# Regular Expression for URL validation
+#
+# Author: Diego Perini
+# Updated: 2010/12/05
+# License: MIT
+#
+# Copyright (c) 2010-2013 Diego Perini (http://www.iport.it)
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
 	
+	URL_REGEX = re.compile(
+		u"^"
+		# protocol identifier
+		u"(?:(?:https?|ftp)://)"
+		# user:pass authentication
+		u"(?:\S+(?::\S*)?@)?"
+		u"(?:"
+		# IP address exclusion
+		# private & local networks
+		u"(?!(?:10|127)(?:\.\d{1,3}){3})"
+		u"(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})"
+		u"(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})"
+		# IP address dotted notation octets
+		# excludes loopback network 0.0.0.0
+		# excludes reserved space >= 224.0.0.0
+		# excludes network & broadcast addresses
+		# (first & last IP address of each class)
+		u"(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])"
+		u"(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}"
+		u"(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))"
+		u"|"
+		# host name
+		u"(?:(?:[a-z\u00a1-\uffff0-9]-?)*[a-z\u00a1-\uffff0-9]+)"
+		# domain name
+		u"(?:\.(?:[a-z\u00a1-\uffff0-9]-?)*[a-z\u00a1-\uffff0-9]+)*"
+		# TLD identifier
+		u"(?:\.(?:[a-z\u00a1-\uffff]{2,}))"
+		u")"
+		# port number
+		u"(?::\d{2,5})?"
+		# resource path
+		u"(?:/\S*)?"
+		u"$"
+		, re.UNICODE)
+		
+	urlsFound = URL_REGEX.findall(commentText)
+	return urlsFound
+
+# parse the document. We already removed the double quotes & replaced them with single quotes
+with open(commentsFixedCSV,'r') as inputFile:
+	#parse the document with regular expressions
+	for commentText in commentsFixedCSV:
+		pprint.pprint("todo: save the results in linkPile")
+		pprint.pprint(regExUrl(""" some text http://www.nyt.com"""))
+
+
+
+'''
 #pretty print the output to see what we've got so far
 #pp.pprint(linkPile)
 print "We found " + str(len(linkPile)) + " total number of links"
+	
+
+
+
 
 #create a dictionary to keep the resource names in and count the number of appearences
 print "Building dictionary...."
@@ -156,3 +234,5 @@ with open(outputCSV, 'w+') as csvfile:
 print "Complete. Results can be found in " + outputCSV
 	 
 '''
+
+
