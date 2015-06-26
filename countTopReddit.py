@@ -2,6 +2,7 @@ import os, logging, praw, HTMLParser, ConfigParser, pprint, csv,re
 from bs4 import BeautifulSoup
 from urlparse import urlparse
 from tldextract import tldextract
+from collections import Counter
 
 print "Reddit Research Scraper TOP v0.1"
 print "============================"
@@ -82,85 +83,6 @@ with open(commentsFixedCSV,'r') as inputFile:
 	linkPile = [a.attrs.get('href') for a in soup.find_all('a')]
 '''
 
-''' def regExUrl(commentText):
-
-#thanks to  dperini (and adamrofer for the python port) https://gist.github.com/dperini/729294
-
-# Regular Expression for URL validation
-#
-# Author: Diego Perini
-# Updated: 2010/12/05
-# License: MIT
-#
-# Copyright (c) 2010-2013 Diego Perini (http://www.iport.it)
-#
-# Permission is hereby granted, free of charge, to any person
-# obtaining a copy of this software and associated documentation
-# files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use,
-# copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following
-# conditions:
-#
-# The above copyright notice and this permission notice shall be
-# included in all copies or substantial portions of the Software.
-	
-	URL_REGEX = re.compile(
-		u"^"
-		# protocol identifier
-		u"(?:(?:https?|ftp)://)"
-		# user:pass authentication
-		u"(?:\S+(?::\S*)?@)?"
-		u"(?:"
-		# IP address exclusion
-		# private & local networks
-		u"(?!(?:10|127)(?:\.\d{1,3}){3})"
-		u"(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})"
-		u"(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})"
-		# IP address dotted notation octets
-		# excludes loopback network 0.0.0.0
-		# excludes reserved space >= 224.0.0.0
-		# excludes network & broadcast addresses
-		# (first & last IP address of each class)
-		u"(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])"
-		u"(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}"
-		u"(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))"
-		u"|"
-		# host name
-		u"(?:(?:[a-z\u00a1-\uffff0-9]-?)*[a-z\u00a1-\uffff0-9]+)"
-		# domain name
-		u"(?:\.(?:[a-z\u00a1-\uffff0-9]-?)*[a-z\u00a1-\uffff0-9]+)*"
-		# TLD identifier
-		u"(?:\.(?:[a-z\u00a1-\uffff]{2,}))"
-		u")"
-		# port number
-		u"(?::\d{2,5})?"
-		# resource path
-		u"(?:/\S*)?"
-		u"$"
-		, re.UNICODE)
-		
-	urlsFound = URL_REGEX.findall(commentText)
-	return urlsFound
-
-# parse the document. We already removed the double quotes & replaced them with single quotes
-with open(commentsFixedCSV,'r') as inputFile:
-	#parse the document with regular expressions
-	for commentText in commentsFixedCSV:
-		pprint.pprint("todo: save the results in linkPile")
-		pprint.pprint(regExUrl(""" some text http://www.nyt.com"""))
-
-
-
-
-#pretty print the output to see what we've got so far
-#pp.pprint(linkPile)
-print "We found " + str(len(linkPile)) + " total number of links"
-	
-
-'''
-
 #pause here. Run a grep on the output, save it in a textfile as defined in the config file
 with open(linkPile, 'r') as inputFile:
 	
@@ -214,27 +136,28 @@ csvOutput.append(fieldnames)
 #i.e., if someone talks about 'stackoverflow' three times in a single comment, it is only counted once.
 #this will run slow!
 
+#count the number of appearences per resource key
+keyCounts = Counter()
 	
-for key in resources:
-	#change to unicode to avoid parsing problems. add spaces to get discreet keys, not parts of words
-	unicodeKey = " " + key + " "
+with open(commentsFixedCSV,'rb') as inputFile:
 	
-	#make sure we are in lower case for everything
-	unicodeKey = unicodeKey.lower()
+	#for every line of text in file
+	for textComment in inputFile:
+		#for every resource URL previously found
+		for key in resources:
+			
+			#\b is for word boundary - we don't want to match to parts of words or 
+			#python and learnpythonthehardway will get mixed up
+			searchString = "\\b" + key + "\\b" 
+			
+			#if they key is found, increment the counter
+			if re.search(searchString, textComment , flags=re.I):
+				keyCounts[key] += 1
 		
-	totalCount = 0
-
-	#we are counting by the row as each row is a comment
-	with open(commentsFixedCSV,'rb') as inputFile:
-		reader = csv.reader(inputFile, delimiter=';')
-		for row in reader:
-			pp.pprint(row.count("the")) 
-			if((row.count(unicodeKey))>0):
-				totalCount += 1
 				
-				
-	#now that we've gone through each row, add it to the output.
-	csvOutput.append([key,resources[key], totalCount])
+#now that we've gone through each row, add it to the output.
+for key in resources:
+	csvOutput.append([key,resources[key], keyCounts[key]])
 	
 #finally, save the CSV file
 print "Writing results to CSV file...."

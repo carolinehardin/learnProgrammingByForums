@@ -991,7 +991,7 @@ tomshardware,1,0
 utk,1,0
 fpbridge,1,0
 watchmecode,1,0
-up,2,0
+up,2,1
 fdik,1,0
 mtu,1,0
 edmundtse,1,0
@@ -1833,7 +1833,7 @@ polygon,1,0
 addedbytes,2,0
 cprogramming,6,0
 textbookequity,1,0
-i,2,0
+i,2,1
 florian-berger,1,0
 edaboards,1,0
 fileformat,1,0
