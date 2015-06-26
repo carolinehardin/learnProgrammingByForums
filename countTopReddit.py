@@ -29,14 +29,15 @@ logging.basicConfig(filename=LOG_FILENAME, level=LOG_LEVEL)
 outputCSV  = config.get('global', 'outputCSV')
 commentsCSV	= config.get('global', 'commentsCSV')
 commentsFixedCSV	= config.get('global', 'commentsFixedCSV')
+linkPile = config.get('global', 'linkPile')
 
 # put together a dictionary for building the CSV file
 # resource, number of links, number of mentions
 fieldnames = ['resource', 'number of links', 'number of mentions']
 
 
-'''
-#let's grab the stuff from reddit using praw
+''' #let's grab the stuff from reddit using praw
+
 reddit = praw.Reddit(user_agent='linux:ResearchRedditScraper:v0.1 (by /u/plzHowDoIProgram)')
 
 username = config.get('user', 'username')
@@ -71,16 +72,19 @@ with open(commentsCSV, 'w') as csvFile:
 
 print "Complete. We parsed " + str(commentCount) + " comments."
 
+'''
 
-# parse the document. We already removed the double quotes & replaced them with single quotes
+''' # parse the document with beautiful soup. We already removed the double quotes & replaced them with single quotes
+
 with open(commentsFixedCSV,'r') as inputFile:
 	#parse the input csv using beautiful soup
 	soup = BeautifulSoup(inputFile)
 	linkPile = [a.attrs.get('href') for a in soup.find_all('a')]
 '''
 
-def regExUrl(commentText):
-	#thanks to  dperini (and adamrofer for the python port) https://gist.github.com/dperini/729294
+''' def regExUrl(commentText):
+
+#thanks to  dperini (and adamrofer for the python port) https://gist.github.com/dperini/729294
 
 # Regular Expression for URL validation
 #
@@ -149,46 +153,55 @@ with open(commentsFixedCSV,'r') as inputFile:
 
 
 
-'''
+
 #pretty print the output to see what we've got so far
 #pp.pprint(linkPile)
 print "We found " + str(len(linkPile)) + " total number of links"
 	
 
+'''
 
-
-
-#create a dictionary to keep the resource names in and count the number of appearences
-print "Building dictionary...."
-resources = {} 
-
-#look at every link in the pile
-for linkCandidate in linkPile:
-	pp.pprint(linkCandidate)
-	baseUrl = " "
+#pause here. Run a grep on the output, save it in a textfile as defined in the config file
+with open(linkPile, 'r') as inputFile:
 	
-	try:
-		#we only want the hostname
-		baseUrl = urlparse(linkCandidate).hostname 
+	#create a dictionary to keep the resource names in and count the number of appearences
+	print "Building dictionary...."
+	resources = {} 
+
+	#look at every link in the pile
+	for linkCandidate in inputFile:
 		
-	except: #if we get some non-url text somehow. 
-		print 'Skip this:' 
-		print linkCandidate
+		#remove the newlines at the end 
+		baseUrl = linkCandidate[0:-2] 
+		#pp.pprint(baseUrl)
+	
+		try:
+			#we only want the hostname
+			baseUrl = urlparse(linkCandidate).hostname[0:-2] 
+			#pp.pprint(baseUrl)
+						
+		except: #if we get some non-url text somehow. 
+			print 'Skip this:' 
+			print linkCandidate	
+		
 
-	# if it's not empty
-	if not baseUrl is None:
-		# extract the TLD
-		resourceFound = tldextract.extract(baseUrl).domain 
-		#check each name against this list to see if it's new
-		if resources.has_key(resourceFound): 
-			#if in list, increment count
-			resources[resourceFound] = (resources[resourceFound]+1)  
-		else:
-			#if not in list, add it 
-			resources[resourceFound] = 1 
+		# if it's not empty
+		if not baseUrl is None:
+			# extract the TLD
+			resourceFound = tldextract.extract(baseUrl).domain 
+			pp.pprint(resourceFound)
+		
+			#check each name against this list to see if it's new
+			if resources.has_key(resourceFound): 
+		
+				#if in list, increment count
+				resources[resourceFound] = (resources[resourceFound]+1)  
+			else:
+				#if not in list, add it 
+				resources[resourceFound] = 1 
 
-#seed the dictionary with the most commonly used resources listed on the reddit FAQ
-	resources.update({'rubymonk':0, 'tryruby':0, 'hackety hack':0,'codecademy':0,'codeacademy':0,'eloquent javascript':0, 'caveofprogramming':0, 'udemy':0,'try python':0, 'learnpython':0, 'crunchy':0,  'coursera':0, 'udacity':0, 'edx':0 })
+	#seed the dictionary with the most commonly used resources listed on the reddit FAQ
+		resources.update({'rubymonk':0, 'tryruby':0, 'hackety hack':0,'codecademy':0,'codeacademy':0,'eloquent javascript':0, 'caveofprogramming':0, 'udemy':0,'try python':0, 'learnpython':0, 'crunchy':0,  'coursera':0, 'udacity':0, 'edx':0 })
 
 print "Dictionary complete. "
 pp.pprint(resources)
@@ -204,7 +217,7 @@ csvOutput.append(fieldnames)
 	
 for key in resources:
 	#change to unicode to avoid parsing problems. add spaces to get discreet keys, not parts of words
-	unicodeKey = " " + key.encode('utf-8') + " "
+	unicodeKey = " " + key + " "
 	
 	#make sure we are in lower case for everything
 	unicodeKey = unicodeKey.lower()
@@ -212,15 +225,14 @@ for key in resources:
 	totalCount = 0
 
 	#we are counting by the row as each row is a comment
-	with open(commentsCSV,'rb') as inputFile:
-		reader = csv.reader(inputFile, delimiter='\t')
+	with open(commentsFixedCSV,'rb') as inputFile:
+		reader = csv.reader(inputFile, delimiter=';')
 		for row in reader:
-			#the second column has the body text. get it in lower case
-			bodyText = row[0].lower()
-			
-			if((bodyText.count(unicodeKey))>0):
+			pp.pprint(row.count("the")) 
+			if((row.count(unicodeKey))>0):
 				totalCount += 1
-		
+				
+				
 	#now that we've gone through each row, add it to the output.
 	csvOutput.append([key,resources[key], totalCount])
 	
@@ -233,6 +245,6 @@ with open(outputCSV, 'w+') as csvfile:
 		csvwrite.writerow(row)
 print "Complete. Results can be found in " + outputCSV
 	 
-'''
+
 
 

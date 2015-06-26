@@ -1,9 +1,9 @@
 [global]
-logfile: 		countReddit.log
+logfile: 		countRedditTOP.log
 loglevel:		DEBUG
-outputCSV:		resultsReddit.csv
-commentsCSV:		redditComments.csv
-commentsFixedCSV:		redditCommentsFixed.csv
+outputCSV:		resultsRedditTOP.csv
+commentsCSV:		redditCommentsTOP.csv
+commentsFixedCSV:		redditCommentsFixedTOP.csv
 
 [user]
 username: 		plzHowDoIProgram
