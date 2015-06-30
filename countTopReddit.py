@@ -31,6 +31,7 @@ outputCSV  = config.get('global', 'outputCSV')
 commentsCSV	= config.get('global', 'commentsCSV')
 commentsFixedCSV	= config.get('global', 'commentsFixedCSV')
 linkPile = config.get('global', 'linkPile')
+linksAndTLD = config.get('global', 'linksAndTLD')
 
 # put together a dictionary for building the CSV file
 # resource, number of links, number of mentions
@@ -89,14 +90,11 @@ with open(linkPile, 'r') as inputFile:
 	#create a dictionary to keep the resource names in and count the number of appearences
 	print "Building dictionary...."
 	resources = {} 
+	candidateAndBaseURL = [] #this is for debugging purposes, it is helpful to see the orignial link and the derived tld
 
 	#look at every link in the pile
 	for linkCandidate in inputFile:
 		
-		#remove the newlines at the end 
-		baseUrl = linkCandidate[0:-2] 
-		#pp.pprint(baseUrl)
-	
 		try:
 			#we only want the hostname
 			baseUrl = urlparse(linkCandidate).hostname[0:-2] 
@@ -113,6 +111,9 @@ with open(linkPile, 'r') as inputFile:
 			resourceFound = tldextract.extract(baseUrl).domain 
 			pp.pprint(resourceFound)
 		
+			#store these values for debugging purposes
+			candidateAndBaseURL.append([linkCandidate, resourceFound])
+		
 			#check each name against this list to see if it's new
 			if resources.has_key(resourceFound): 
 		
@@ -128,6 +129,14 @@ with open(linkPile, 'r') as inputFile:
 print "Dictionary complete. "
 pp.pprint(resources)
 
+#save the results in closer detail for debugging
+with open(linksAndTLD, 'w+') as csvfile:
+	csvwrite = csv.writer(csvfile)
+	for row in candidateAndBaseURL:
+		csvwrite.writerow(row)
+
+print "Links and the derived TLD printed to file"
+
 #create an empty list for collecting results
 csvOutput = []
 csvOutput.append(fieldnames)
@@ -136,8 +145,12 @@ csvOutput.append(fieldnames)
 #i.e., if someone talks about 'stackoverflow' three times in a single comment, it is only counted once.
 #this will run slow!
 
+
 #count the number of appearences per resource key
 keyCounts = Counter()
+	
+#count progress through all the comments
+lineCounter = 0
 	
 with open(commentsFixedCSV,'rb') as inputFile:
 	
@@ -154,6 +167,8 @@ with open(commentsFixedCSV,'rb') as inputFile:
 			if re.search(searchString, textComment , flags=re.I):
 				keyCounts[key] += 1
 		
+		lineCounter += 1
+		pp.pprint(["Line number: ", lineCounter])
 				
 #now that we've gone through each row, add it to the output.
 for key in resources:
