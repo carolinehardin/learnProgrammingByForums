@@ -37,7 +37,6 @@ commentsFixedCSV	= config.get('global', 'commentsFixedCSV')
 # resource, number of links, number of mentions
 fieldnames = ['resource', 'number of links', 'number of mentions']
 
-
 #let's grab the stuff from reddit using praw
 reddit = praw.Reddit(user_agent='linux:ResearchRedditScraper:v0.1 (by /u/plzHowDoIProgram)')
 
@@ -48,28 +47,30 @@ print "Logging into Reddit..."
 reddit.login(username, password)
 
 print "We're in. Requesting comments from reddit..."
-commentPile = reddit.get_comments('learnprogramming', limit=None)
+submissions=reddit.search('subreddit:learnprogramming', sort='new', limit='none')
 
 print "Request complete. Parsing raw comments to CSV..."
 commentCount = 0
-
 
 #write comment to a csv file for counting
 with open(commentsCSV, 'w') as csvFile:
 	csvwriter= csv.writer(csvFile,delimiter='\t')
 	
-	for comments in commentPile:
-		#unescape the html and put in unicode
-		commentFormatted = (redditParse.unescape(comments.body_html)).encode('utf-8')
+	for thread in submissions:
+		flat_comments = praw.helpers.flatten_tree(thread.comments)
 		
-		#write it to a csv file for counting comments
-		csvwriter.writerow([commentFormatted])
-		
+		for comment in flat_comments:
+			#unescape the html and put in unicode
+			try:
+				pprint.pprint(comment)
+				#commentFormatted = string.replace((redditParse.unescape(comment)).encode('utf-8'),'""', '"')
+				#csvwriter.writerow([commentFormatted])
+	
+			except AttributeError:
+				pass
 		commentCount += 1
 
 print "Complete. We parsed " + str(commentCount) + " comments."
-
-
 	
 
 # parse the document. we're using the praw version now

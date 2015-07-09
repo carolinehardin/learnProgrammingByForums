@@ -7,6 +7,10 @@ from collections import Counter
 print "Reddit Research Scraper TOP v0.1"
 print "============================"
 
+'''
+Grab the config file (we're gonna need it later on)
+'''
+
 try:
   config = ConfigParser.ConfigParser()
   config.read(os.path.dirname(os.path.realpath(__file__)) + '/settingsR-TOP.conf')
