@@ -56,3 +56,6 @@ target/
 
 # auto-saves
 .*~
+
+#configuration files
+*.conf
