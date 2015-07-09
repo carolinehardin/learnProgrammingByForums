@@ -1,14 +1,16 @@
-import os, logging, praw, HTMLParser, ConfigParser, pprint, csv
+import os, logging, praw, HTMLParser, ConfigParser, pprint, csv,re
 from bs4 import BeautifulSoup
 from urlparse import urlparse
 from tldextract import tldextract
+from collections import Counter
 
-print "Reddit Research Scraper v0.1"
+print "Reddit Research Scraper TOP v0.1"
 print "============================"
 
 '''
 Grab the config file (we're gonna need it later on)
 '''
+
 try:
   config = ConfigParser.ConfigParser()
   config.read(os.path.dirname(os.path.realpath(__file__)) + '/settingsR.conf')
@@ -20,24 +22,28 @@ except ConfigParser.NoSectionError:
 #make a pretty printer for use later
 pp = pprint.PrettyPrinter(indent=4)  
 
+# we need this to unescape the escaped characters
+redditParse = HTMLParser.HTMLParser()
+
 # log events to redditScraper.log with debug level logging
 LOG_FILENAME = config.get('global', 'logfile')
 LOG_LEVEL = config.get('global', 'loglevel')
 logging.basicConfig(filename=LOG_FILENAME, level=LOG_LEVEL)
 
-# we need this to unescape the escaped characters
-redditParse = HTMLParser.HTMLParser() 
-
 # create files for saving the reddit stuff to
 outputCSV  = config.get('global', 'outputCSV')
 commentsCSV	= config.get('global', 'commentsCSV')
 commentsFixedCSV	= config.get('global', 'commentsFixedCSV')
+linkPile = config.get('global', 'linkPile')
+linksAndTLD = config.get('global', 'linksAndTLD')
 
 # put together a dictionary for building the CSV file
 # resource, number of links, number of mentions
 fieldnames = ['resource', 'number of links', 'number of mentions']
 
+
 #let's grab the stuff from reddit using praw
+
 reddit = praw.Reddit(user_agent='linux:ResearchRedditScraper:v0.1 (by /u/plzHowDoIProgram)')
 
 username = config.get('user', 'username')
@@ -62,61 +68,72 @@ with open(commentsCSV, 'w') as csvFile:
 		for comment in flat_comments:
 			#unescape the html and put in unicode
 			try:
-				pprint.pprint(comment)
-				#commentFormatted = string.replace((redditParse.unescape(comment)).encode('utf-8'),'""', '"')
-				#csvwriter.writerow([commentFormatted])
+				#pprint.pprint(comment)
+				commentFormatted = string.replace((redditParse.unescape(comment)).encode('utf-8'),'""', '"')
+				csvwriter.writerow([commentFormatted])
 	
 			except AttributeError:
 				pass
 		commentCount += 1
 
 print "Complete. We parsed " + str(commentCount) + " comments."
-	
 
-# parse the document. we're using the praw version now
-with open(commentsFixedCSV,'r') as inputFile:
-	#parse the input csv using beautiful soup
-	soup = BeautifulSoup(inputFile)
-	linkPile = [a.attrs.get('href') for a in soup.find_all('a')]
-	
-#pretty print the output to see what we've got so far
-#pp.pprint(linkPile)
-print "We found " + str(len(linkPile)) + " total number of links"
 
-#create a dictionary to keep the resource names in and count the number of appearences
-print "Building dictionary...."
-resources = {} 
-
-#look at every link in the pile
-for linkCandidate in linkPile:
-	pp.pprint(linkCandidate)
-	baseUrl = " "
+'''
+#pause here. Run a grep on the output to find the urls, save it in a textfile with same name as determined in the config file
+#here is the grep: cat redditCommentsFixedTOPcached.csv | egrep -o "[http://([A-Za-z0-9-]+\.)+[A-Za-z]+"]http://([A-Za-z0-9-]+\.)+[A-Za-z]+"; | sort | wc -lii
+#new lines fixed thus:
+with open(linkPile, 'r') as inputFile:
 	
-	try:
-		#we only want the hostname
-		baseUrl = urlparse(linkCandidate).hostname 
+	#create a dictionary to keep the resource names in and count the number of appearences
+	print "Building dictionary...."
+	resources = {} 
+	candidateAndBaseURL = [] #this is for debugging purposes, it is helpful to see the orignial link and the derived tld
+
+	#look at every link in the pile
+	for linkCandidate in inputFile:
 		
-	except: #we get some non-url text somehow. 
-		print 'Skip this:' 
-		print linkCandidate
+		try:
+			#we only want the hostname
+			baseUrl = urlparse(linkCandidate).hostname[0:-2] 
+			#pp.pprint(baseUrl)
+						
+		except: #if we get some non-url text somehow. 
+			print 'Skip this:' 
+			print linkCandidate	
+		
 
-	# if it's not empty
-	if not baseUrl is None:
-		# extract the TLD
-		resourceFound = tldextract.extract(baseUrl).domain 
-		#check each name against this list to see if it's new
-		if resources.has_key(resourceFound): 
-			#if in list, increment count
-			resources[resourceFound] = (resources[resourceFound]+1)  
-		else:
-			#if not in list, add it 
-			resources[resourceFound] = 1 
+		# if it's not empty
+		if not baseUrl is None:
+			# extract the TLD
+			resourceFound = tldextract.extract(baseUrl).domain 
+			pp.pprint(resourceFound)
+		
+			#store these values for debugging purposes
+			candidateAndBaseURL.append([linkCandidate, resourceFound])
+		
+			#check each name against this list to see if it's new
+			if resources.has_key(resourceFound): 
+		
+				#if in list, increment count
+				resources[resourceFound] = (resources[resourceFound]+1)  
+			else:
+				#if not in list, add it 
+				resources[resourceFound] = 1 
 
-#seed the dictionary with the most commonly used resources listed on the reddit FAQ
-	resources.update({'rubymonk':0, 'tryruby':0, 'hackety hack':0,'codecademy':0,'codeacademy':0,'eloquent javascript':0, 'caveofprogramming':0, 'udemy':0,'try python':0, 'learnpython':0, 'crunchy':0,  'coursera':0, 'udacity':0, 'edx':0 })
+	#seed the dictionary with the most commonly used resources listed on the reddit FAQ
+		resources.update({'rubymonk':0, 'tryruby':0, 'hackety hack':0,'codecademy':0,'codeacademy':0,'eloquent javascript':0, 'caveofprogramming':0, 'udemy':0,'try python':0, 'learnpython':0, 'crunchy':0,  'coursera':0, 'udacity':0, 'edx':0 })
 
 print "Dictionary complete. "
 pp.pprint(resources)
+
+#save the results in closer detail for debugging
+with open(linksAndTLD, 'w+') as csvfile:
+	csvwrite = csv.writer(csvfile)
+	for row in candidateAndBaseURL:
+		csvwrite.writerow(row)
+
+print "Links and the derived TLD printed to file"
 
 #create an empty list for collecting results
 csvOutput = []
@@ -126,28 +143,36 @@ csvOutput.append(fieldnames)
 #i.e., if someone talks about 'stackoverflow' three times in a single comment, it is only counted once.
 #this will run slow!
 
-	
-for key in resources:
-	#change to unicode to avoid parsing problems. add spaces to get discreet keys, not parts of words
-	unicodeKey = " " + key.encode('utf-8') + " "
-	
-	#make sure we are in lower case for everything
-	unicodeKey = unicodeKey.lower()
-		
-	totalCount = 0
 
-	#we are counting by the row as each row is a comment
-	with open(commentsCSV,'rb') as inputFile:
-		reader = csv.reader(inputFile, delimiter='\t')
-		for row in reader:
-			#the second column has the body text. get it in lower case
-			bodyText = row[0].lower()
+#count the number of appearences per resource key
+keyCounts = Counter()
+	
+#count progress through all the comments
+lineCounter = 0
+	
+with open(commentsFixedCSV,'rb') as inputFile:
+	
+	#for every line of text in file
+	for textComment in inputFile:
+		#for every resource URL previously found
+		for key in resources:
 			
-			if((bodyText.count(unicodeKey))>0):
-				totalCount += 1
+			#\b is for word boundary - we don't want to match to parts of words or 
+			#python and learnpythonthehardway will get mixed up
+			searchString = "\\b" + key + "\\b" 
+			
+			#if they key is found, increment the counter
+			if re.search(searchString, textComment , flags=re.I):
+				keyCounts[key] += 1
 		
-	#now that we've gone through each row, add it to the output.
-	csvOutput.append([key,resources[key], totalCount])
+		lineCounter += 1
+		if (lineCounter % 1000) == 0:
+			print "\rlines: " + str(lineCounter)
+		#pp.pprint(["Line number: ", lineCounter])
+				
+#now that we've gone through each row, add it to the output.
+for key in resources:
+	csvOutput.append([key,resources[key], keyCounts[key]])
 	
 #finally, save the CSV file
 print "Writing results to CSV file...."
@@ -158,6 +183,6 @@ with open(outputCSV, 'w+') as csvfile:
 		csvwrite.writerow(row)
 print "Complete. Results can be found in " + outputCSV
 	 
-
+'''
 
 
