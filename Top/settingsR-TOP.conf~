@@ -3,7 +3,7 @@ logfile: 		countRedditTOP.log
 loglevel:		DEBUG
 outputCSV:		resultsRedditTOP.csv
 commentsCSV:		redditCommentsTOP.csv
-commentsFixedCSV:		redditCommentsFixedTOP.csv
+commentsFixedCSV:		redditCommentsFixedTOP2.csv
 linkPile:		redditURLsTOP.txt
 linksAndTLD:		linksAndTLD.csv
 
