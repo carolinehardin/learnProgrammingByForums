@@ -68,9 +68,12 @@ with open(commentsCSV, 'w') as csvFile:
 		for comment in flat_comments:
 			#unescape the html and put in unicode
 			try:
+				
+				commentFormatted = (redditParse.unescape(comment.body)).encode('utf-8')
 				#pprint.pprint(comment)
-				commentFormatted = string.replace((redditParse.unescape(comment)).encode('utf-8'),'""', '"')
+				
 				csvwriter.writerow([commentFormatted])
+	
 	
 			except AttributeError:
 				pass

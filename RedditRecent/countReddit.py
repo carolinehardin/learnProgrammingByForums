@@ -42,7 +42,7 @@ linksAndTLD = config.get('global', 'linksAndTLD')
 fieldnames = ['resource', 'number of links', 'number of mentions']
 
 
-#let's grab the stuff from reddit using praw
+'''#let's grab the stuff from reddit using praw
 
 reddit = praw.Reddit(user_agent='linux:ResearchRedditScraper:v0.1 (by /u/plzHowDoIProgram)')
 
@@ -55,10 +55,11 @@ reddit.login(username, password)
 print "We're in. Requesting comments from reddit..."
 submissions=reddit.search('subreddit:learnprogramming', sort='new', limit='none')
 
+
 print "Request complete. Parsing raw comments to CSV..."
 commentCount = 0
 
-#write comment to a csv file for counting
+#write thread comments to a csv file for counting
 with open(commentsCSV, 'w') as csvFile:
 	csvwriter= csv.writer(csvFile,delimiter='\t')
 	
@@ -68,8 +69,10 @@ with open(commentsCSV, 'w') as csvFile:
 		for comment in flat_comments:
 			#unescape the html and put in unicode
 			try:
+				
+				commentFormatted = (redditParse.unescape(comment.body)).encode('utf-8')
 				#pprint.pprint(comment)
-				commentFormatted = string.replace((redditParse.unescape(comment)).encode('utf-8'),'""', '"')
+				
 				csvwriter.writerow([commentFormatted])
 	
 			except AttributeError:
@@ -82,7 +85,7 @@ print "Complete. We parsed " + str(commentCount) + " comments."
 '''
 #pause here. Run a grep on the output to find the urls, save it in a textfile with same name as determined in the config file
 #here is the grep: cat redditCommentsFixedTOPcached.csv | egrep -o "[http://([A-Za-z0-9-]+\.)+[A-Za-z]+"]http://([A-Za-z0-9-]+\.)+[A-Za-z]+"; | sort | wc -lii
-#new lines fixed thus:
+#new lines fixed thus: opened the .csv file in LibreCalc and did a 'find a replace' for /n, checking the 'regular expression' box
 with open(linkPile, 'r') as inputFile:
 	
 	#create a dictionary to keep the resource names in and count the number of appearences
@@ -183,6 +186,6 @@ with open(outputCSV, 'w+') as csvfile:
 		csvwrite.writerow(row)
 print "Complete. Results can be found in " + outputCSV
 	 
-'''
+
 
 
