@@ -84,7 +84,8 @@ print "Complete. We parsed " + str(commentCount) + " comments."
 
 '''
 #pause here. Run a grep on the output to find the urls, save it in a textfile with same name as determined in the config file
-#here is the grep: cat redditCommentsFixedTOPcached.csv | egrep -o "[http://([A-Za-z0-9-]+\.)+[A-Za-z]+"]http://([A-Za-z0-9-]+\.)+[A-Za-z]+"; | sort | wc -lii
+#here is the grep:
+#cat redditCommentsFixed.csv | egrep -o "http://([A-Za-z0-9-]+\.)+[A-Za-z]+(/)*([[:alnum:]/._])*" | sort > whateveryouwanttocallthis.txt
 #new lines fixed thus: opened the .csv file in LibreCalc and did a 'find a replace' for /n, checking the 'regular expression' box
 with open(linkPile, 'r') as inputFile:
 	
@@ -98,12 +99,12 @@ with open(linkPile, 'r') as inputFile:
 		
 		try:
 			#we only want the hostname
-			baseUrl = urlparse(linkCandidate).hostname[0:-2] 
+			baseUrl = urlparse(linkCandidate).hostname
 			#pp.pprint(baseUrl)
 						
 		except: #if we get some non-url text somehow. 
 			print 'Skip this:' 
-			print linkCandidate	
+			#print linkCandidate	
 		
 
 		# if it's not empty
@@ -113,7 +114,7 @@ with open(linkPile, 'r') as inputFile:
 			pp.pprint(resourceFound)
 		
 			#store these values for debugging purposes
-			candidateAndBaseURL.append([linkCandidate, resourceFound])
+			candidateAndBaseURL.append([linkCandidate, resourceFound, baseUrl])
 		
 			#check each name against this list to see if it's new
 			if resources.has_key(resourceFound): 

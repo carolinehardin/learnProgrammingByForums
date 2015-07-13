@@ -1,0 +1,1 @@
+cat redditCommentsFixed.csv | egrep -o "http://([A-Za-z0-9-]+\.)+[A-Za-z]+(/)*([[:alnum:]/._])*" | sort > whateveryouwanttocallthis.txt

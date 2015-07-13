@@ -92,7 +92,7 @@ with open(commentsFixedCSV,'r') as inputFile:
 '''
 
 #pause here. Run a grep on the output to find the urls, save it in a textfile with same name as determined in the config file
-#here is the grep: cat redditCommentsFixedTOPcached.csv | egrep -o "[http://([A-Za-z0-9-]+\.)+[A-Za-z]+"]http://([A-Za-z0-9-]+\.)+[A-Za-z]+"; | sort | wc -lii
+#here is the grep:cat redditCommentsFixed.csv | egrep -o "http://([A-Za-z0-9-]+\.)+[A-Za-z]+(/)*([[:alnum:]/._])*" | sort > whateveryouwanttocallthis.txt
 #new lines fixed thus:
 with open(linkPile, 'r') as inputFile:
 	
@@ -106,7 +106,7 @@ with open(linkPile, 'r') as inputFile:
 		
 		try:
 			#we only want the hostname
-			baseUrl = urlparse(linkCandidate).hostname[0:-2] 
+			baseUrl = urlparse(linkCandidate).hostname[0:-2] #removing the two spots on the end if you have extra newlines
 			#pp.pprint(baseUrl)
 						
 		except: #if we get some non-url text somehow. 
