@@ -1,0 +1,8 @@
+[global]
+logfile: 		stackOverflow.log
+loglevel:		DEBUG
+inputcsv:		StackOverflowRawDataFixed.csv
+outputcsv:		resultsStackOverflow.csv
+mentionsCSV:		StackOverflowRawData-stackFixed.csv
+
+

@@ -86,7 +86,7 @@ print "Complete. We parsed " + str(commentCount) + " comments."
 #pause here. Run a grep on the output to find the urls, save it in a textfile with same name as determined in the config file
 #here is the grep:
 #cat redditCommentsFixed.csv | egrep -o "http://([A-Za-z0-9-]+\.)+[A-Za-z]+(/)*([[:alnum:]/._])*" | sort > whateveryouwanttocallthis.txt
-#new lines fixed thus: opened the .csv file in LibreCalc and did a 'find a replace' for /n, checking the 'regular expression' box
+#new lines fixed thus: opened the .csv file in LibreCalc and did a 'find a replace' for \n, checking the 'regular expression' box
 with open(linkPile, 'r') as inputFile:
 	
 	#create a dictionary to keep the resource names in and count the number of appearences
@@ -97,33 +97,22 @@ with open(linkPile, 'r') as inputFile:
 	#look at every link in the pile
 	for linkCandidate in inputFile:
 		
-		try:
-			#we only want the hostname
-			baseUrl = urlparse(linkCandidate).hostname
-			#pp.pprint(baseUrl)
-						
-		except: #if we get some non-url text somehow. 
-			print 'Skip this:' 
-			#print linkCandidate	
-		
-
-		# if it's not empty
-		if not baseUrl is None:
-			# extract the TLD
-			resourceFound = tldextract.extract(baseUrl).domain 
-			pp.pprint(resourceFound)
-		
-			#store these values for debugging purposes
-			candidateAndBaseURL.append([linkCandidate, resourceFound, baseUrl])
-		
-			#check each name against this list to see if it's new
-			if resources.has_key(resourceFound): 
-		
-				#if in list, increment count
-				resources[resourceFound] = (resources[resourceFound]+1)  
-			else:
-				#if not in list, add it 
-				resources[resourceFound] = 1 
+		resourceFound = tldextract.extract(linkCandidate).domain 
+		pp.pprint(resourceFound)
+	
+		#store these values for debugging purposes
+		#you will want to look through this for any anomolies, such as http://learnpythonthehardway.com being parsed as 'com'
+		candidateAndBaseURL.append([linkCandidate, resourceFound])
+	
+	
+		#check each name against this list to see if it's new
+		if resources.has_key(resourceFound): 
+	
+			#if in list, increment count
+			resources[resourceFound] = (resources[resourceFound]+1)  
+		else:
+			#if not in list, add it 
+			resources[resourceFound] = 1 
 
 	#seed the dictionary with the most commonly used resources listed on the reddit FAQ
 		resources.update({'rubymonk':0, 'tryruby':0, 'hackety hack':0,'codecademy':0,'codeacademy':0,'eloquent javascript':0, 'caveofprogramming':0, 'udemy':0,'try python':0, 'learnpython':0, 'crunchy':0,  'coursera':0, 'udacity':0, 'edx':0 })
@@ -169,10 +158,11 @@ with open(commentsFixedCSV,'rb') as inputFile:
 			if re.search(searchString, textComment , flags=re.I):
 				keyCounts[key] += 1
 		
+		#track progress
 		lineCounter += 1
 		if (lineCounter % 1000) == 0:
 			print "\rlines: " + str(lineCounter)
-		#pp.pprint(["Line number: ", lineCounter])
+		
 				
 #now that we've gone through each row, add it to the output.
 for key in resources:

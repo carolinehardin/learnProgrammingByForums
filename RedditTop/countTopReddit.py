@@ -93,7 +93,7 @@ with open(commentsFixedCSV,'r') as inputFile:
 
 #pause here. Run a grep on the output to find the urls, save it in a textfile with same name as determined in the config file
 #here is the grep:cat redditCommentsFixed.csv | egrep -o "http://([A-Za-z0-9-]+\.)+[A-Za-z]+(/)*([[:alnum:]/._])*" | sort > whateveryouwanttocallthis.txt
-#new lines fixed thus:
+#new lines fixed thus: opened the .csv file in LibreCalc and did a 'find a replace' for \n, checking the 'regular expression' box
 with open(linkPile, 'r') as inputFile:
 	
 	#create a dictionary to keep the resource names in and count the number of appearences
