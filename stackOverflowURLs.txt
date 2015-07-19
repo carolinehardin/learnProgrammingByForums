@@ -513,7 +513,7 @@ http://ojtwist.be/datatocluster.p
 http://ojtwist.be/datatocluster.p
 http://openjudge.net/
 http://openseadragon.github.io/docs/symbols/OpenSeadragon.html
-http://packages.zendframework.com
+http://packages.zendframework.com/
 http://pastebin.com/TywRvxZC
 http://pastebin.com/TywRvxZC
 http://pbnt.berlios.de/
@@ -1236,7 +1236,7 @@ http://www.w3.org/TR/css3
 http://www.w3.org/TR/rdf
 http://www.w3.org/TR/xhtml1/DTD/xhtml1
 http://www.w3schools.com/
-http://www.w3schools.com
+http://www.w3schools.com/
 http://www.w3schools.com/
 http://www.w3schools.com/
 http://www.w3schools.com/xquery/default.asp
